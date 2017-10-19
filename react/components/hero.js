@@ -4,6 +4,14 @@ import classNames from 'classnames'
 import {Link} from 'next-url-prettifier'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
+import ContactIcon from 'react-icons/lib/io/ios-email-outline'
+import PassportIcon from 'react-icons/lib/io/ios-bookmarks-outline'
+import PolicyQuestionIcon from 'react-icons/lib/io/ios-paper-outline'
+import ScheduleIcon from 'react-icons/lib/io/calendar'
+import ServiceIcon from 'react-icons/lib/io/wrench'
+import TeamIcon from 'react-icons/lib/io/ios-people-outline'
+import VeteransIcon from 'react-icons/lib/io/ribbon-a'
+import VolunteerIcon from 'react-icons/lib/io/ios-person-outline'
 
 import HeroNavButton from '../components/hero-nav-button'
 import HeroQuickLink from '../components/hero-quick-link'
@@ -70,14 +78,46 @@ const Hero = ({data, quickLinks}: Props) => (
         <div className='pb5'>
           <div className='tc b mb3'>{'Quick Links'}</div>
           <div className='cf'>
-            <HeroQuickLink>{'Policy Question'}</HeroQuickLink>
-            <HeroQuickLink>{'Veterans Services'}</HeroQuickLink>
-            <HeroQuickLink>{'Expedite a Passport'}</HeroQuickLink>
-            <HeroQuickLink>{'Schedule a Visit'}</HeroQuickLink>
-            <HeroQuickLink>{'Become a Volunteer'}</HeroQuickLink>
-            <HeroQuickLink>{'Meet the Team'}</HeroQuickLink>
-            <HeroQuickLink>{'Service Request'}</HeroQuickLink>
-            <HeroQuickLink>{'Contact Me'}</HeroQuickLink>
+            <HeroQuickLink
+              Icon={PolicyQuestionIcon}
+              iconSize={50}
+              title='Policy Question'
+            />
+            <HeroQuickLink
+              Icon={VeteransIcon}
+              iconSize={50}
+              title='Veterans Services'
+            />
+            <HeroQuickLink
+              Icon={PassportIcon}
+              iconSize={50}
+              title='Expedite a Passport'
+            />
+            <HeroQuickLink
+              Icon={ScheduleIcon}
+              iconSize={50}
+              title='Schedule a Visit'
+            />
+            <HeroQuickLink
+              Icon={VolunteerIcon}
+              iconSize={50}
+              title='Become a Volunteer'
+            />
+            <HeroQuickLink
+              Icon={TeamIcon}
+              iconSize={50}
+              title='Meet the Team'
+            />
+            <HeroQuickLink
+              Icon={ServiceIcon}
+              iconSize={50}
+              title='Service Request'
+            />
+            <HeroQuickLink
+              Icon={ContactIcon}
+              iconSize={50}
+              title='Contact Me'
+            />
           </div>
         </div>
       )}
