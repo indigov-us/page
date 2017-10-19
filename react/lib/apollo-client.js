@@ -7,6 +7,7 @@ let client
 
 const createClient = (initialState?: ?Object, {host}: {host: string}) => {
   const networkInterface = createNetworkInterface({
+    ssrMode: isNode,
     uri: isNode ? 'http://wordpress/graphql' : `${window.location.protocol}//${window.location.hostname}/graphql`
   })
 
