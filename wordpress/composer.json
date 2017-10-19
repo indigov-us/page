@@ -1,0 +1,15 @@
+{
+  "repositories":[{
+    "type":"composer",
+    "url":"https://wpackagist.org"
+  }],
+  "require": {
+    "wpackagist-plugin/advanced-custom-fields": "~4.4",
+    "wpackagist-plugin/amazon-s3-and-cloudfront": "~1.2",
+    "wpackagist-plugin/amazon-web-services": "~1.0.3",
+    "wpackagist-plugin/fakerpress": "~0.4.7",
+    "wpackagist-plugin/sem-external-links": "6.8.1",
+    "wpackagist-plugin/wp-php-console": "~1.5",
+    "jjgrainger/posttypes": "^1.1"
+  }
+}

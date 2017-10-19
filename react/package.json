@@ -1,0 +1,57 @@
+{
+  "name": "pnights",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "detect-node": "^2.0.3",
+    "es6-promise": "^4.1.1",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "graphql": "^0.11.7",
+    "helmet": "^3.9.0",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^4.0.3",
+    "next-url-prettifier": "^1.1.5",
+    "react": "^16.0.0",
+    "react-apollo": "^1.4.16",
+    "react-dom": "^16.0.0"
+  },
+  "scripts": {
+    "flow": "flow",
+    "standard": "standard",
+    "check": "yarn run flow && yarn run standard",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "flow-bin": "^0.57.1",
+    "flow-typed": "^2.2.0",
+    "json-loader": "^0.5.7",
+    "node-sass": "^4.5.3",
+    "standard": "^10.0.3",
+    "styled-jsx-plugin-postcss": "^0.1.0",
+    "styled-jsx-plugin-sass": "^0.1.0"
+  },
+  "postcss": {
+    "plugins": {}
+  },
+  "standard": {
+    "globals": [
+      "ClientRequestWithSession"
+    ],
+    "ignore": [
+      "flow-typed"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ]
+  }
+}

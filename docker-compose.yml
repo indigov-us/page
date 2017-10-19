@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+  mysql:
+    environment:
+      MYSQL_DATABASE: pnights
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+    image: mariadb:10.1
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/pnights.sql:/docker-entrypoint-initdb.d/pnights.sql
+
+  react:
+    build:
+      args:
+        SKIP_BUILD: 'true'
+      context: ./react
+    command: yarn run dev
+    environment:
+      NODE_ENV: development
+      SESSION_NAME: pnights
+      SESSION_SECRET: 123
+    volumes:
+      - /usr/src/app/node_modules
+      - ./react:/usr/src/app
+
+  wordpress:
+    build:
+      context: ./wordpress
+    depends_on:
+      - mysql
+    environment:
+      AUTH_KEY: 123
+      AUTH_SALT: 123
+      DBI_AWS_ACCESS_KEY_ID: 123
+      DBI_AWS_SECRET_ACCESS_KEY: 123
+      DB_NAME: pnights
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_HOST: mysql
+      LOGGED_IN_KEY: 123
+      LOGGED_IN_SALT: 123
+      NONCE_KEY: 123
+      NONCE_SALT: 123
+      PHP_ENV: development
+      S3_UPLOADS_BUCKET: ""
+      S3_UPLOADS_BUCKET_URL: ""
+      S3_UPLOADS_KEY: 123
+      S3_UPLOADS_REGION: ""
+      S3_UPLOADS_SECRET: ""
+      SECURE_AUTH_KEY: 123
+      SECURE_AUTH_SALT: 123
+      WP_DEBUG: 'false'
+    volumes:
+      - ./wordpress/plugins/offices:/var/www/html/wp-content/plugins/offices
+      - ./wordpress/themes/pnights:/var/www/html/wp-content/themes/pnights
+      - ./wordpress/uploads:/var/www/html/wp-content/uploads
+
+  varnish:
+    build:
+      context: ./varnish
+    depends_on:
+      - react
+      - wordpress
+    ports:
+      - 80:80
