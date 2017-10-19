@@ -50,4 +50,14 @@ add_action('customize_register', function( $wp_customize ) {
       'section' => 'title_tagline'
     ]
   ) );
+
+  // primary color
+  $wp_customize->add_setting( 'primary_hex' );
+  $wp_customize->add_control( new WP_Customize_Control(
+    $wp_customize,
+    'primary_hex', [
+      'label' => 'Primary Color (hex)',
+      'section' => 'title_tagline'
+    ]
+  ) );
 } );

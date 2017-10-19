@@ -11,16 +11,12 @@ type Props = {
 const HeroNavButton = ({children, opaque}: Props) => (
   <a
     className={classNames(
-      'dib b--transparent br-pill ba pv2 ph3 bw1 mh2 white no-underline',
-      opaque && 'bg-orange'
+      'dib b--transparent br-pill ba pv2 ph3 bw1 mh2 white no-underline hover-b--white',
+      opaque && 'bg-primary'
     )}
     href='javascript:void(0)'
   >
     {children}
-
-    <style jsx>{`
-      a:hover { border-color: #fff }
-    `}</style>
   </a>
 )
 

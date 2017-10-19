@@ -15,9 +15,8 @@ import VolunteerIcon from 'react-icons/lib/io/ios-person-outline'
 
 import HeroNavButton from '../components/hero-nav-button'
 import HeroQuickLink from '../components/hero-quick-link'
+import {themeId} from '../lib/theme'
 import {Router} from '../routes'
-
-const themeId = 'dGhlbWU6cG5pZ2h0cw=='
 
 export type Props = {
   data?: {

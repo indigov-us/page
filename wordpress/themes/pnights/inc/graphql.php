@@ -25,6 +25,14 @@ add_action( 'graphql_theme_fields', function( $fields ) {
       return $mod ? $mod : NULL;
     },
   ];
+  $fields['primaryHex'] = [
+    'type' => \WPGraphQL\Types::string(),
+    'description' => __( 'The primary hex color.' ),
+    'resolve' => function( ) {
+      $mod = get_theme_mod( 'primary_hex' );
+      return $mod ? $mod : NULL;
+    },
+  ];
 
   return $fields;
 } );
