@@ -5,14 +5,16 @@ import React from 'react'
 
 type Props = {
   children: any,
+  className?: string,
   opaque?: boolean
 }
 
-const HeroNavButton = ({children, opaque}: Props) => (
+const HeroNavButton = ({children, className, opaque}: Props) => (
   <a
     className={classNames(
-      'dib b--transparent br-pill ba pv2 ph3 bw1 mh2 white no-underline hover-b--white',
-      opaque && 'bg-primary'
+      'dib b--transparent br-pill ba pv2 ph3 bw1 white no-underline hover-b--white',
+      opaque && 'bg-primary',
+      className
     )}
     href='javascript:void(0)'
   >
