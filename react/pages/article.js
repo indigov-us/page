@@ -4,6 +4,7 @@ import {Link} from 'next-url-prettifier'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
 
+import Customized from '../hoc/customized'
 import GraphQL from '../hoc/graphql'
 import Page from '../components/page'
 import {Router} from '../routes'
@@ -73,7 +74,7 @@ const Article = ({data: {posts}}: Props) => {
 
 Article.displayName = 'Article'
 
-export default GraphQL(graphql(gql(`
+export default Customized(GraphQL(graphql(gql(`
   query ($id: Int) {
     posts (
       first: 1,
@@ -102,4 +103,4 @@ export default GraphQL(graphql(gql(`
     const idMatch = idSlug.match(/^(\d+)/)
     return idMatch ? {variables: {id: idMatch[1]}} : {}
   }
-})(Article))
+})(Article)))

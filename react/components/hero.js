@@ -2,6 +2,7 @@
 
 import classNames from 'classnames'
 import {Link} from 'next-url-prettifier'
+import PropTypes from 'prop-types'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
 import ContactIcon from 'react-icons/lib/io/ios-email-outline'
@@ -29,12 +30,20 @@ export type Props = {
   quickLinks?: boolean
 }
 
-const Hero = ({data, quickLinks}: Props) => (
+type Context = {
+  customized: {
+    full_name?: string,
+    hero_image?: string,
+    hero_image_tint?: number
+  }
+}
+
+const Hero = ({data, quickLinks}: Props, {customized: {full_name: customizedFullName, hero_image: customizedHeroImage, hero_image_tint: customizedHeroImageTint}}: Context) => (
   <section className='bg-dark-gray white relative cover bg-top'>
     <div
       className={classNames(
         'absolute top-0 bottom-0 left-0 right-0',
-        data && data.theme && data.theme.heroImageTint && `bg-black-${data.theme.heroImageTint}`
+        `bg-black-${customizedHeroImageTint || (data && data.theme && data.theme.heroImageTint) || '0'}`
       )}
     />
 
@@ -43,7 +52,7 @@ const Hero = ({data, quickLinks}: Props) => (
         <div className='fl w-30'>
           <Link route={Router.linkPage('index')}>
             <a className='white b f4 no-underline'>
-              {(data && data.theme && data.theme.fullName) || 'Name'}
+              {customizedFullName || (data && data.theme && data.theme.fullName) || 'Name'}
             </a>
           </Link>
         </div>
@@ -123,11 +132,15 @@ const Hero = ({data, quickLinks}: Props) => (
     </div>
 
     <style jsx>{`
-      section { background-image: url(${(data && data.theme && data.theme.heroImage) || ''}) }
+      section { background-image: url(${customizedHeroImage || (data && data.theme && data.theme.heroImage) || ''}) }
       input { max-width: 500px }
     `}</style>
   </section>
 )
+
+Hero.contextTypes = {
+  customized: PropTypes.object
+}
 
 Hero.displayName = 'Hero'
 

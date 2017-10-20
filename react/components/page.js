@@ -1,6 +1,7 @@
 // @flow
 
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
 
@@ -21,8 +22,14 @@ type Props = {
   title?: string
 }
 
-const Page = ({children, data, hero, title}: Props) => {
-  const primaryHex = (data && data.theme && data.theme.primaryHex) || defaultPrimaryHex
+type Context = {
+  customized: {
+    primary_hex?: string
+  }
+}
+
+const Page = ({children, data, hero, title}: Props, {customized: {primary_hex: customizedPrimaryHex}}: Context) => {
+  const primaryHex = customizedPrimaryHex || (data && data.theme && data.theme.primaryHex) || defaultPrimaryHex
 
   return (
     <div>
@@ -78,6 +85,10 @@ const Page = ({children, data, hero, title}: Props) => {
       `}</style>
     </div>
   )
+}
+
+Page.contextTypes = {
+  customized: PropTypes.object
 }
 
 Page.displayName = 'Page'

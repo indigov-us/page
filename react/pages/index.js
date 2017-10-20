@@ -3,6 +3,7 @@
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
 
+import Customized from '../hoc/customized'
 import GraphQL from '../hoc/graphql'
 import GridItem from '../components/grid-item'
 import Page from '../components/page'
@@ -56,7 +57,7 @@ const Home = ({data: {posts}}: Props) => (
 
 Home.displayName = 'Home'
 
-export default GraphQL(graphql(gql(`
+export default Customized(GraphQL(graphql(gql(`
   query {
     posts {
       edges {
@@ -74,4 +75,4 @@ export default GraphQL(graphql(gql(`
       }
     }
   }
-`))(Home))
+`))(Home)))
