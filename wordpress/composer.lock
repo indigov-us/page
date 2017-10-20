@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e664e98a2cb92c0b4752ba0e1c6b1c51",
+    "content-hash": "00fcda8d6db27e71172ba81981e0cbd4",
     "packages": [
         {
             "name": "composer/installers",
@@ -225,6 +225,26 @@
             "homepage": "https://wordpress.org/plugins/amazon-web-services/"
         },
         {
+            "name": "wpackagist-plugin/custom-post-type-permalinks",
+            "version": "3.1.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/custom-post-type-permalinks/",
+                "reference": "tags/3.1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/custom-post-type-permalinks.3.1.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/custom-post-type-permalinks/"
+        },
+        {
             "name": "wpackagist-plugin/fakerpress",
             "version": "0.4.9",
             "source": {
@@ -235,7 +255,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/fakerpress.zip?timestamp=1502140594",
-                "reference": "trunk",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -275,7 +295,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wp-php-console.1.5.0.zip",
-                "reference": "tags/1.5.0",
+                "reference": null,
                 "shasum": null
             },
             "require": {

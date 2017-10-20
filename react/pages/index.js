@@ -25,11 +25,22 @@ type Props = {
           title: string
         }
       }>
+    },
+    questions?: {
+      edges: Array<{
+        node: {
+          content: string,
+          id: string,
+          questionId: string,
+          slug: string,
+          title: string
+        }
+      }>
     }
   }
 }
 
-const Home = ({data: {posts}}: Props) => (
+const Home = ({data: {posts, questions}}: Props) => (
   <Page
     hero={{quickLinks: true}}
     title='Home'
@@ -46,6 +57,21 @@ const Home = ({data: {posts}}: Props) => (
               description={node.excerpt}
               imageURL={node.featuredImage && node.featuredImage.sourceUrl}
               route={Router.linkPage('article', {idSlug: `${node.postId}-${node.slug}`})}
+              title={node.title}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className='f3 b mv3'>{'Questions'}</div>
+      <div className='cf'>
+        {questions && questions.edges.map(({node}) => (
+          <div
+            className='w-100 w-50-m w-third-l'
+            key={node.id}
+          >
+            <GridItem
+              route={Router.linkPage('question', {idSlug: `${node.questionId}-${node.slug}`})}
               title={node.title}
             />
           </div>
@@ -69,6 +95,17 @@ export default WithCustomized(WithApollo(graphql(gql(`
           }
           id
           postId
+          slug
+          title
+        }
+      }
+    }
+    questions {
+      edges {
+        node {
+          content
+          id
+          questionId
           slug
           title
         }

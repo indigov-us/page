@@ -7,6 +7,12 @@ const routes = [{
     '/articles/:idSlug'
   ]
 }, {
+  page: 'question',
+  prettyUrl: ({idSlug = ''}) => `/questions/${idSlug}`,
+  prettyUrlPatterns: [
+    '/questions/:idSlug'
+  ]
+}, {
   page: 'index',
   prettyUrl: '/',
   prettyUrlPatterns: ['/']
