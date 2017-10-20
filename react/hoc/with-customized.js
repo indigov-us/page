@@ -3,8 +3,13 @@
 import PropTypes from 'prop-types'
 import React, {Component} from 'react'
 
-export default (ComposedComponent: any) => (
-  class Customized extends Component<any> {
+export default (ComposedComponent: any) => {
+  type Props = {
+    composedProps: Object,
+    customized: Object
+  }
+
+  class WithCustomized extends Component<Props> {
     static childContextTypes = {
       customized: PropTypes.object
     }
@@ -26,8 +31,8 @@ export default (ComposedComponent: any) => (
       customized: this.props.customized
     })
 
-    render = () => (
-      <ComposedComponent {...this.props.composedProps} />
-    )
+    render = () => <ComposedComponent {...this.props.composedProps} />
   }
-)
+
+  return WithCustomized
+}

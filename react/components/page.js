@@ -23,13 +23,13 @@ type Props = {
 }
 
 type Context = {
-  customized: {
+  customized?: {
     primary_hex?: string
   }
 }
 
-const Page = ({children, data, hero, title}: Props, {customized: {primary_hex: customizedPrimaryHex}}: Context) => {
-  const primaryHex = customizedPrimaryHex || (data && data.theme && data.theme.primaryHex) || defaultPrimaryHex
+const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
+  const primaryHex = (customized && customized.primary_hex) || (data && data.theme && data.theme.primaryHex) || defaultPrimaryHex
 
   return (
     <div>

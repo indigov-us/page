@@ -15,7 +15,7 @@ export default (ComposedComponent: any) => {
     query: Object
   }
 
-  const GraphQL = ({apollo, host, query, composedProps}: Props) => (
+  const WithApollo = ({apollo, host, query, composedProps}: Props) => (
     <ApolloProvider client={createApolloClient(apollo, {host})}>
       <ComposedComponent
         query={query}
@@ -24,7 +24,7 @@ export default (ComposedComponent: any) => {
     </ApolloProvider>
   )
 
-  GraphQL.getInitialProps = async ctx => {
+  WithApollo.getInitialProps = async ctx => {
     const host = ctx.req ? ctx.req.headers['host'] : window.location.hostname
     const composedInitialProps = ComposedComponent.getInitialProps
       ? await ComposedComponent.getInitialProps(ctx)
@@ -62,5 +62,5 @@ export default (ComposedComponent: any) => {
     }
   }
 
-  return GraphQL
+  return WithApollo
 }
