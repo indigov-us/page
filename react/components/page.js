@@ -42,11 +42,15 @@ const Page = ({children, data, hero, title}: Props, {customized: {primary_hex: c
           rel='stylesheet'
           href='/static/css/tachyons.min.css'
         />
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans'
+        />
 
         <title>{title || 'Home'}</title>
       </Head>
 
-      <div className='helvetica'>
+      <div>
         <Hero {...hero} />
 
         <NewsletterSignUp />
@@ -62,6 +66,8 @@ const Page = ({children, data, hero, title}: Props, {customized: {primary_hex: c
         global
         jsx
       >{`
+        html, body { font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif }
+        .f-title { font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif }
         .container {
           margin: 0 16px;
           max-width: 992px;

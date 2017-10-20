@@ -17,7 +17,7 @@ const GridItem = ({description, imageURL, route, title}: Props) => (
         <img src={imageURL} />
       )}
       <div
-        className='f3 b black mv2'
+        className='f3 b black mv2 f-title'
         dangerouslySetInnerHTML={{__html: title}}
       />
       <div

@@ -69,7 +69,7 @@ const Hero = ({data, quickLinks}: Props, {customized: {full_name: customizedFull
       </nav>
 
       <div className='tc pv5'>
-        <div className='f2 f1-ns'>
+        <div className='f2 f1-ns f-title'>
           {'Have a question? Let me help.'}
         </div>
         <div className='mv3'>

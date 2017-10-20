@@ -42,7 +42,7 @@ const Article = ({data: {posts}}: Props) => {
       <div className='container'>
         {node && (
           <article className='mw center'>
-            <h1 className='mb2'>
+            <h1 className='mb2 f-title'>
               <Link route={Router.linkPage('article', {idSlug: `${node.postId}-${node.slug}`})}>
                 <a
                   className='black no-underline'
@@ -56,9 +56,12 @@ const Article = ({data: {posts}}: Props) => {
               <span>{node.author.name}</span>
             </div>
 
-            <div>
-              <img src={node.featuredImage && node.featuredImage.sourceUrl} />
-            </div>
+            {node.featuredImage && (
+              <img
+                className='db'
+                src={node.featuredImage && node.featuredImage.sourceUrl}
+              />
+            )}
 
             <div dangerouslySetInnerHTML={{__html: node.content}} />
           </article>
