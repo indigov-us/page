@@ -23,6 +23,7 @@ export type Props = {
   data?: {
     theme?: {
       fullName: ?string,
+      heroHeadline?: string,
       heroImage: ?string,
       heroImageTint: ?(0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90)
     }
@@ -33,6 +34,7 @@ export type Props = {
 type Context = {
   customized?: {
     full_name?: string,
+    hero_headline?: string,
     hero_image?: string,
     hero_image_tint?: number
   }
@@ -40,6 +42,7 @@ type Context = {
 
 const Hero = ({data, quickLinks}: Props, {customized}: Context) => {
   const customizedFullName = customized && customized.full_name
+  const customizedHeroHeadline = customized && customized.hero_headline
   const customizedHeroImage = customized && customized.hero_image
   const customizedHeroImageTint = customized && customized.hero_image_tint
 
@@ -75,7 +78,7 @@ const Hero = ({data, quickLinks}: Props, {customized}: Context) => {
 
         <div className='tc pv5'>
           <div className='f2 f1-ns f-title'>
-            {'Have a question? Let me help.'}
+            {customizedHeroHeadline || (data && data.theme && data.theme.heroHeadline) || 'Have a question? Let me help.'}
           </div>
           <div className='mv3'>
             {'Type your question below to get an immediate response from my team office.'}
@@ -154,6 +157,7 @@ export default graphql(gql(`
   query {
     theme (id: "${themeId}") {
       fullName
+      heroHeadline
       heroImage
       heroImageTint
     }

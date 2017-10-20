@@ -9,6 +9,14 @@ add_action( 'graphql_theme_fields', function( $fields ) {
       return $mod ? $mod : NULL;
     },
   ];
+  $fields['heroHeadline'] = [
+    'type' => \WPGraphQL\Types::string(),
+    'description' => __( 'The main text in the hero.' ),
+    'resolve' => function( ) {
+      $mod = get_theme_mod( 'hero_headline' );
+      return $mod ? $mod : NULL;
+    },
+  ];
   $fields['heroImage'] = [
     'type' => \WPGraphQL\Types::string(),
     'description' => __( 'The URL of the hero image.' ),
