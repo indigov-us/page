@@ -6,6 +6,7 @@ import {gql, graphql} from 'react-apollo'
 
 import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
+import WithSidebar from '../hoc/with-sidebar'
 import Page from '../components/page'
 import {Router} from '../routes'
 
@@ -32,9 +33,9 @@ const Question = ({data: {questions}}: Props) => {
     <Page
       title={node && node.title}
     >
-      <div className='container'>
+      <WithSidebar>
         {node && (
-          <article className='mw center'>
+          <article>
             <h1 className='mb2 f-title'>
               <Link route={Router.linkPage('question', {idSlug: `${node.questionId}-${node.slug}`})}>
                 <a
@@ -44,14 +45,13 @@ const Question = ({data: {questions}}: Props) => {
               </Link>
             </h1>
 
-            <div dangerouslySetInnerHTML={{__html: node.content}} />
+            <div
+              className='lh-copy'
+              dangerouslySetInnerHTML={{__html: node.content}}
+            />
           </article>
         )}
-      </div>
-
-      <style jsx>{`
-        .mw { max-width: 600px }
-      `}</style>
+      </WithSidebar>
     </Page>
   )
 }
