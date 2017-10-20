@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "classnames": "^2.2.5",
     "detect-node": "^2.0.3",
     "es6-promise": "^4.1.1",
@@ -14,6 +15,7 @@
     "isomorphic-fetch": "^2.2.1",
     "next": "^4.0.3",
     "next-url-prettifier": "^1.1.5",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-apollo": "^1.4.16",
     "react-dom": "^16.0.0",

@@ -4,6 +4,7 @@
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
 
+const bodyParser = require('body-parser')
 const express = require('express')
 const session = require('express-session')
 const helmet = require('helmet')
@@ -23,6 +24,9 @@ app.prepare().then(() => {
     name: process.env.SESSION_NAME,
     secret: process.env.SESSION_SECRET
   }))
+
+  // for parsing the body on wordpress's customizer calls
+  server.use(bodyParser.urlencoded({extended: true}))
 
   Router.forEachPattern((page, pattern, defaultParams) => (
     server.use(pattern, (req, res) => (
