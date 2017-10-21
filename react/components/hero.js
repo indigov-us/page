@@ -17,7 +17,7 @@ import VolunteerIcon from 'react-icons/lib/io/ios-person-outline'
 import HeroNavButton from '../components/hero-nav-button'
 import HeroQuickLink from '../components/hero-quick-link'
 import {themeId} from '../lib/theme'
-import {Router} from '../routes'
+import linkTo from '../lib/link-to'
 
 export type Props = {
   data?: {
@@ -58,7 +58,7 @@ const Hero = ({data, quickLinks}: Props, {customized}: Context) => {
       <div className='container relative'>
         <nav className='cf pt3'>
           <div className='fl w-30'>
-            <Link route={Router.linkPage('index')}>
+            <Link route={linkTo('index')}>
               <a className='white b f4 no-underline'>
                 {customizedFullName || (data && data.theme && data.theme.fullName) || 'Name'}
               </a>

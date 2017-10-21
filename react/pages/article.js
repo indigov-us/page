@@ -8,7 +8,7 @@ import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import WithSidebar from '../hoc/with-sidebar'
 import Page from '../components/page'
-import {Router} from '../routes'
+import linkTo from '../lib/link-to'
 
 type Props = {
   data: {
@@ -44,7 +44,7 @@ const Article = ({data: {posts}}: Props) => {
         {node && (
           <article>
             <h1 className='mb2 f-title'>
-              <Link route={Router.linkPage('article', {idSlug: `${node.postId}-${node.slug}`})}>
+              <Link route={linkTo('article', {idSlug: `${node.postId}-${node.slug}`})}>
                 <a
                   className='black no-underline'
                   dangerouslySetInnerHTML={{__html: node.title}}

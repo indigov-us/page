@@ -7,7 +7,7 @@ import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import GridItem from '../components/grid-item'
 import Page from '../components/page'
-import {Router} from '../routes'
+import linkTo from '../lib/link-to'
 
 type Props = {
   data: {
@@ -56,7 +56,7 @@ const Home = ({data: {posts, questions}}: Props) => (
             <GridItem
               description={node.excerpt}
               imageURL={node.featuredImage && node.featuredImage.sourceUrl}
-              route={Router.linkPage('article', {idSlug: `${node.postId}-${node.slug}`})}
+              route={linkTo('article', {idSlug: `${node.postId}-${node.slug}`})}
               title={node.title}
             />
           </div>
@@ -71,7 +71,7 @@ const Home = ({data: {posts, questions}}: Props) => (
             key={node.id}
           >
             <GridItem
-              route={Router.linkPage('question', {idSlug: `${node.questionId}-${node.slug}`})}
+              route={linkTo('question', {idSlug: `${node.questionId}-${node.slug}`})}
               title={node.title}
             />
           </div>

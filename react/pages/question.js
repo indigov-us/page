@@ -8,7 +8,7 @@ import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import WithSidebar from '../hoc/with-sidebar'
 import Page from '../components/page'
-import {Router} from '../routes'
+import linkTo from '../lib/link-to'
 
 type Props = {
   data: {
@@ -37,7 +37,7 @@ const Question = ({data: {questions}}: Props) => {
         {node && (
           <article>
             <h1 className='mb2 f-title'>
-              <Link route={Router.linkPage('question', {idSlug: `${node.questionId}-${node.slug}`})}>
+              <Link route={linkTo('question', {idSlug: `${node.questionId}-${node.slug}`})}>
                 <a
                   className='black no-underline'
                   dangerouslySetInnerHTML={{__html: node.title}}
