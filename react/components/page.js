@@ -38,6 +38,20 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
           name='viewport'
         />
+
+        {/* google analytics */}
+        <script
+          async
+          src='https://www.googletagmanager.com/gtag/js?id=UA-108351158-1'
+        />
+        <script dangerouslySetInnerHTML={{__html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-108351158-1');
+        `}}
+        />
+
         <link
           rel='stylesheet'
           href='/static/css/tachyons.min.css'
