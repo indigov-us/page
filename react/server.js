@@ -20,6 +20,20 @@ app.prepare().then(() => {
 
   server.use(helmet())
 
+  // force https urls in production
+  if (process.env.NODE_ENV === 'production') {
+    server.use((req, res, next) => {
+      if (
+        /^http$/i.test(req.get('x-forwarded-proto')) ||
+        /^http$/i.test(req.get('cloudfront-forwarded-proto'))
+      ) {
+        res.redirect(301, `https://${req.hostname}${req.originalUrl}`)
+      } else {
+        next()
+      }
+    })
+  }
+
   server.use(session({
     name: process.env.SESSION_NAME,
     secret: process.env.SESSION_SECRET

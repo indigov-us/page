@@ -30,6 +30,11 @@ define( 'NONCE_SALT',       $_ENV['NONCE_SALT'] );
 define( 'DBI_AWS_ACCESS_KEY_ID',      $_ENV['DBI_AWS_ACCESS_KEY_ID'] );
 define( 'DBI_AWS_SECRET_ACCESS_KEY',  $_ENV['DBI_AWS_SECRET_ACCESS_KEY'] );
 
+if ( $_ENV['PHP_ENV'] == 'production' ) {
+  define( 'FORCE_SSL_ADMIN', true );
+  $_SERVER['HTTPS'] = 'on';
+}
+
 $table_prefix  = 'wp_';
 
 if ( $_ENV['WP_DEBUG'] == 'true' ) {
