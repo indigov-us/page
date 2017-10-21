@@ -15,19 +15,38 @@
       "memoryReservation": 384
     },
     {
-      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/varnish:VERSION",
+      "image": "nginx",
       "memoryReservation": 256,
       "links": [
         "react",
         "wordpress"
       ],
-      "name": "varnish",
+      "mountPoints": [
+        {
+          "sourceVolume": "awseb-logs-nginx",
+          "containerPath": "/var/log/nginx"
+        },
+        {
+          "sourceVolume": "nginx-conf",
+          "containerPath": "/etc/nginx/nginx.conf",
+          "readOnly": true
+        }
+      ],
+      "name": "nginx",
       "portMappings": [
         {
           "hostPort": 80,
           "containerPort": 80
         }
       ]
+    }
+  ],
+  "volumes": [
+    {
+      "name": "nginx-conf",
+      "host": {
+        "sourcePath": "/var/app/current/nginx/nginx.conf"
+      }
     }
   ]
 }

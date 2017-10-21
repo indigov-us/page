@@ -23,14 +23,10 @@ app.prepare().then(() => {
   // force https urls in production
   if (process.env.NODE_ENV === 'production') {
     server.use((req, res, next) => {
-      if (
-        /^http$/i.test(req.get('x-forwarded-proto')) ||
-        /^http$/i.test(req.get('cloudfront-forwarded-proto'))
-      ) {
-        res.redirect(301, `https://${req.hostname}${req.originalUrl}`)
-      } else {
-        next()
+      if (/^http$/i.test(req.get('x-forwarded-proto'))) {
+        return res.redirect(301, `https://${req.hostname}${req.originalUrl}`)
       }
+      next()
     })
   }
 

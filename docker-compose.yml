@@ -60,11 +60,14 @@ services:
       - ./wordpress/themes/pnights:/var/www/html/wp-content/themes/pnights
       - ./wordpress/uploads:/var/www/html/wp-content/uploads
 
-  varnish:
-    build:
-      context: ./varnish
-    depends_on:
-      - react
-      - wordpress
-    ports:
-      - 80:80
+  nginx:
+      image: nginx
+      links:
+        - react
+        - wordpress
+      ports:
+        - 80:80
+      volumes:
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./nginx/healthd:/var/log/nginx/healthd
+        - ./nginx/html:/etc/nginx/html
