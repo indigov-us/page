@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import ArticleFeedback from '../components/article-feedback'
+
 type Props = {
   children: any
 }
@@ -10,6 +12,12 @@ const WithSidebar = ({children}: Props) => (
   <div className='container relative'>
     <div className='main'>
       {children}
+
+      <hr className='mv4' />
+
+      <div className='bg-light-gray pv3 tc'>
+        <ArticleFeedback />
+      </div>
     </div>
 
     <aside className='absolute-ns top-0-ns left-0-ns'>
