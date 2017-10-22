@@ -10,19 +10,21 @@ phases:
     commands:
       - docker build -t react:$VERSION ./react
       - docker build -t wordpress:$VERSION ./wordpress
+      - docker build -t nginx:$VERSION ./nginx
 
       - docker tag react:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/react:$VERSION
       - docker tag wordpress:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/wordpress:$VERSION
+      - docker tag nginx:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nginx:$VERSION
 
   post_build:
     commands:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/react:$VERSION
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/wordpress:$VERSION
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nginx:$VERSION
 
       - sed "s/AWS_ACCOUNT_ID/$AWS_ACCOUNT_ID/g;s/VERSION/$VERSION/g;s/AWS_REGION/$AWS_REGION/g" Dockerrun.aws.template.json > Dockerrun.aws.json
 
 artifacts:
   files:
     - .ebextensions/*
-    - nginx/*
     - Dockerrun.aws.json

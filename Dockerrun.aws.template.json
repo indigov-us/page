@@ -15,7 +15,7 @@
       "memoryReservation": 384
     },
     {
-      "image": "nginx",
+      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/nginx:VERSION",
       "memoryReservation": 256,
       "links": [
         "react",
@@ -25,11 +25,6 @@
         {
           "sourceVolume": "awseb-logs-nginx",
           "containerPath": "/var/log/nginx"
-        },
-        {
-          "sourceVolume": "nginx-conf",
-          "containerPath": "/etc/nginx/nginx.conf",
-          "readOnly": true
         }
       ],
       "name": "nginx",
@@ -39,14 +34,6 @@
           "containerPort": 80
         }
       ]
-    }
-  ],
-  "volumes": [
-    {
-      "name": "nginx-conf",
-      "host": {
-        "sourcePath": "/var/app/current/nginx/nginx.conf"
-      }
     }
   ]
 }

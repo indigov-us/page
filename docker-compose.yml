@@ -61,11 +61,10 @@ services:
       - ./wordpress/uploads:/var/www/html/wp-content/uploads
 
   nginx:
-      image: nginx
-      links:
-        - react
-        - wordpress
-      ports:
-        - 80:80
-      volumes:
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    build:
+      context: ./nginx
+    links:
+      - react
+      - wordpress
+    ports:
+      - 80:80
