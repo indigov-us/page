@@ -69,5 +69,3 @@ services:
         - 80:80
       volumes:
         - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-        - ./nginx/healthd:/var/log/nginx/healthd
-        - ./nginx/html:/etc/nginx/html

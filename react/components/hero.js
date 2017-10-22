@@ -17,8 +17,10 @@ import VolunteerIcon from 'react-icons/lib/io/ios-person-outline'
 
 import HeroNavButton from '../components/hero-nav-button'
 import HeroQuickLink from '../components/hero-quick-link'
+import WithModal from '../hoc/with-modal'
 import {themeId} from '../lib/theme'
 import linkTo from '../lib/link-to'
+import ContactComponent from '../components/contact'
 
 export type Props = {
   data?: {
@@ -73,7 +75,12 @@ const Hero = ({data, quickLinks}: Props, {customized, openMobileMenu}: Context) 
               <HeroNavButton>{'Blog'}</HeroNavButton>
               <HeroNavButton>{'Press'}</HeroNavButton>
               <HeroNavButton>{'FAQ'}</HeroNavButton>
-              <HeroNavButton opaque>{'Contact'}</HeroNavButton>
+              <WithModal
+                button={<HeroNavButton opaque>{'Contact'}</HeroNavButton>}
+                className='pa4'
+              >
+                <ContactComponent />
+              </WithModal>
             </div>
             <div className='dn-l'>
               <a

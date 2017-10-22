@@ -19,7 +19,8 @@
     "react": "^16.0.0",
     "react-apollo": "^1.4.16",
     "react-dom": "^16.0.0",
-    "react-icons": "^2.2.7"
+    "react-icons": "^2.2.7",
+    "react-modal": "^3.0.4"
   },
   "scripts": {
     "flow": "flow",

@@ -10,16 +10,15 @@ type Props = {
 }
 
 const HeroNavButton = ({children, className, opaque}: Props) => (
-  <a
+  <span
     className={classNames(
       'dib b--transparent br-pill ba pv2 ph3 bw1 white no-underline hover-b--white',
       opaque && 'bg-primary',
       className
     )}
-    href='javascript:void(0)'
   >
     {children}
-  </a>
+  </span>
 )
 
 export default HeroNavButton

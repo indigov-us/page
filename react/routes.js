@@ -13,6 +13,9 @@ const routes = [{
     '/questions/:idSlug'
   ]
 }, {
+  page: 'contact',
+  prettyUrl: '/contact'
+}, {
   page: 'index',
   prettyUrl: '/',
   prettyUrlPatterns: ['/']
