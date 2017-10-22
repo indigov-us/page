@@ -12,12 +12,12 @@ import linkTo from '../lib/link-to'
 
 type Props = {
   data: {
-    questions?: {
+    pages?: {
       edges: Array<{
         node: {
           content: string,
           id: string,
-          questionId: string,
+          pageId: string,
           slug: string,
           title: string
         }
@@ -26,8 +26,8 @@ type Props = {
   }
 }
 
-const QuestionPage = ({data: {questions}}: Props) => {
-  const node = questions && questions.edges[0].node
+const PagePage = ({data: {pages}}: Props) => {
+  const node = pages && pages.edges[0].node
 
   return (
     <Page
@@ -37,7 +37,7 @@ const QuestionPage = ({data: {questions}}: Props) => {
         {node && (
           <article>
             <h1 className='mb2 f-title'>
-              <Link route={linkTo('question', {idSlug: `${node.questionId}-${node.slug}`})}>
+              <Link route={linkTo('question', {idSlug: `${node.pageId}-${node.slug}`})}>
                 <a
                   className='black no-underline'
                   dangerouslySetInnerHTML={{__html: node.title}}
@@ -56,11 +56,11 @@ const QuestionPage = ({data: {questions}}: Props) => {
   )
 }
 
-QuestionPage.displayName = 'QuestionPage'
+PagePage.displayName = 'PagePage'
 
 export default WithCustomized(WithApollo(graphql(gql(`
   query ($id: Int) {
-    questions (
+    pages (
       first: 1,
       where: {id: $id}
     ) {
@@ -68,7 +68,7 @@ export default WithCustomized(WithApollo(graphql(gql(`
         node {
           content
           id
-          questionId
+          pageId
           slug
           title
         }
@@ -80,4 +80,4 @@ export default WithCustomized(WithApollo(graphql(gql(`
     const idMatch = idSlug.match(/^(\d+)/)
     return idMatch ? {variables: {id: idMatch[1]}} : {}
   }
-})(QuestionPage)))
+})(PagePage)))

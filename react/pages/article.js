@@ -33,7 +33,7 @@ type Props = {
   }
 }
 
-const Article = ({data: {posts}}: Props) => {
+const ArticlePage = ({data: {posts}}: Props) => {
   const node = posts && posts.edges[0].node
 
   return (
@@ -75,7 +75,7 @@ const Article = ({data: {posts}}: Props) => {
   )
 }
 
-Article.displayName = 'Article'
+ArticlePage.displayName = 'Article'
 
 export default WithCustomized(WithApollo(graphql(gql(`
   query ($id: Int) {
@@ -106,4 +106,4 @@ export default WithCustomized(WithApollo(graphql(gql(`
     const idMatch = idSlug.match(/^(\d+)/)
     return idMatch ? {variables: {id: idMatch[1]}} : {}
   }
-})(Article)))
+})(ArticlePage)))

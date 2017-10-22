@@ -11,6 +11,21 @@ import linkTo from '../lib/link-to'
 
 type Props = {
   data: {
+    pages?: {
+      edges: Array<{
+        node: {
+          excerpt: string,
+          featuredImage?: {
+            altText: string,
+            sourceUrl: string
+          },
+          id: string,
+          pageId: string,
+          slug: string,
+          title: string
+        }
+      }>
+    },
     posts?: {
       edges: Array<{
         node: {
@@ -40,7 +55,7 @@ type Props = {
   }
 }
 
-const Home = ({data: {posts, questions}}: Props) => (
+const HomePage = ({data: {pages, posts, questions}}: Props) => (
   <Page
     hero={{quickLinks: true}}
     title='Home'
@@ -77,14 +92,46 @@ const Home = ({data: {posts, questions}}: Props) => (
           </div>
         ))}
       </div>
+
+      <div className='f3 b mv3'>{'Pages'}</div>
+      <div className='cf'>
+        {pages && pages.edges.map(({node}) => (
+          <div
+            className='w-100 w-50-m w-third-l'
+            key={node.id}
+          >
+            <GridItem
+              description={node.excerpt}
+              imageURL={node.featuredImage && node.featuredImage.sourceUrl}
+              route={linkTo('page', {idSlug: `${node.pageId}-${node.slug}`})}
+              title={node.title}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   </Page>
 )
 
-Home.displayName = 'Home'
+HomePage.displayName = 'HomePage'
 
 export default WithCustomized(WithApollo(graphql(gql(`
   query {
+    pages {
+      edges {
+        node {
+          excerpt
+          featuredImage {
+            altText
+            sourceUrl
+          }
+          id
+          pageId
+          slug
+          title
+        }
+      }
+    }
     posts {
       edges {
         node {
@@ -112,4 +159,4 @@ export default WithCustomized(WithApollo(graphql(gql(`
       }
     }
   }
-`))(Home)))
+`))(HomePage)))

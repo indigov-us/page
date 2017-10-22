@@ -4,15 +4,15 @@ import React from 'react'
 
 import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
-import ContactComponent from '../components/contact'
+import Contact from '../components/contact'
 import Page from '../components/page'
 
-export const Contact = () => (
+export const ContactPage = () => (
   <Page title='Contact'>
-    <ContactComponent />
+    <Contact />
   </Page>
 )
 
-Contact.displayName = 'Contact'
+ContactPage.displayName = 'ContactPage'
 
-export default WithCustomized(WithApollo(Contact))
+export default WithCustomized(WithApollo(ContactPage))
