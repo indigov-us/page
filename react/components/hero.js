@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
 import ContactIcon from 'react-icons/lib/io/ios-email-outline'
+import OpenMobileMenuIcon from 'react-icons/lib/io/navicon'
 import PassportIcon from 'react-icons/lib/io/ios-bookmarks-outline'
 import PolicyQuestionIcon from 'react-icons/lib/io/ios-paper-outline'
 import ScheduleIcon from 'react-icons/lib/io/calendar'
@@ -37,10 +38,11 @@ type Context = {
     hero_headline?: string,
     hero_image?: string,
     hero_image_tint?: number
-  }
+  },
+  openMobileMenu: any => any,
 }
 
-const Hero = ({data, quickLinks}: Props, {customized}: Context) => {
+const Hero = ({data, quickLinks}: Props, {customized, openMobileMenu}: Context) => {
   const customizedFullName = customized && customized.full_name
   const customizedHeroHeadline = customized && customized.hero_headline
   const customizedHeroImage = customized && customized.hero_image
@@ -71,8 +73,17 @@ const Hero = ({data, quickLinks}: Props, {customized}: Context) => {
               <HeroNavButton>{'Blog'}</HeroNavButton>
               <HeroNavButton>{'Press'}</HeroNavButton>
               <HeroNavButton>{'FAQ'}</HeroNavButton>
+              <HeroNavButton opaque>{'Contact'}</HeroNavButton>
             </div>
-            <HeroNavButton opaque>{'Contact'}</HeroNavButton>
+            <div className='dn-l'>
+              <a
+                className='white'
+                href='javascript:void(0)'
+                onClick={openMobileMenu}
+              >
+                <OpenMobileMenuIcon size={40} />
+              </a>
+            </div>
           </div>
         </nav>
 
@@ -148,7 +159,8 @@ const Hero = ({data, quickLinks}: Props, {customized}: Context) => {
 }
 
 Hero.contextTypes = {
-  customized: PropTypes.object
+  customized: PropTypes.object,
+  openMobileMenu: PropTypes.func
 }
 
 Hero.displayName = 'Hero'

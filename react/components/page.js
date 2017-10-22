@@ -9,6 +9,7 @@ import Footer from '../components/footer'
 import Hero from '../components/hero'
 import type {Props as HeroProps} from '../components/hero'
 import NewsletterSignUp from '../components/newsletter-sign-up'
+import WithMobileMenu from '../hoc/with-mobile-menu'
 import {defaultPrimaryHex, themeId} from '../lib/theme'
 
 type Props = {
@@ -64,7 +65,7 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
         <title>{title || 'Home'}</title>
       </Head>
 
-      <div>
+      <WithMobileMenu>
         <Hero {...hero} />
 
         <NewsletterSignUp />
@@ -74,7 +75,7 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
         </main>
 
         <Footer />
-      </div>
+      </WithMobileMenu>
 
       <style
         global
