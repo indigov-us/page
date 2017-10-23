@@ -4,6 +4,9 @@ import React, {Component} from 'react'
 import ReactModal from 'react-modal'
 import CloseIcon from 'react-icons/lib/io/ios-close'
 
+const openTransitionDuration = 300 // in ms
+const closeTransitionDuration = 200 // in ms
+
 type Props = {
   button: any,
   children: any,
@@ -44,6 +47,7 @@ class WithModal extends Component<Props, State> {
 
       <ReactModal
         className='absolute top-2 right-2 bottom-2 left-2 bg-white ba0 outline-0 relative'
+        closeTimeoutMS={closeTransitionDuration}
         isOpen={isOpen}
         key='modal'
         overlayClassName='z-1 fixed top-0 right-0 bottom-0 left-0 bg-black-60'
@@ -59,7 +63,18 @@ class WithModal extends Component<Props, State> {
         <div className={className}>
           {children}
         </div>
-      </ReactModal>
+      </ReactModal>,
+
+      <style
+        global
+        key='styles'
+        jsx
+      >{`
+        .ReactModal__Body--open { overflow: hidden }
+        .ReactModal__Overlay { opacity: 0; transition: opacity ${openTransitionDuration}ms ease-out }
+        .ReactModal__Overlay--after-open { opacity: 1 }
+        .ReactModal__Overlay--before-close { opacity: 0 }
+      `}</style>
     ]
   }
 }

@@ -52,7 +52,7 @@ class MobileMenu extends Component<Props, State> {
           // wait until the transition is finished, then hide the menu
           setTimeout(() => {
             mobileMenuNode.className = `${mobileMenuNode.className} dn`
-          }, transitionDuration)
+          }, transitionDuration + 1)
         }
       }
     }
