@@ -46,7 +46,7 @@ class WithModal extends Component<Props, State> {
       </a>,
 
       <ReactModal
-        className='absolute top-2 right-2 bottom-2 left-2 bg-white ba0 outline-0 relative'
+        className='absolute top-2 right-2 bottom-2 left-2 bg-white ba0 outline-0 relative container'
         closeTimeoutMS={closeTransitionDuration}
         isOpen={isOpen}
         key='modal'
