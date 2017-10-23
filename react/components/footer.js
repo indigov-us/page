@@ -47,7 +47,22 @@ const Footer = ({data}: Props) => (
     <hr className='mv4' />
 
     <div className='container pb4'>
-      {'footer'}
+      <div className='mb3'>
+        <form
+          action='/search'
+          method='GET'
+        >
+          <input
+            name='q'
+            placeholder='Search'
+            type='text'
+          />
+        </form>
+      </div>
+
+      <div>
+        {'footer'}
+      </div>
     </div>
   </footer>
 )

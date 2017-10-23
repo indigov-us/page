@@ -5,7 +5,7 @@ import {gql, graphql} from 'react-apollo'
 
 import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
-import GridItem from '../components/grid-item'
+import Grid from '../components/grid'
 import Page from '../components/page'
 import linkTo from '../lib/link-to'
 
@@ -55,63 +55,34 @@ type Props = {
   }
 }
 
-const HomePage = ({data: {pages, posts, questions}}: Props) => (
-  <Page
-    hero={{quickLinks: true}}
-    title='Home'
-  >
-    <div className='container'>
-      <div className='f3 b mv3'>{'Articles'}</div>
-      <div className='cf'>
-        {posts && posts.edges.map(({node}) => (
-          <div
-            className='w-100 w-50-m w-third-l'
-            key={node.id}
-          >
-            <GridItem
-              description={node.excerpt}
-              imageURL={node.featuredImage && node.featuredImage.sourceUrl}
-              route={linkTo('article', {idSlug: `${node.postId}-${node.slug}`})}
-              title={node.title}
-            />
-          </div>
-        ))}
-      </div>
+const HomePage = ({data: {pages, posts, questions}}: Props) => {
+  return (
+    <Page
+      hero={{quickLinks: true}}
+      title='Home'
+    >
+      <div className='container'>
+        <Grid
+          items={posts && posts.edges}
+          itemRoute={({postId, slug}) => linkTo('article', {idSlug: `${postId}-${slug}`})}
+          title='Articles'
+        />
 
-      <div className='f3 b mv3'>{'Questions'}</div>
-      <div className='cf'>
-        {questions && questions.edges.map(({node}) => (
-          <div
-            className='w-100 w-50-m w-third-l'
-            key={node.id}
-          >
-            <GridItem
-              route={linkTo('question', {idSlug: `${node.questionId}-${node.slug}`})}
-              title={node.title}
-            />
-          </div>
-        ))}
-      </div>
+        <Grid
+          items={questions && questions.edges}
+          itemRoute={({questionId, slug}) => linkTo('question', {idSlug: `${questionId}-${slug}`})}
+          title='Questions'
+        />
 
-      <div className='f3 b mv3'>{'Pages'}</div>
-      <div className='cf'>
-        {pages && pages.edges.map(({node}) => (
-          <div
-            className='w-100 w-50-m w-third-l'
-            key={node.id}
-          >
-            <GridItem
-              description={node.excerpt}
-              imageURL={node.featuredImage && node.featuredImage.sourceUrl}
-              route={linkTo('page', {idSlug: `${node.pageId}-${node.slug}`})}
-              title={node.title}
-            />
-          </div>
-        ))}
+        <Grid
+          items={pages && pages.edges}
+          itemRoute={({pageId, slug}) => linkTo('page', {idSlug: `${pageId}-${slug}`})}
+          title='Pages'
+        />
       </div>
-    </div>
-  </Page>
-)
+    </Page>
+  )
+}
 
 HomePage.displayName = 'HomePage'
 

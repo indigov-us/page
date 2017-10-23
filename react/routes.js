@@ -19,6 +19,9 @@ const routes = [{
     '/questions/:idSlug'
   ]
 }, {
+  page: 'search',
+  prettyUrl: '/search'
+}, {
   page: 'contact',
   prettyUrl: '/contact'
 }, {
