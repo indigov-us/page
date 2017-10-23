@@ -3,8 +3,7 @@
     ["next/babel", {
       "styled-jsx": {
         "plugins": [
-          "styled-jsx-plugin-postcss",
-          "styled-jsx-plugin-sass"
+          "styled-jsx-plugin-postcss"
         ]
       }
     }]

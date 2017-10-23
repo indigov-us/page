@@ -14,6 +14,8 @@ type State = {
   isOpen: boolean
 }
 
+const transitionDuration = 150 // in ms
+
 class MobileMenu extends Component<Props, State> {
   static childContextTypes = {
     openMobileMenu: PropTypes.func
@@ -36,6 +38,28 @@ class MobileMenu extends Component<Props, State> {
     openMobileMenu: this.openMenu
   })
 
+  componentDidUpdate (props: Props, state: State) {
+    const wasOpen = state.isOpen
+    const {isOpen} = this.state
+
+    if (wasOpen !== isOpen) {
+      const {mobileMenuNode} = this
+      if (mobileMenuNode) {
+        if (isOpen) {
+          // show the mobile menu right away
+          mobileMenuNode.className = mobileMenuNode.className.replace(/\s*dn\s*/, '')
+        } else {
+          // wait until the transition is finished, then hide the menu
+          setTimeout(() => {
+            mobileMenuNode.className = `${mobileMenuNode.className} dn`
+          }, transitionDuration)
+        }
+      }
+    }
+  }
+
+  mobileMenuNode: ?Object
+
   render () {
     const {children} = this.props
     const {isOpen} = this.state
@@ -51,7 +75,10 @@ class MobileMenu extends Component<Props, State> {
           {children}
         </div>
 
-        <div className='fixed top-0 right-0 bottom-0 left-0 tr bg-black white menu'>
+        <div
+          className='fixed top-0 right-0 bottom-0 left-0 tr bg-black white menu dn'
+          ref={r => { this.mobileMenuNode = r }}
+        >
           <a
             href='javascript:void(0)'
             onClick={this.closeMenu}
@@ -63,10 +90,9 @@ class MobileMenu extends Component<Props, State> {
         <style jsx>{`
           .content {
             will-change: transform;
-            transition: transform 0.15s ease-out;
-
-            &.is-open { transform: translateX(-75%) }
+            transition: transform ${transitionDuration}ms ease-out;
           }
+          .content.is-open { transform: translateX(-75%) }
         `}</style>
       </div>
     )

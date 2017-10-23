@@ -86,13 +86,19 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
         .container {
           margin: 0 16px;
           max-width: 992px;
-          @media (min-width: 1024px) { margin: 0 auto }
         }
         .no-p-m > p { margin: 0 }
+
+        @media (min-width: 1024px) {
+          .container { margin: 0 auto }
+        }
       `}</style>
 
       {/* additional primary color classes */}
-      <style>{`
+      <style
+        global
+        jsx
+      >{`
         .b--primary { border-color: ${primaryHex} }
         .bg-primary { background-color: ${primaryHex} }
         .hover-bg-primary:hover, .hover-bg-primary:focus { background-color: ${primaryHex} }
@@ -100,7 +106,10 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
       `}</style>
 
       {/* additional classes */}
-      <style>{`
+      <style
+        global
+        jsx
+      >{`
         .hover-b--white:focus, .hover-b--white:hover { border-color: #fff }
         .v-center { top: 50%; transform: translateY(-50%) }
       `}</style>

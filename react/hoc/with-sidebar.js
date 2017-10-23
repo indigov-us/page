@@ -37,12 +37,12 @@ const WithSidebar = ({children}: Props) => (
     </aside>
 
     <style jsx>{`
-      $sidebarWidth: 200px;
+      --sidebar-width: 200px;
 
       @media (min-width: 30em) {
-        aside { width: $sidebarWidth }
+        aside { width: var(--sidebar-width) }
         .main {
-          margin-left: $sidebarWidth;
+          margin-left: var(--sidebar-width);
           min-height: 300px;
         }
       }
