@@ -77,19 +77,19 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
         <Footer />
       </WithMobileMenu>
 
+      {/* additional tags and classes */}
       <style
         global
         jsx
       >{`
         html, body { font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif }
+        .container { margin: 0 1em; max-width: 62em }
         .f-title { font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif }
-        .container {
-          margin: 0 16px;
-          max-width: 992px;
-        }
+        .hover-b--white:focus, .hover-b--white:hover { border-color: #fff }
         .no-p-m > p { margin: 0 }
+        .v-center { top: 50%; transform: translateY(-50%) }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 64em) {
           .container { margin: 0 auto }
         }
       `}</style>
@@ -103,15 +103,6 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
         .bg-primary { background-color: ${primaryHex} }
         .hover-bg-primary:hover, .hover-bg-primary:focus { background-color: ${primaryHex} }
         .primary { color: ${primaryHex} }
-      `}</style>
-
-      {/* additional classes */}
-      <style
-        global
-        jsx
-      >{`
-        .hover-b--white:focus, .hover-b--white:hover { border-color: #fff }
-        .v-center { top: 50%; transform: translateY(-50%) }
       `}</style>
     </div>
   )
