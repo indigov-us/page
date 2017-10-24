@@ -35,47 +35,46 @@ class WithModal extends Component<Props, State> {
     const {button, children, className} = this.props
     const {isOpen} = this.state
 
-    return [
-      <a
-        className='outline-0'
-        href='javascript:void(0)'
-        key='button'
-        onClick={this.openModal}
-      >
-        {button}
-      </a>,
-
-      <ReactModal
-        className='absolute top-2 right-2 bottom-2 left-2 bg-white ba0 outline-0 relative container'
-        closeTimeoutMS={closeTransitionDuration}
-        isOpen={isOpen}
-        key='modal'
-        overlayClassName='z-1 fixed top-0 right-0 bottom-0 left-0 bg-black-60'
-      >
+    return (
+      <div className={className}>
         <a
-          className='absolute top-0 right-0 black pa2 db'
+          className='outline-0'
           href='javascript:void(0)'
-          onClick={this.closeModal}
+          onClick={this.openModal}
         >
-          <CloseIcon size={40} />
+          {button}
         </a>
 
-        <div className={className}>
-          {children}
-        </div>
-      </ReactModal>,
+        <ReactModal
+          className='absolute top-1 top-2-ns right-0 right-1-m right-2-l bottom-1 bottom-2-ns left-0 left-1-m left-2-l bg-white ba0 outline-0 relative container'
+          closeTimeoutMS={closeTransitionDuration}
+          isOpen={isOpen}
+          overlayClassName='z-1 fixed top-0 right-0 bottom-0 left-0 bg-black-60'
+        >
+          <a
+            className='absolute top-0 right-0 black pa2 db'
+            href='javascript:void(0)'
+            onClick={this.closeModal}
+          >
+            <CloseIcon size={40} />
+          </a>
 
-      <style
-        global
-        key='styles'
-        jsx
-      >{`
-        .ReactModal__Body--open { overflow: hidden }
-        .ReactModal__Overlay { opacity: 0; transition: opacity ${openTransitionDuration}ms ease-out }
-        .ReactModal__Overlay--after-open { opacity: 1 }
-        .ReactModal__Overlay--before-close { opacity: 0 }
-      `}</style>
-    ]
+          <div className='pa3 pa4-ns'>
+            {children}
+          </div>
+        </ReactModal>
+
+        <style
+          global
+          jsx
+        >{`
+          .ReactModal__Body--open { overflow: hidden }
+          .ReactModal__Overlay { opacity: 0; transition: opacity ${openTransitionDuration}ms ease-out }
+          .ReactModal__Overlay--after-open { opacity: 1 }
+          .ReactModal__Overlay--before-close { opacity: 0 }
+        `}</style>
+      </div>
+    )
   }
 }
 
