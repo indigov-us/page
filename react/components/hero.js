@@ -22,6 +22,8 @@ import {themeId} from '../lib/theme'
 import linkTo from '../lib/link-to'
 import ContactComponent from '../components/contact'
 
+const navHeight = 38 // px
+
 export type Props = {
   data?: {
     theme?: {
@@ -61,15 +63,15 @@ const Hero = ({data, quickLinks}: Props, {customized, openMobileMenu}: Context) 
 
       <div className='container relative'>
         <nav className='cf pt3'>
-          <div className='fl w-30'>
+          <div className='fl w-70 w-30-ns h-100'>
             <Link route={linkTo('index')}>
-              <a className='white b f4 no-underline'>
+              <a className='white b f4 no-underline nav-lh nowrap'>
                 {customizedFullName || (data && data.theme && data.theme.fullName) || 'Name'}
               </a>
             </Link>
           </div>
-          <div className='fl w-70 tr'>
-            <div className='dn dib-l'>
+          <div className='fl w-30 w-70-ns tr h-100'>
+            <div className='dn dib-l h-100'>
               <HeroNavButton>{'Home'}</HeroNavButton>
               <HeroNavButton>{'Polls'}</HeroNavButton>
               <HeroNavButton>{'Blog'}</HeroNavButton>
@@ -77,18 +79,18 @@ const Hero = ({data, quickLinks}: Props, {customized, openMobileMenu}: Context) 
               <HeroNavButton>{'FAQ'}</HeroNavButton>
               <WithModal
                 button={<HeroNavButton opaque>{'Contact'}</HeroNavButton>}
-                className='pa4'
+                className='dib'
               >
                 <ContactComponent />
               </WithModal>
             </div>
-            <div className='dn-l'>
+            <div className='dn-l h-100 relative'>
               <a
-                className='white'
+                className='white dib v-center absolute right-0'
                 href='javascript:void(0)'
                 onClick={openMobileMenu}
               >
-                <OpenMobileMenuIcon size={40} />
+                <OpenMobileMenuIcon size={34} />
               </a>
             </div>
           </div>
@@ -158,8 +160,10 @@ const Hero = ({data, quickLinks}: Props, {customized, openMobileMenu}: Context) 
       </div>
 
       <style jsx>{`
-        section { background-image: url(${customizedHeroImage || (data && data.theme && data.theme.heroImage) || ''}) }
         input { max-width: 500px }
+        nav { height: ${navHeight}px }
+        .nav-lh { line-height: ${navHeight}px }
+        section { background-image: url(${customizedHeroImage || (data && data.theme && data.theme.heroImage) || ''}) }
       `}</style>
     </section>
   )

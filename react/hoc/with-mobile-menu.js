@@ -16,7 +16,7 @@ type State = {
 }
 
 const transitionDuration = 150 // in ms
-const menuWidth = 75 // % of screen
+const menuWidth = 90 // % of screen
 
 class MobileMenu extends Component<Props, State> {
   static childContextTypes = {
