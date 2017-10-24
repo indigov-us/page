@@ -49,11 +49,11 @@ class MobileMenu extends Component<Props, State> {
       if (mobileMenuNode) {
         if (isOpen) {
           // show the mobile menu right away
-          mobileMenuNode.className = mobileMenuNode.className.replace(/\s*dn\s*/, '')
+          mobileMenuNode.style.display = 'block'
         } else {
           // wait until the transition is finished, then hide the menu
           setTimeout(() => {
-            mobileMenuNode.className = `${mobileMenuNode.className} dn`
+            mobileMenuNode.style.display = 'none'
           }, transitionDuration + 1)
         }
       }
@@ -78,8 +78,12 @@ class MobileMenu extends Component<Props, State> {
         </div>
 
         <div
-          className='fixed top-0 right-0 bottom-0 bg-black white menu dn'
+          className={classNames(
+            'fixed top-0 right-0 bottom-0 bg-black white menu',
+            isOpen && 'is-open'
+          )}
           ref={r => { this.mobileMenuNode = r }}
+          style={{display: 'none'}}
         >
           <div className='ma3'>
             <div className='cf mb3'>
@@ -103,7 +107,13 @@ class MobileMenu extends Component<Props, State> {
             transition: transform ${transitionDuration}ms ease-out;
           }
           .content.is-open { transform: translateX(-${menuWidth}%) }
-          .menu { width: ${menuWidth}% }
+          .menu {
+            width: ${menuWidth}%;
+            will-change: transform;
+            transform: translateX(${menuWidth}%);
+            transition: transform ${transitionDuration}ms ease-out;
+          }
+          .menu.is-open { transform: translateX(0) }
         `}</style>
       </div>
     )
