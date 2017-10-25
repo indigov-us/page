@@ -4,6 +4,8 @@ import React, {Component} from 'react'
 import ReactModal from 'react-modal'
 import CloseIcon from 'react-icons/lib/io/ios-close'
 
+import {closedModal, openedModal} from '../states/with-modal'
+
 const openTransitionDuration = 300 // in ms
 const closeTransitionDuration = 200 // in ms
 
@@ -24,11 +26,11 @@ class WithModal extends Component<Props, State> {
   }
 
   closeModal = () => {
-    this.setState({isOpen: false})
+    this.setState(closedModal)
   }
 
   openModal = () => {
-    this.setState({isOpen: true})
+    this.setState(openedModal)
   }
 
   render () {
