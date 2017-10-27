@@ -1,4 +1,4 @@
-FROM node:8.7
+FROM node:8.8
 
 ARG NODE_ENV
 ARG SKIP_BUILD
