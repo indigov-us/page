@@ -16,6 +16,7 @@ type Props = {
   children: any,
   data?: {
     theme?: {
+      gaViewId: ?string,
       primaryHex: ?string
     }
   },
@@ -31,6 +32,7 @@ type Context = {
 
 const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
   const primaryHex = (customized && customized.primary_hex) || (data && data.theme && data.theme.primaryHex) || defaultPrimaryHex
+  const gaViewId = data && data.theme && data.theme.gaViewId
 
   return (
     <div>
@@ -41,17 +43,22 @@ const Page = ({children, data, hero, title}: Props, {customized}: Context) => {
         />
 
         {/* google analytics */}
-        <script
-          async
-          src='https://www.googletagmanager.com/gtag/js?id=UA-108351158-1'
-        />
-        <script dangerouslySetInnerHTML={{__html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-108351158-1');
-        `}}
-        />
+        {gaViewId && [
+          <script
+            async
+            key='gTagSrc'
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaViewId}`}
+          />,
+          <script
+            dangerouslySetInnerHTML={{__html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gaViewId}');
+            `.replace(/\s+/g, ' ')}}
+            key='gTagInit'
+          />
+        ]}
 
         <link
           rel='stylesheet'
@@ -117,6 +124,7 @@ Page.displayName = 'Page'
 export default graphql(gql(`
   query {
     theme (id: "${themeId}") {
+      gaViewId
       primaryHex
     }
   }

@@ -9,6 +9,14 @@ add_action( 'graphql_theme_fields', function( $fields ) {
       return $mod ? $mod : NULL;
     },
   ];
+  $fields['gaViewId'] = [
+    'type' => \WPGraphQL\Types::string(),
+    'description' => __( 'The view ID to use for Google Analytics.' ),
+    'resolve' => function( ) {
+      $mod = get_theme_mod( 'ga_view_id' );
+      return $mod ? $mod : NULL;
+    },
+  ];
   $fields['heroHeadline'] = [
     'type' => \WPGraphQL\Types::string(),
     'description' => __( 'The main text in the hero.' ),

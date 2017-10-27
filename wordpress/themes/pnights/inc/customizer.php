@@ -1,6 +1,6 @@
 <?php
 
-add_action('customize_register', function( $wp_customize ) {
+add_action( 'customize_register', function( $wp_customize ) {
   // hero section
   $wp_customize->add_section( 'hero', [
     'title' => 'Hero',
@@ -67,6 +67,16 @@ add_action('customize_register', function( $wp_customize ) {
     $wp_customize,
     'primary_hex', [
       'label' => 'Primary Color (hex)',
+      'section' => 'title_tagline'
+    ]
+  ) );
+
+  // google analytics view id
+  $wp_customize->add_setting( 'ga_view_id' );
+  $wp_customize->add_control( new WP_Customize_Control(
+    $wp_customize,
+    'ga_view_id', [
+      'label' => 'Google Analytics View ID',
       'section' => 'title_tagline'
     ]
   ) );
