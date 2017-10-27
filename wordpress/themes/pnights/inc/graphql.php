@@ -1,5 +1,6 @@
 <?php
 
+// add custom fields to theme responses
 add_action( 'graphql_theme_fields', function( $fields ) {
   $fields['fullName'] = [
     'type' => \WPGraphQL\Types::string(),
@@ -51,4 +52,10 @@ add_action( 'graphql_theme_fields', function( $fields ) {
   ];
 
   return $fields;
+} );
+
+// set default status code to 200 instead of 403
+add_action( 'graphql_response_status_code', function( $code ) {
+  if ( $code == 403 ) return 200;
+  return $code;
 } );
