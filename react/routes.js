@@ -2,28 +2,28 @@ const UrlPrettifier = require('next-url-prettifier').default
 
 const routes = [{
   page: 'article',
-  prettyUrl: ({idSlug = ''}) => `/articles/${idSlug}`,
+  prettyUrl: ({idSlug = ''}) => `/articles/${idSlug}/`,
   prettyUrlPatterns: [
-    '/articles/:idSlug'
-  ]
-}, {
-  page: 'page',
-  prettyUrl: ({idSlug = ''}) => `/pages/${idSlug}`,
-  prettyUrlPatterns: [
-    '/pages/:idSlug'
+    '/articles/:idSlug/'
   ]
 }, {
   page: 'question',
-  prettyUrl: ({idSlug = ''}) => `/questions/${idSlug}`,
+  prettyUrl: ({idSlug = ''}) => `/questions/${idSlug}/`,
   prettyUrlPatterns: [
-    '/questions/:idSlug'
+    '/questions/:idSlug/'
+  ]
+}, {
+  page: 'page',
+  prettyUrl: ({slug = ''}) => `/pages/${slug}/`,
+  prettyUrlPatterns: [
+    '/pages/:slug/'
   ]
 }, {
   page: 'search',
-  prettyUrl: '/search'
+  prettyUrl: '/search/'
 }, {
   page: 'contact',
-  prettyUrl: '/contact'
+  prettyUrl: '/contact/'
 }, {
   page: 'index',
   prettyUrl: '/',

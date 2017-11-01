@@ -57,6 +57,7 @@ services:
     volumes:
       - ./wordpress/plugins/offices:/var/www/html/wp-content/plugins/offices
       - ./wordpress/plugins/questions:/var/www/html/wp-content/plugins/questions
+      - ./wordpress/plugins/quick-links:/var/www/html/wp-content/plugins/quick-links
       - ./wordpress/themes/pnights:/var/www/html/wp-content/themes/pnights
       - ./wordpress/uploads:/var/www/html/wp-content/uploads
 

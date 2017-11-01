@@ -58,7 +58,7 @@ type Props = {
 const HomePage = ({data: {pages, posts, questions}}: Props) => {
   return (
     <Page
-      hero={{quickLinks: true}}
+      hero={{showQuickLinks: true}}
       title='Home'
     >
       <div className='container'>
@@ -76,7 +76,7 @@ const HomePage = ({data: {pages, posts, questions}}: Props) => {
 
         <Grid
           items={pages && pages.edges}
-          itemRoute={({pageId, slug}) => linkTo('page', {idSlug: `${pageId}-${slug}`})}
+          itemRoute={({slug}) => linkTo('page', {slug})}
           title='Pages'
         />
       </div>

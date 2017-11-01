@@ -59,10 +59,10 @@ const PagePage = ({data: {pages}}: Props) => {
 PagePage.displayName = 'PagePage'
 
 export default WithCustomized(WithApollo(graphql(gql(`
-  query ($id: Int) {
+  query ($slug: String) {
     pages (
       first: 1,
-      where: {id: $id}
+      where: {name: $slug}
     ) {
       edges {
         node {
@@ -76,8 +76,5 @@ export default WithCustomized(WithApollo(graphql(gql(`
     }
   }
 `), {
-  options: ({query: {idSlug}}: {query: {idSlug: string}}) => {
-    const idMatch = idSlug.match(/^(\d+)/)
-    return idMatch ? {variables: {id: idMatch[1]}} : {}
-  }
+  options: ({query: {slug}}: {query: {slug: string}}) => ({variables: {slug}})
 })(PagePage)))
