@@ -9,7 +9,9 @@ import Page from '../components/page'
 
 export const ContactPage = () => (
   <Page title='Contact'>
-    <Contact />
+    <div className='container'>
+      <Contact />
+    </div>
   </Page>
 )
 
