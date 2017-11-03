@@ -1,5 +1,6 @@
 // @flow
 
+import Autocomplete from 'react-autocomplete'
 import classNames from 'classnames'
 import {Link} from 'next-url-prettifier'
 import PropTypes from 'prop-types'
@@ -107,10 +108,29 @@ const Hero = ({data, showQuickLinks}: Props, {customized, openMobileMenu}: Conte
           <div className='mv3'>
             {'Type your question below to get an immediate response from my team office.'}
           </div>
-          <input
-            className='br-pill pv2 ph3 f4 db w-100 center'
-            placeholder='Can you please expedite my passport...'
-            type='text'
+          <Autocomplete
+            className='black'
+            getItemValue={item => item.label}
+            inputProps={{
+              className: 'br-pill pv2 ph3 f4 db w-100 border-box',
+              placeholder: 'Can you please expedite my passport...'
+            }}
+            items={[
+              { label: 'apple' },
+              { label: 'banana' },
+              { label: 'pear' }
+            ]}
+            onChange={e => e.target.value}
+            renderItem={(item, isHighlighted) =>
+              <div
+                className='black'
+                key={item.label}
+              >
+                {item.label}
+              </div>
+            }
+            wrapperProps={{className: 'black w-70-m w-50-l center'}}
+            wrapperStyle={{}}
           />
         </div>
 
@@ -130,7 +150,6 @@ const Hero = ({data, showQuickLinks}: Props, {customized, openMobileMenu}: Conte
       </div>
 
       <style jsx>{`
-        input { max-width: 500px }
         nav { height: ${navHeight}px }
         .nav-lh { line-height: ${navHeight}px }
         section { background-image: url(${customizedHeroImage || (data && data.theme && data.theme.heroImage) || ''}) }
