@@ -61,6 +61,16 @@ add_action( 'customize_register', function( $wp_customize ) {
     ]
   ) );
 
+  // twitter
+  $wp_customize->add_setting( 'twitter_username' );
+  $wp_customize->add_control( new WP_Customize_Control(
+    $wp_customize,
+    'twitter_username', [
+      'label' => 'Twitter Username',
+      'section' => 'title_tagline'
+    ]
+  ) );
+
   // primary color
   $wp_customize->add_setting( 'primary_hex' );
   $wp_customize->add_control( new WP_Customize_Control(

@@ -18,6 +18,14 @@ add_action( 'graphql_theme_fields', function( $fields ) {
       return $mod ? $mod : NULL;
     },
   ];
+  $fields['twitterUsername'] = [
+    'type' => \WPGraphQL\Types::string(),
+    'description' => __( 'The Twitter username beginning with "@".' ),
+    'resolve' => function( ) {
+      $mod = get_theme_mod( 'twitter_username' );
+      return $mod ? $mod : NULL;
+    },
+  ];
   $fields['heroHeadline'] = [
     'type' => \WPGraphQL\Types::string(),
     'description' => __( 'The main text in the hero.' ),

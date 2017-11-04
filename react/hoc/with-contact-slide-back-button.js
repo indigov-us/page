@@ -19,7 +19,7 @@ const WithContactSlideBackButton = ({children}: Props, {goToSlide}: Context) => 
         href='javascript:void(0)'
         onClick={() => goToSlide(0)}
       >
-        {'Home'}
+        {'Back'}
       </a>
     </div>
     {children}

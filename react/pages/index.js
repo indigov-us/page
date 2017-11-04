@@ -8,6 +8,8 @@ import WithApollo from '../hoc/with-apollo'
 import Grid from '../components/grid'
 import Page from '../components/page'
 import linkTo from '../lib/link-to'
+import {themeId} from '../lib/theme'
+import TwitterTimeline from '../components/twitter-timeline'
 
 type Props = {
   data: {
@@ -51,11 +53,14 @@ type Props = {
           title: string
         }
       }>
+    },
+    theme?: {
+      twitterUsername: ?string
     }
   }
 }
 
-const HomePage = ({data: {pages, posts, questions}}: Props) => {
+const HomePage = ({data: {pages, posts, questions, theme}}: Props) => {
   return (
     <Page
       hero={{showQuickLinks: true}}
@@ -79,6 +84,8 @@ const HomePage = ({data: {pages, posts, questions}}: Props) => {
           itemRoute={({slug}) => linkTo('page', {slug})}
           title='Pages'
         />
+
+        {theme && theme.twitterUsername && <TwitterTimeline username={theme.twitterUsername} />}
       </div>
     </Page>
   )
@@ -128,6 +135,9 @@ export default WithCustomized(WithApollo(graphql(gql(`
           title
         }
       }
+    }
+    theme (id: "${themeId}") {
+      twitterUsername
     }
   }
 `))(HomePage)))
