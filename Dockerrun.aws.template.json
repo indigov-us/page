@@ -10,21 +10,27 @@
       "name": "www"
     },
     {
-      "name": "cms",
       "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/cms:VERSION",
-      "memoryReservation": 384
+      "memoryReservation": 384,
+      "name": "cms"
+    },
+    {
+      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/ccma:VERSION",
+      "memoryReservation": 64,
+      "name": "ccma"
     },
     {
       "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/lb:VERSION",
-      "memoryReservation": 256,
       "links": [
-        "www",
-        "cms"
+        "ccma",
+        "cms",
+        "www"
       ],
+      "memoryReservation": 192,
       "mountPoints": [
         {
-          "sourceVolume": "awseb-logs-nginx",
-          "containerPath": "/var/log/lb"
+          "sourceVolume": "awseb-logs-lb",
+          "containerPath": "/var/log/nginx"
         }
       ],
       "name": "lb",

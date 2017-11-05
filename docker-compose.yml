@@ -34,6 +34,10 @@ services:
       - /usr/src/app/node_modules
       - ./www:/usr/src/app
 
+  ccma:
+    build:
+      context: ./ccma
+
   cms:
     build:
       context: ./cms
@@ -72,6 +76,7 @@ services:
     build:
       context: ./lb
     links:
+      - ccma
       - cms
       - www
     ports:

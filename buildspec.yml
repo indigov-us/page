@@ -8,19 +8,22 @@ phases:
 
   build:
     commands:
-      - docker build -t www:$VERSION ./www
+      - docker build -t ccma:$VERSION ./ccma
       - docker build -t cms:$VERSION ./cms
-      - docker build -t nginx:$VERSION ./nginx
+      - docker build -t www:$VERSION ./www
+      - docker build -t lb:$VERSION ./lb
 
-      - docker tag www:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/www:$VERSION
+      - docker tag ccma:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/ccma:$VERSION
       - docker tag cms:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/cms:$VERSION
-      - docker tag nginx:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nginx:$VERSION
+      - docker tag www:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/www:$VERSION
+      - docker tag lb:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/lb:$VERSION
 
   post_build:
     commands:
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/www:$VERSION
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/ccma:$VERSION
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/cms:$VERSION
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nginx:$VERSION
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/www:$VERSION
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/lb:$VERSION
 
       - sed "s/AWS_ACCOUNT_ID/$AWS_ACCOUNT_ID/g;s/VERSION/$VERSION/g;s/AWS_REGION/$AWS_REGION/g" Dockerrun.aws.template.json > Dockerrun.aws.json
 
