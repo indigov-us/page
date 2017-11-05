@@ -2,32 +2,32 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/react:VERSION",
+      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/www:VERSION",
       "links": [
-        "wordpress"
+        "cms"
       ],
       "memoryReservation": 128,
-      "name": "react"
+      "name": "www"
     },
     {
-      "name": "wordpress",
-      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/wordpress:VERSION",
+      "name": "cms",
+      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/cms:VERSION",
       "memoryReservation": 384
     },
     {
-      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/nginx:VERSION",
+      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/lb:VERSION",
       "memoryReservation": 256,
       "links": [
-        "react",
-        "wordpress"
+        "www",
+        "cms"
       ],
       "mountPoints": [
         {
           "sourceVolume": "awseb-logs-nginx",
-          "containerPath": "/var/log/nginx"
+          "containerPath": "/var/log/lb"
         }
       ],
-      "name": "nginx",
+      "name": "lb",
       "portMappings": [
         {
           "hostPort": 80,

@@ -20,11 +20,11 @@ services:
     volumes:
       - ./data/pnights.sql:/docker-entrypoint-initdb.d/pnights.sql
 
-  react:
+  www:
     build:
       args:
         SKIP_BUILD: 'true'
-      context: ./react
+      context: ./www
     command: yarn run dev
     environment:
       NODE_ENV: development
@@ -32,11 +32,11 @@ services:
       SESSION_SECRET: 123
     volumes:
       - /usr/src/app/node_modules
-      - ./react:/usr/src/app
+      - ./www:/usr/src/app
 
-  wordpress:
+  cms:
     build:
-      context: ./wordpress
+      context: ./cms
     depends_on:
       - mysql
     environment:
@@ -62,17 +62,17 @@ services:
       SECURE_AUTH_SALT: 123
       WP_DEBUG: 'false'
     volumes:
-      - ./wordpress/plugins/offices:/var/www/html/wp-content/plugins/offices
-      - ./wordpress/plugins/questions:/var/www/html/wp-content/plugins/questions
-      - ./wordpress/plugins/quick-links:/var/www/html/wp-content/plugins/quick-links
-      - ./wordpress/themes/pnights:/var/www/html/wp-content/themes/pnights
-      - ./wordpress/uploads:/var/www/html/wp-content/uploads
+      - ./cms/plugins/offices:/var/www/html/wp-content/plugins/offices
+      - ./cms/plugins/questions:/var/www/html/wp-content/plugins/questions
+      - ./cms/plugins/quick-links:/var/www/html/wp-content/plugins/quick-links
+      - ./cms/themes/pnights:/var/www/html/wp-content/themes/pnights
+      - ./cms/uploads:/var/www/html/wp-content/uploads
 
-  nginx:
+  lb:
     build:
-      context: ./nginx
+      context: ./lb
     links:
-      - react
-      - wordpress
+      - cms
+      - www
     ports:
       - 80:80
