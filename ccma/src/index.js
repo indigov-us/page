@@ -1,32 +1,33 @@
 // @flow
 
 const Koa = require('koa')
-const Sequelize = require('sequelize')
+const bodyParser = require('koa-bodyparser')
+
+const errorMessage = require('./lib/error-message')
+const WPBlog = require('./models/wp-blog')
 
 const app = new Koa()
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    dialect: 'mysql'
-  }
-)
 
-const WPBlog = sequelize.define('wp_blog', {
-  blogId: {
-    field: 'blog_id',
-    primaryKey: true,
-    type: Sequelize.INTEGER
-  },
-  domain: Sequelize.STRING
-}, {
-  timestamps: false
-})
+const validChannels = ['web-form']
+
+app.use(bodyParser())
 
 app.use(async ctx => {
-  const blogs = await WPBlog.findAll()
-  ctx.body = blogs
+  // find the site by hostname (e.g., czahor.house.dev)
+  const {host} = ctx
+  const hostWithoutProtocol = host.replace(/:\d+/, '') // for dev, e.g., czahor.house.dev:3000
+  const blog = await WPBlog.findOne({where: {domain: hostWithoutProtocol}})
+
+  if (!blog) return errorMessage(404, `Site not found for host "${hostWithoutProtocol}"`, {ctx})
+
+  // parse the incoming message
+  const body: any = ctx.request.body
+  const {channel} = body
+
+  if (!channel) return errorMessage(400, 'missing :channel', {ctx})
+  if (!validChannels.includes(channel)) return errorMessage(400, `invalid :channel "${channel}", valid options are "${validChannels.join('|')}"`, {ctx})
+
+  ctx.body = {channel}
 })
 
 app.listen(3000)
