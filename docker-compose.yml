@@ -37,6 +37,11 @@ services:
   ccma:
     build:
       context: ./ccma
+    environment:
+      DB_NAME: pnights
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_HOST: mysql
 
   cms:
     build:
