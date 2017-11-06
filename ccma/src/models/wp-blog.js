@@ -10,7 +10,11 @@ const WPBlog = sequelize.define('wp_blog', {
     primaryKey: true,
     type: INTEGER
   },
-  domain: STRING
+  domain: STRING,
+  siteId: {
+    field: 'site_id',
+    type: INTEGER
+  }
 }, {
   timestamps: false
 })
