@@ -1,25 +1,25 @@
 // @flow
 
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import React from 'react'
 
 type Props = {
-  className: string,
-  desiredSlide: number,
+  className?: string,
   Icon: any,
+  isSelected?: boolean,
+  onClick: () => any,
   title: string
 }
 
-type Context = {
-  goToSlide: (slide: number) => any
-}
-
-const ContactMethodButton = ({className, desiredSlide, Icon, title}: Props, {goToSlide}: Context) => (
+const ContactMethodButton = ({className, Icon, isSelected, onClick, title}: Props) => (
   <a
-    className={classNames(className, 'db white relative no-underline b hover-bg-primary bg-animate')}
+    className={classNames(
+      className,
+      isSelected ? 'bw4' : 'bw3',
+      'db black relative no-underline b hover-bg-primary bg-animate bb'
+    )}
     href='javascript:void(0)'
-    onClick={() => goToSlide(desiredSlide)}
+    onClick={onClick}
   >
     <div className='v-center absolute left-0 right-0'>
       <div className='mb1'>
@@ -32,10 +32,5 @@ const ContactMethodButton = ({className, desiredSlide, Icon, title}: Props, {goT
     `}</style>
   </a>
 )
-
-ContactMethodButton.contextTypes = {
-  goToSlide: PropTypes.func,
-  nextSlide: PropTypes.func
-}
 
 export default ContactMethodButton
