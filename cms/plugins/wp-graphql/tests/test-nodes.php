@@ -57,13 +57,13 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		 * Create the query string to pass to the $query
 		 */
 		$query = '
-		query getPageByNode( $id:ID! ) { 
-			node( id:$id ) { 
-				__typename 
-				...on page {
+		query getPageByNode( $id:ID! ) {
+			node( id:$id ) {
+				__typename
+				...on Page {
 					pageId
 				}
-			} 
+			}
 		}';
 
 		$variables = wp_json_encode([
@@ -81,7 +81,7 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'page',
+					'__typename' => 'Page',
 					'pageId' => $page_id,
 				],
 			],
@@ -122,13 +122,13 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		 * Create the query string to pass to the $query
 		 */
 		$query = "
-		query { 
-			node(id: \"{$global_id}\") { 
-				__typename 
-				...on page {
+		query {
+			node(id: \"{$global_id}\") {
+				__typename
+				...on Page {
 					pageId
 				}
-			} 
+			}
 		}";
 
 		/**
@@ -142,7 +142,7 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'page',
+					'__typename' => 'Page',
 					'pageId' => $page_id,
 				],
 			],
@@ -170,20 +170,20 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$global_id = \GraphQLRelay\Relay::toGlobalId( 'post', $post_id );
 
 		$query = "
-		query { 
-			node(id: \"{$global_id}\") { 
+		query {
+			node(id: \"{$global_id}\") {
 				__typename
-				... on post {
+				... on Post {
 					postId
 				}
-			} 
+			}
 		}";
 		$actual = do_graphql_request( $query );
 
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'post',
+					'__typename' => 'Post',
 					'postId' => $post_id,
 				],
 			],
@@ -209,20 +209,20 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$attachment_id = $this->factory->post->create( $args );
 		$global_id = \GraphQLRelay\Relay::toGlobalId( 'attachment', $attachment_id );
 		$query = "
-		query { 
-			node(id: \"{$global_id}\") { 
+		query {
+			node(id: \"{$global_id}\") {
 				__typename
-				...on mediaItem {
+				...on MediaItem {
 					mediaItemId
 				}
-			} 
+			}
 		}";
 		$actual = do_graphql_request( $query );
 
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'mediaItem',
+					'__typename' => 'MediaItem',
 					'mediaItemId' => $attachment_id,
 				],
 			],
@@ -240,21 +240,21 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$plugin_name = 'Hello Dolly';
 		$global_id = \GraphQLRelay\Relay::toGlobalId( 'plugin', $plugin_name );
 		$query = "
-		query { 
-			node(id: \"{$global_id}\") { 
+		query {
+			node(id: \"{$global_id}\") {
 				__typename
-				... on plugin {
+				... on Plugin {
 					name
 				}
-			} 
+			}
 		}";
-		
+
 		$actual = do_graphql_request( $query );
 
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'plugin',
+					'__typename' => 'Plugin',
 					'name' => $plugin_name,
 				],
 			],
@@ -272,20 +272,20 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$theme_slug = 'twentyseventeen';
 		$global_id = \GraphQLRelay\Relay::toGlobalId( 'theme', $theme_slug );
 		$query = "
-		query { 
-			node(id: \"{$global_id}\") { 
-				__typename 
-				...on theme{ 
-					slug 
-				} 
-			} 
+		query {
+			node(id: \"{$global_id}\") {
+				__typename
+				...on Theme{
+					slug
+				}
+			}
 		}";
 		$actual = do_graphql_request( $query );
 
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'theme',
+					'__typename' => 'Theme',
 					'slug' => $theme_slug,
 				],
 			],
@@ -309,13 +309,13 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 
 		$global_id = \GraphQLRelay\Relay::toGlobalId( 'user', $user_id );
 		$query = "
-		query { 
-			node(id: \"{$global_id}\") { 
-				__typename 
-				...on user{ 
-					userId 
-				} 
-			} 
+		query {
+			node(id: \"{$global_id}\") {
+				__typename
+				...on User{ 
+					userId
+				}
+			}
 		}
 		";
 		$actual = do_graphql_request( $query );
@@ -323,7 +323,7 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'user',
+					'__typename' => 'User',
 					'userId' => $user_id,
 				],
 			],
@@ -353,13 +353,13 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 
 		$global_id = \GraphQLRelay\Relay::toGlobalId( 'comment', $comment_id );
 		$query = "
-		query { 
+		query {
 			node(id: \"{$global_id}\") {
-				__typename 
-				...on comment{ 
-					commentId 
-				} 
-			} 
+				__typename
+				...on Comment{
+					commentId
+				}
+			}
 		}
 		";
 		$actual = do_graphql_request( $query );
@@ -367,7 +367,7 @@ class WP_GraphQL_Test_Node_Queries extends WP_UnitTestCase {
 		$expected = [
 			'data' => [
 				'node' => [
-					'__typename' => 'comment',
+					'__typename' => 'Comment',
 					'commentId' => $comment_id,
 				],
 			],

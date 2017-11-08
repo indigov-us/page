@@ -102,6 +102,6 @@ export default WithCustomized(WithApollo(graphql(gql(`
 `), {
   options: ({query: {idSlug}}: {query: {idSlug: string}}) => {
     const idMatch = idSlug.match(/^(\d+)/)
-    return idMatch ? {variables: {id: idMatch[1]}} : {}
+    return idMatch ? {variables: {id: parseInt(idMatch[1])}} : {}
   }
 })(ArticlePage)))
