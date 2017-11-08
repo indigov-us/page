@@ -17,7 +17,7 @@ import ContactComponent from '../components/contact'
 const navHeight = 38 // px
 
 export type Props = {
-  data?: {
+  data: {
     quickLinks?: {
       edges: Array<{
         node: {
@@ -48,20 +48,20 @@ type Context = {
   openMobileMenu: any => any,
 }
 
-const Hero = ({data, showQuickLinks}: Props, {customized, openMobileMenu}: Context) => {
+const Hero = ({data: {quickLinks, theme}, showQuickLinks}: Props, {customized, openMobileMenu}: Context) => {
   const customizedFullName = customized && customized.full_name
   const customizedHeroHeadline = customized && customized.hero_headline
   const customizedHeroImage = customized && customized.hero_image
   const customizedHeroImageTint = customized && customized.hero_image_tint
 
-  const quickLinksEdges = data && data.quickLinks && data.quickLinks.edges
+  const quickLinksEdges = quickLinks && quickLinks.edges
 
   return (
     <section className='bg-dark-gray white relative cover bg-top'>
       <div
         className={classNames(
           'absolute top-0 bottom-0 left-0 right-0',
-          `bg-black-${customizedHeroImageTint || (data && data.theme && data.theme.heroImageTint) || '0'}`
+          `bg-black-${customizedHeroImageTint || (theme && theme.heroImageTint) || '0'}`
         )}
       />
 
@@ -70,7 +70,7 @@ const Hero = ({data, showQuickLinks}: Props, {customized, openMobileMenu}: Conte
           <div className='fl w-70 w-30-ns h-100'>
             <Link href='/'>
               <a className='white b f4 no-underline nav-lh nowrap'>
-                {customizedFullName || (data && data.theme && data.theme.fullName) || 'Name'}
+                {customizedFullName || (theme && theme.fullName) || 'Name'}
               </a>
             </Link>
           </div>
@@ -102,7 +102,7 @@ const Hero = ({data, showQuickLinks}: Props, {customized, openMobileMenu}: Conte
 
         <div className='tc pv5'>
           <div className='f2 f1-ns f-title'>
-            {customizedHeroHeadline || (data && data.theme && data.theme.heroHeadline) || 'Have a question? Let me help.'}
+            {customizedHeroHeadline || (theme && theme.heroHeadline) || 'Have a question? Let me help.'}
           </div>
           <div className='mv3'>
             {'Type your question below to get an immediate response from my team office.'}
@@ -128,7 +128,7 @@ const Hero = ({data, showQuickLinks}: Props, {customized, openMobileMenu}: Conte
       <style jsx>{`
         nav { height: ${navHeight}px }
         .nav-lh { line-height: ${navHeight}px }
-        section { background-image: url(${customizedHeroImage || (data && data.theme && data.theme.heroImage) || ''}) }
+        section { background-image: url(${customizedHeroImage || (theme && theme.heroImage) || ''}) }
       `}</style>
     </section>
   )

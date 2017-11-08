@@ -12,7 +12,7 @@ import ContactMethodButton from '../components/contact-method-button'
 import ContactStaffer from '../components/contact-staffer'
 
 type Props = {
-  data?: {
+  data: {
     users?: {
       edges: Array<{
         node: {
@@ -47,9 +47,9 @@ class Contact extends Component<Props, State> {
   handleScheduleVisitClick = () => this.setState(changeSlide('scheduleVisit'))
 
   render () {
-    const {data} = this.props
+    const {data: {users}} = this.props
     const {activeSlide} = this.state
-    const userEdges = data && data.users && data.users.edges
+    const userEdges = users && users.edges
 
     return (
       <div className='mb3'>

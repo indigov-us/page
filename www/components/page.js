@@ -15,7 +15,7 @@ import {defaultPrimaryHex, themeId} from '../lib/theme'
 
 type Props = {
   children: any,
-  data?: {
+  data: {
     theme?: {
       gaViewId: ?string,
       primaryHex: ?string
@@ -34,8 +34,8 @@ class Page extends Component<Props> {
 
   componentDidMount () {
     const {gtag} = window
-    const {data} = this.props
-    const gaViewId = data && data.theme && data.theme.gaViewId
+    const {data: {theme}} = this.props
+    const gaViewId = theme && theme.gaViewId
 
     if (gaViewId && gtag) {
       Router.onRouteChangeStart = path => {
@@ -46,10 +46,10 @@ class Page extends Component<Props> {
   }
 
   render () {
-    const {children, data, hero, title} = this.props
+    const {children, data: {theme}, hero, title} = this.props
     const {customized} = this.context
-    const primaryHex = (customized && customized.primary_hex) || (data && data.theme && data.theme.primaryHex) || defaultPrimaryHex
-    const gaViewId = data && data.theme && data.theme.gaViewId
+    const primaryHex = (customized && customized.primary_hex) || (theme && theme.primaryHex) || defaultPrimaryHex
+    const gaViewId = theme && theme.gaViewId
 
     return (
       <div>

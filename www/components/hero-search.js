@@ -9,7 +9,7 @@ import linkTo from '../lib/link-to'
 import {updateS} from '../states/hero-search'
 
 type Props = {
-  data?: {
+  data: {
     fetchMore: any => any,
     pages?: {
       edges: Array<{
@@ -46,12 +46,10 @@ class HeroSearch extends Component<Props, State> {
     const {data} = this.props
     const {q} = this.state
 
-    if (data) {
-      data.fetchMore({
-        variables: {q},
-        updateQuery: (prevResult, {fetchMoreResult}) => fetchMoreResult
-      })
-    }
+    data.fetchMore({
+      variables: {q},
+      updateQuery: (prevResult, {fetchMoreResult}) => fetchMoreResult
+    })
   }
 
   buildItems = () => {
