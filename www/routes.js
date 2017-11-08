@@ -7,11 +7,11 @@ const routes = [{
 }, {
   page: 'category',
   prettyUrl: ({slug = ''}) => `/category/${slug}/`,
-  prettyUrlPatterns: '/category/:slug/'
+  prettyUrlPatterns: '/category/:slug*/'
 }, {
   page: 'article',
   prettyUrl: ({category = '', idSlug = ''}) => `/${category}/${idSlug}/`,
-  prettyUrlPatterns: '/:category/:idSlug/'
+  prettyUrlPatterns: '/:category*/:idSlug/'
 }, {
   page: 'page',
   prettyUrl: ({slug = ''}) => `/${slug}/`,
