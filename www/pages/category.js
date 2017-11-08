@@ -14,6 +14,15 @@ type Props = {
     categories?: {
       edges: Array<{
         node: {
+          children: {
+            edges: Array<{
+              node: {
+                id: string,
+                link: string,
+                name: string
+              }
+            }>
+          },
           id: string,
           link: string,
           name: string
@@ -30,32 +39,48 @@ type Props = {
         }
       }>
     }
+  },
+  query: {
+    subcategories: string
   }
 }
 
-const CategoryPage = ({data: {categories, posts}}: Props) => {
-  const node = categories && categories.edges[0].node
+const CategoryPage = ({data: {categories, posts}, query: {subcategories}}: Props) => {
+  const node = categories && categories.edges.length && categories.edges[0].node
+
+  // TODO: find correct category/subcategory by splitting subcategories
 
   return (
     <Page
       title={node && node.name}
     >
-      {node && (
-        <WithSidebar>
-          <h1 className='mb2 f-title'>
-            <a
-              className='black no-underline'
-              dangerouslySetInnerHTML={{__html: node.name}}
-              href={node.link}
-            />
-          </h1>
+      <WithSidebar>
+        {node && (
+          <div>
+            <h1 className='mb2 f-title'>
+              <a
+                className='black no-underline'
+                dangerouslySetInnerHTML={{__html: node.name}}
+                href={node.link}
+              />
+            </h1>
 
-          <Grid
-            items={posts && posts.edges}
-            title='Articles'
-          />
-        </WithSidebar>
-      )}
+            <h2>{'Subcategories'}</h2>
+            {node.children.edges.map(({node: {id, link, name}}) => (
+              <div key={id}>
+                <a href={link}>
+                  {name}
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <Grid
+          items={posts && posts.edges}
+          title='Articles'
+        />
+      </WithSidebar>
     </Page>
   )
 }
@@ -66,10 +91,30 @@ export default WithCustomized(WithApollo(graphql(gql(`
   query ($slug: String) {
     categories (
       first: 1,
-      where: {slug: [$slug]}
+      where: {
+        slug: [$slug]
+      }
     ) {
       edges {
         node {
+          children {
+            edges {
+              node {
+                children {
+                  edges {
+                    node {
+                      id
+                      link
+                      name
+                    }
+                  }
+                }
+                id
+                link
+                name
+              }
+            }
+          }
           id
           link
           name
