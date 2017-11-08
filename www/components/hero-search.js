@@ -1,11 +1,9 @@
 // @flow
 
-import {Link} from 'next-url-prettifier'
 import Autocomplete from 'react-autocomplete'
 import React, {Component} from 'react'
 import {gql, graphql} from 'react-apollo'
 
-import linkTo from '../lib/link-to'
 import {updateS} from '../states/hero-search'
 
 type Props = {
@@ -80,11 +78,12 @@ class HeroSearch extends Component<Props, State> {
         onChange={e => this.setState(updateS(e.target.value))}
         renderItem={({node: {link, id, title}}, isHighlighted) =>
           <div key={id}>
-            <Link route={linkTo(link)}>
-              <a className='black db pv2 dim bb no-underline b--moon-gray'>
-                {title}
-              </a>
-            </Link>
+            <a
+              className='black db pv2 dim bb no-underline b--moon-gray'
+              href={link}
+            >
+              {title}
+            </a>
           </div>
         }
         value={q}

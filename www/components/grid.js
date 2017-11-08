@@ -3,7 +3,6 @@
 import React from 'react'
 
 import GridItem from '../components/grid-item'
-import linkTo from '../lib/link-to'
 
 type Props = {
   items?: Array<{
@@ -34,7 +33,7 @@ const Grid = ({items, title}: Props) => (
         >
           <GridItem
             description={node.excerpt}
-            route={linkTo(node.link)}
+            link={node.link}
             title={node.title}
           />
         </div>

@@ -1,6 +1,5 @@
 // @flow
 
-import {Link} from 'next-url-prettifier'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
 
@@ -8,7 +7,6 @@ import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import WithSidebar from '../hoc/with-sidebar'
 import Page from '../components/page'
-import linkTo from '../lib/link-to'
 
 type Props = {
   data: {
@@ -43,12 +41,11 @@ const ArticlePage = ({data: {posts}}: Props) => {
         {node && (
           <article>
             <h1 className='mb2 f-title'>
-              <Link route={linkTo(node.link)}>
-                <a
-                  className='black no-underline'
-                  dangerouslySetInnerHTML={{__html: node.title}}
-                />
-              </Link>
+              <a
+                className='black no-underline'
+                dangerouslySetInnerHTML={{__html: node.title}}
+                href={node.link}
+              />
             </h1>
 
             <div className='mv2 gray'>
@@ -74,7 +71,7 @@ const ArticlePage = ({data: {posts}}: Props) => {
   )
 }
 
-ArticlePage.displayName = 'Article'
+ArticlePage.displayName = 'ArticlePage'
 
 export default WithCustomized(WithApollo(graphql(gql(`
   query ($id: Int) {

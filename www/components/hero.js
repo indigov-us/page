@@ -1,7 +1,6 @@
 // @flow
 
 import classNames from 'classnames'
-import {Link} from 'next-url-prettifier'
 import PropTypes from 'prop-types'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
@@ -11,7 +10,6 @@ import HeroNavButton from '../components/hero-nav-button'
 import HeroQuickLink from '../components/hero-quick-link'
 import HeroSearch from '../components/hero-search'
 import WithModal from '../hoc/with-modal'
-import linkTo from '../lib/link-to'
 import {themeId} from '../lib/theme'
 import ContactComponent from '../components/contact'
 
@@ -78,25 +76,26 @@ const Hero = ({data: {categories, quickLinks, theme}, showQuickLinks}: Props, {c
       <div className='container relative'>
         <nav className='cf pt3'>
           <div className='fl w-70 w-30-ns h-100'>
-            <Link route={linkTo('index')}>
-              <a className='white b f4 no-underline nav-lh nowrap'>
-                {customizedFullName || (theme && theme.fullName) || 'Name'}
-              </a>
-            </Link>
+            <a
+              className='white b f4 no-underline nav-lh nowrap'
+              href='/'
+            >
+              {customizedFullName || (theme && theme.fullName) || 'Name'}
+            </a>
           </div>
           <div className='fl w-30 w-70-ns tr h-100'>
             <div className='dn dib-l h-100'>
-              <Link route={linkTo('index')}>
-                <a><HeroNavButton>{'Home'}</HeroNavButton></a>
-              </Link>
+              <a href='/'>
+                <HeroNavButton>{'Home'}</HeroNavButton>
+              </a>
 
               {categories && categories.edges.map(({node: {id, link, name}}) => (
-                <Link
+                <a
+                  href={link}
                   key={id}
-                  route={linkTo(link)}
                 >
-                  <a><HeroNavButton>{name}</HeroNavButton></a>
-                </Link>
+                  <HeroNavButton>{name}</HeroNavButton>
+                </a>
               ))}
 
               <WithModal

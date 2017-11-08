@@ -1,6 +1,5 @@
 // @flow
 
-import {Link} from 'next-url-prettifier'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
 
@@ -9,7 +8,6 @@ import WithApollo from '../hoc/with-apollo'
 import WithSidebar from '../hoc/with-sidebar'
 import Grid from '../components/grid'
 import Page from '../components/page'
-import linkTo from '../lib/link-to'
 
 type Props = {
   data: {
@@ -45,12 +43,11 @@ const CategoryPage = ({data: {categories, posts}}: Props) => {
       {node && (
         <WithSidebar>
           <h1 className='mb2 f-title'>
-            <Link route={linkTo(node.link)}>
-              <a
-                className='black no-underline'
-                dangerouslySetInnerHTML={{__html: node.name}}
-              />
-            </Link>
+            <a
+              className='black no-underline'
+              dangerouslySetInnerHTML={{__html: node.name}}
+              href={node.link}
+            />
           </h1>
 
           <Grid

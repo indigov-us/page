@@ -12,9 +12,6 @@ import PeopleIcon from 'react-icons/lib/io/ios-people-outline'
 import RibbonIcon from 'react-icons/lib/io/ribbon-a'
 import PersonIcon from 'react-icons/lib/io/ios-person-outline'
 
-import {Link} from 'next-url-prettifier'
-import linkTo from '../lib/link-to'
-
 type Props = {
   title: string,
   link: string,
@@ -45,21 +42,22 @@ const Icon = (icon: string) => {
 }
 
 const HeroQuickLink = ({title, link, icon}: Props) => (
-  <Link route={linkTo(link)}>
-    <a className='fl w-100 w-50-m w-25-l white tc b no-underline ba bg-black-40 b--white-10 relative hover-bg-primary bg-animate'>
-      <div className='v-center absolute left-0 right-0'>
-        {icon && (
-          <div className='mb1'>
-            {Icon(icon)}
-          </div>
-        )}
-        <div>{title}</div>
-      </div>
-      <style jsx>{`
-        a { height: 150px }
-      `}</style>
-    </a>
-  </Link>
+  <a
+    className='fl w-100 w-50-m w-25-l white tc b no-underline ba bg-black-40 b--white-10 relative hover-bg-primary bg-animate'
+    href={link}
+  >
+    <div className='v-center absolute left-0 right-0'>
+      {icon && (
+        <div className='mb1'>
+          {Icon(icon)}
+        </div>
+      )}
+      <div>{title}</div>
+    </div>
+    <style jsx>{`
+      a { height: 150px }
+    `}</style>
+  </a>
 )
 
 export default HeroQuickLink
