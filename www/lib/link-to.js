@@ -13,26 +13,14 @@ const extractPageAndArgsFromLink = (link: string) => {
   let page, args
 
   const url = URL.parse(link)
-  const match = url.pathname.match(/\/(.+?)\/(.+?)(?:\/|$)/)
+  const pathParts = url.pathname.split('/')
 
-  if (!match) {
-    page = '/'
-  } else {
-    const [, prefix, slug] = match
-    switch (prefix) {
-      case 'articles':
-        page = 'article'
-        args = {idSlug: slug}
-        break
-      case 'pages':
-        page = 'page'
-        args = {slug}
-        break
-      case 'questions':
-        page = 'question'
-        args = {idSlug: slug}
-        break
-    }
+  if (pathParts.length === 3) {
+    page = 'article'
+    args = {category: pathParts[1], idSlug: pathParts[2]}
+  } else if (pathParts.length === 2) {
+    page = 'page'
+    args = {slug: pathParts[1]}
   }
 
   return [page, args]

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "84bdbe0f089b22cb62e8581c767c4b9b",
+    "content-hash": "afc3fe79c7ede2e4480dc30522c72069",
     "packages": [
         {
             "name": "composer/installers",
@@ -223,26 +223,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/amazon-web-services/"
-        },
-        {
-            "name": "wpackagist-plugin/custom-post-type-permalinks",
-            "version": "3.1.3",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/custom-post-type-permalinks/",
-                "reference": "tags/3.1.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/custom-post-type-permalinks.3.1.3.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/custom-post-type-permalinks/"
         },
         {
             "name": "wpackagist-plugin/elasticpress",

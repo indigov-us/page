@@ -7,7 +7,6 @@ import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import Grid from '../components/grid'
 import Page from '../components/page'
-import linkTo from '../lib/link-to'
 import {themeId} from '../lib/theme'
 import TwitterTimeline from '../components/twitter-timeline'
 
@@ -17,13 +16,8 @@ type Props = {
       edges: Array<{
         node: {
           excerpt: string,
-          featuredImage?: {
-            altText: string,
-            sourceUrl: string
-          },
           id: string,
-          pageId: string,
-          slug: string,
+          link: string,
           title: string
         }
       }>
@@ -32,24 +26,8 @@ type Props = {
       edges: Array<{
         node: {
           excerpt: string,
-          featuredImage?: {
-            altText: string,
-            sourceUrl: string
-          },
           id: string,
-          postId: string,
-          slug: string,
-          title: string
-        }
-      }>
-    },
-    questions?: {
-      edges: Array<{
-        node: {
-          content: string,
-          id: string,
-          questionId: string,
-          slug: string,
+          link: string,
           title: string
         }
       }>
@@ -60,7 +38,7 @@ type Props = {
   }
 }
 
-const HomePage = ({data: {pages, posts, questions, theme}}: Props) => {
+const HomePage = ({data: {pages, posts, theme}}: Props) => {
   return (
     <Page
       hero={{showQuickLinks: true}}
@@ -69,19 +47,11 @@ const HomePage = ({data: {pages, posts, questions, theme}}: Props) => {
       <div className='container'>
         <Grid
           items={posts && posts.edges}
-          itemRoute={({postId, slug}) => linkTo('article', {idSlug: `${postId}-${slug}`})}
           title='Articles'
         />
 
         <Grid
-          items={questions && questions.edges}
-          itemRoute={({questionId, slug}) => linkTo('question', {idSlug: `${questionId}-${slug}`})}
-          title='Questions'
-        />
-
-        <Grid
           items={pages && pages.edges}
-          itemRoute={({slug}) => linkTo('page', {slug})}
           title='Pages'
         />
 
@@ -99,13 +69,8 @@ export default WithCustomized(WithApollo(graphql(gql(`
       edges {
         node {
           excerpt
-          featuredImage {
-            altText
-            sourceUrl
-          }
           id
-          pageId
-          slug
+          link
           title
         }
       }
@@ -114,24 +79,8 @@ export default WithCustomized(WithApollo(graphql(gql(`
       edges {
         node {
           excerpt
-          featuredImage {
-            altText
-            sourceUrl
-          }
           id
-          postId
-          slug
-          title
-        }
-      }
-    }
-    questions {
-      edges {
-        node {
-          content
-          id
-          questionId
-          slug
+          link
           title
         }
       }

@@ -1,17 +1,23 @@
 // @flow
 
 import React from 'react'
+
 import GridItem from '../components/grid-item'
+import linkTo from '../lib/link-to'
 
 type Props = {
-  title?: string,
-  itemRoute: any => any,
   items?: Array<{
-    node: Object
-  }>
+    node: {
+      excerpt: string,
+      id: string,
+      link: string,
+      title: string
+    }
+  }>,
+  title?: string
 }
 
-const Grid = ({items, itemRoute, title}: Props) => (
+const Grid = ({items, title}: Props) => (
   <div>
     {title && (
       <div
@@ -28,7 +34,7 @@ const Grid = ({items, itemRoute, title}: Props) => (
         >
           <GridItem
             description={node.excerpt}
-            route={itemRoute(node)}
+            route={linkTo(node.link)}
             title={node.title}
           />
         </div>

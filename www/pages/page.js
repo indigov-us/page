@@ -17,8 +17,7 @@ type Props = {
         node: {
           content: string,
           id: string,
-          pageId: string,
-          slug: string,
+          link: string,
           title: string
         }
       }>
@@ -37,7 +36,7 @@ const PagePage = ({data: {pages}}: Props) => {
         {node && (
           <article>
             <h1 className='mb2 f-title'>
-              <Link route={linkTo('question', {idSlug: `${node.pageId}-${node.slug}`})}>
+              <Link route={linkTo(node.link)}>
                 <a
                   className='black no-underline'
                   dangerouslySetInnerHTML={{__html: node.title}}
@@ -68,8 +67,7 @@ export default WithCustomized(WithApollo(graphql(gql(`
         node {
           content
           id
-          pageId
-          slug
+          link
           title
         }
       }

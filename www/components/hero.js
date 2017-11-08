@@ -1,7 +1,7 @@
 // @flow
 
 import classNames from 'classnames'
-import {Link} from 'next-url-prettifier'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
@@ -12,7 +12,6 @@ import HeroQuickLink from '../components/hero-quick-link'
 import HeroSearch from '../components/hero-search'
 import WithModal from '../hoc/with-modal'
 import {themeId} from '../lib/theme'
-import linkTo from '../lib/link-to'
 import ContactComponent from '../components/contact'
 
 const navHeight = 38 // px
@@ -69,7 +68,7 @@ const Hero = ({data, showQuickLinks}: Props, {customized, openMobileMenu}: Conte
       <div className='container relative'>
         <nav className='cf pt3'>
           <div className='fl w-70 w-30-ns h-100'>
-            <Link route={linkTo('index')}>
+            <Link href='/'>
               <a className='white b f4 no-underline nav-lh nowrap'>
                 {customizedFullName || (data && data.theme && data.theme.fullName) || 'Name'}
               </a>

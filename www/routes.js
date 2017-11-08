@@ -1,33 +1,20 @@
 const UrlPrettifier = require('next-url-prettifier').default
 
 const routes = [{
+  page: 'category',
+  prettyUrl: ({slug = ''}) => `/category/${slug}/`,
+  prettyUrlPatterns: '/category/:slug/'
+}, {
   page: 'article',
-  prettyUrl: ({idSlug = ''}) => `/articles/${idSlug}/`,
-  prettyUrlPatterns: [
-    '/articles/:idSlug/'
-  ]
-}, {
-  page: 'question',
-  prettyUrl: ({idSlug = ''}) => `/questions/${idSlug}/`,
-  prettyUrlPatterns: [
-    '/questions/:idSlug/'
-  ]
-}, {
-  page: 'page',
-  prettyUrl: ({slug = ''}) => `/pages/${slug}/`,
-  prettyUrlPatterns: [
-    '/pages/:slug/'
-  ]
-}, {
-  page: 'search',
-  prettyUrl: '/search/'
+  prettyUrl: ({category = '', idSlug = ''}) => `/${category}/${idSlug}/`,
+  prettyUrlPatterns: '/:category/:idSlug/'
 }, {
   page: 'contact',
-  prettyUrl: '/contact/'
+  prettyUrl: '/contact'
 }, {
-  page: 'index',
-  prettyUrl: '/',
-  prettyUrlPatterns: ['/']
+  page: 'page',
+  prettyUrl: ({slug = ''}) => `/${slug}/`,
+  prettyUrlPatterns: '/:slug/'
 }]
 
 const urlPrettifier = new UrlPrettifier(routes)

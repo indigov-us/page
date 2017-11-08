@@ -38,12 +38,23 @@ app.prepare().then(() => {
   // for parsing the body on wordpress's customizer calls
   server.use(bodyParser.urlencoded({extended: true}))
 
+  // because of the wildcard /:slug route, we have to manually match
+  // certain things before we hit the routes from routes.js
+  server.use((req, res, next) => {
+    if (/\.js|\.css|_next|favicon\.ico/.test(req.path)) {
+      return handle(req, res)
+    }
+    next()
+  })
+
+  // dynamic routes
   Router.forEachPattern((page, pattern, defaultParams) => (
     server.use(pattern, (req, res) => (
       app.render(req, res, `/${page}`, Object.assign({}, defaultParams, req.query, req.params))
     )
   )))
 
+  // let next handle everything else
   server.get('*', (req, res) => handle(req, res))
 
   server.listen(3000, (err) => {

@@ -28,15 +28,6 @@ type Props = {
           title: string
         }
       }>
-    },
-    questions?: {
-      edges: Array<{
-        node: {
-          id: string,
-          link: string,
-          title: string
-        }
-      }>
     }
   }
 }
@@ -67,7 +58,7 @@ class HeroSearch extends Component<Props, State> {
     const {data} = this.props
 
     let items = []
-    for (let type of ['pages', 'posts', 'questions']) {
+    for (let type of ['pages', 'posts']) {
       if (data && data[type] && data[type].edges.length) {
         items = items.concat(data[type].edges)
       }
@@ -118,15 +109,6 @@ export default graphql(gql(`
       }
     }
     posts (where: {search: $q}) {
-      edges {
-        node {
-          id
-          link
-          title
-        }
-      }
-    }
-    questions (where: {search: $q}) {
       edges {
         node {
           id

@@ -6,7 +6,8 @@ require_once( 'inc/settings.php' );
 
 add_theme_support( 'post-thumbnails' );
 
+// set default permalink structure for all sites
 add_action( 'init', function () {
   global $wp_rewrite;
-  $wp_rewrite->page_structure = $wp_rewrite->root . 'pages/%pagename%';
+  $wp_rewrite->set_permalink_structure( '/%category%/%post_id%-%postname%' );
 } );
