@@ -1,7 +1,7 @@
 // @flow
 
 import classNames from 'classnames'
-import Link from 'next/link'
+import {Link} from 'next-url-prettifier'
 import PropTypes from 'prop-types'
 import React from 'react'
 import {gql, graphql} from 'react-apollo'
@@ -11,6 +11,7 @@ import HeroNavButton from '../components/hero-nav-button'
 import HeroQuickLink from '../components/hero-quick-link'
 import HeroSearch from '../components/hero-search'
 import WithModal from '../hoc/with-modal'
+import linkTo from '../lib/link-to'
 import {themeId} from '../lib/theme'
 import ContactComponent from '../components/contact'
 
@@ -18,6 +19,15 @@ const navHeight = 38 // px
 
 export type Props = {
   data: {
+    categories?: {
+      edges: Array<{
+        node: {
+          id: string,
+          link: string,
+          name: string
+        }
+      }>
+    },
     quickLinks?: {
       edges: Array<{
         node: {
@@ -48,7 +58,7 @@ type Context = {
   openMobileMenu: any => any,
 }
 
-const Hero = ({data: {quickLinks, theme}, showQuickLinks}: Props, {customized, openMobileMenu}: Context) => {
+const Hero = ({data: {categories, quickLinks, theme}, showQuickLinks}: Props, {customized, openMobileMenu}: Context) => {
   const customizedFullName = customized && customized.full_name
   const customizedHeroHeadline = customized && customized.hero_headline
   const customizedHeroImage = customized && customized.hero_image
@@ -68,7 +78,7 @@ const Hero = ({data: {quickLinks, theme}, showQuickLinks}: Props, {customized, o
       <div className='container relative'>
         <nav className='cf pt3'>
           <div className='fl w-70 w-30-ns h-100'>
-            <Link href='/'>
+            <Link route={linkTo('index')}>
               <a className='white b f4 no-underline nav-lh nowrap'>
                 {customizedFullName || (theme && theme.fullName) || 'Name'}
               </a>
@@ -76,11 +86,19 @@ const Hero = ({data: {quickLinks, theme}, showQuickLinks}: Props, {customized, o
           </div>
           <div className='fl w-30 w-70-ns tr h-100'>
             <div className='dn dib-l h-100'>
-              <HeroNavButton>{'Home'}</HeroNavButton>
-              <HeroNavButton>{'Polls'}</HeroNavButton>
-              <HeroNavButton>{'Blog'}</HeroNavButton>
-              <HeroNavButton>{'Press'}</HeroNavButton>
-              <HeroNavButton>{'FAQ'}</HeroNavButton>
+              <Link route={linkTo('index')}>
+                <a><HeroNavButton>{'Home'}</HeroNavButton></a>
+              </Link>
+
+              {categories && categories.edges.map(({node: {id, link, name}}) => (
+                <Link
+                  key={id}
+                  route={linkTo(link)}
+                >
+                  <a><HeroNavButton>{name}</HeroNavButton></a>
+                </Link>
+              ))}
+
               <WithModal
                 button={<HeroNavButton opaque>{'Contact'}</HeroNavButton>}
                 className='dib'
@@ -143,6 +161,15 @@ Hero.displayName = 'Hero'
 
 export default graphql(gql(`
   query {
+    categories {
+      edges {
+        node {
+          id
+          link
+          name
+        }
+      }
+    }
     quickLinks {
       edges {
         node {

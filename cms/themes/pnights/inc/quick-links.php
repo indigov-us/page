@@ -1,12 +1,5 @@
 <?php
 
-/**
-  * Plugin Name: Quick Links
-  * Description: Adds ability to edit quick links on homepage.
-  * Author: Ethan Jon
-  * Author URI: http://e10jc.com
-*/
-
 use PostTypes\PostType;
 
 add_action( 'after_setup_theme', function () {

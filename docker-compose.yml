@@ -72,7 +72,6 @@ services:
       WP_DEBUG: 'false'
     volumes:
       - ./cms/plugins/offices:/var/www/html/wp-content/plugins/offices
-      - ./cms/plugins/quick-links:/var/www/html/wp-content/plugins/quick-links
       - ./cms/themes/pnights:/var/www/html/wp-content/themes/pnights
       - ./cms/uploads:/var/www/html/wp-content/uploads
 

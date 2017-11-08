@@ -2,6 +2,7 @@
 
 require_once( 'inc/customizer.php' );
 require_once( 'inc/graphql.php' );
+require_once( 'inc/quick-links.php' );
 require_once( 'inc/settings.php' );
 
 add_theme_support( 'post-thumbnails' );

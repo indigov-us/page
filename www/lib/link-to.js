@@ -16,8 +16,13 @@ const extractPageAndArgsFromLink = (link: string) => {
   const pathParts = url.pathname.split('/')
 
   if (pathParts.length === 3) {
-    page = 'article'
-    args = {category: pathParts[1], idSlug: pathParts[2]}
+    if (pathParts[1] === 'category') {
+      page = 'category'
+      args = {slug: pathParts[2]}
+    } else {
+      page = 'article'
+      args = {category: pathParts[1], idSlug: pathParts[2]}
+    }
   } else if (pathParts.length === 2) {
     page = 'page'
     args = {slug: pathParts[1]}
