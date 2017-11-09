@@ -10,9 +10,12 @@ const openTransitionDuration = 300 // in ms
 const closeTransitionDuration = 200 // in ms
 
 type Props = {
-  button: any,
+  afterClose?: () => any,
+  button?: any,
   children: any,
-  className?: string
+  className?: string,
+  isOpen?: boolean,
+  onMount?: ({closeModal: () => any, openModal: () => any}) => any
 }
 
 type State = {
@@ -20,17 +23,31 @@ type State = {
 }
 
 class WithModal extends Component<Props, State> {
-  constructor () {
-    super()
-    this.state = {isOpen: false}
+  constructor (props: Props) {
+    super(props)
+    this.state = {isOpen: !!props.isOpen}
   }
 
   closeModal = () => {
     this.setState(closedModal)
+
+    const {afterClose} = this.props
+    if (afterClose) {
+      afterClose()
+    }
   }
 
   openModal = () => {
     this.setState(openedModal)
+  }
+
+  componentDidMount () {
+    const {onMount} = this.props
+
+    if (onMount) {
+      const {closeModal, openModal} = this
+      onMount({closeModal, openModal})
+    }
   }
 
   render () {

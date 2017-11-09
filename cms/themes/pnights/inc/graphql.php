@@ -26,6 +26,14 @@ add_action( 'graphql_theme_fields', function( $fields ) {
       return $mod ? $mod : NULL;
     },
   ];
+  $fields['emailModalGate'] = [
+    'type' => \WPGraphQL\Types::boolean(),
+    'description' => __( 'Show the email modal gate?' ),
+    'resolve' => function( ) {
+      $mod = get_theme_mod( 'email_modal_gate' );
+      return $mod ? $mod : NULL;
+    },
+  ];
   $fields['heroHeadline'] = [
     'type' => \WPGraphQL\Types::string(),
     'description' => __( 'The main text in the hero.' ),

@@ -39,7 +39,7 @@ const HeroNavMenu = ({html}: Props) => (
       }
 
       .hero-nav-menu ul ul.sub-menu {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.75);
         display: none;
         position: absolute;
         text-align: center;

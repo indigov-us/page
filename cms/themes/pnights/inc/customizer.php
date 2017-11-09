@@ -51,6 +51,17 @@ add_action( 'customize_register', function( $wp_customize ) {
     ]
   ) );
 
+  // email_modal_gate
+  $wp_customize->add_setting( 'email_modal_gate' );
+  $wp_customize->add_control( new WP_Customize_Control(
+    $wp_customize,
+    'email_modal_gate', [
+      'label' => 'Show email modal gate?',
+      'type' => 'checkbox',
+      'section' => 'title_tagline'
+    ]
+  ) );
+
   // full_name
   $wp_customize->add_setting( 'full_name' );
   $wp_customize->add_control( new WP_Customize_Control(

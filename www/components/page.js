@@ -10,6 +10,7 @@ import Footer from '../components/footer'
 import Hero from '../components/hero'
 import type {Props as HeroProps} from '../components/hero'
 import NewsletterSignUp from '../components/newsletter-sign-up'
+import NewsletterModal from '../components/newsletter-modal'
 import WithMobileMenu from '../hoc/with-mobile-menu'
 import {defaultPrimaryHex, themeId} from '../lib/theme'
 
@@ -17,6 +18,7 @@ type Props = {
   children: any,
   data: {
     theme?: {
+      emailModalGate: boolean,
       gaViewId: ?string,
       primaryHex: ?string
     }
@@ -101,6 +103,8 @@ class Page extends Component<Props> {
           <Footer />
         </WithMobileMenu>
 
+        {theme && theme.emailModalGate && <NewsletterModal />}
+
         {/* additional tags and classes */}
         <style
           global
@@ -137,6 +141,7 @@ class Page extends Component<Props> {
 export default graphql(gql(`
   query {
     theme (id: "${themeId}") {
+      emailModalGate
       gaViewId
       primaryHex
     }
