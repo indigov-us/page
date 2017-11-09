@@ -14,6 +14,10 @@ type Props = {
       edges: Array<{
         node: {
           content: string,
+          featuredImage?: {
+            altText: string,
+            sourceUrl: string
+          },
           id: string,
           link: string,
           title: string
@@ -41,6 +45,13 @@ const PagePage = ({data: {pages}}: Props) => {
               />
             </h1>
 
+            {node.featuredImage && (
+              <img
+                className='db'
+                src={node.featuredImage && node.featuredImage.sourceUrl}
+              />
+            )}
+
             <div
               className='lh-copy'
               dangerouslySetInnerHTML={{__html: node.content}}
@@ -63,6 +74,10 @@ export default WithCustomized(WithApollo(graphql(gql(`
       edges {
         node {
           content
+          featuredImage {
+            altText
+            sourceUrl
+          }
           id
           link
           title
