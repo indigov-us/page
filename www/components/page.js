@@ -112,6 +112,7 @@ class Page extends Component<Props> {
           .hover-b--white:focus, .hover-b--white:hover { border-color: #fff }
           .no-p-m > p { margin: 0 }
           .v-center { top: 50%; transform: translateY(-50%) }
+          .touch { -webkit-overflow-scrolling: touch }
 
           @media (min-width: 64em) {
             .container { margin: 0 auto }
