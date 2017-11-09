@@ -9,26 +9,40 @@ import WithSidebar from '../hoc/with-sidebar'
 import Grid from '../components/grid'
 import Page from '../components/page'
 
+type Categories = {
+  edges: Array<{
+    node: {
+      children: {
+        edges: Array<{
+          node: {
+            children: {
+              edges: Array<{
+                node: {
+                  id: string,
+                  link: string,
+                  name: string,
+                  slug: string
+                }
+              }>
+            },
+            id: string,
+            link: string,
+            name: string,
+            slug: string
+          }
+        }>
+      },
+      id: string,
+      link: string,
+      name: string,
+      slug: string
+    }
+  }>
+}
+
 type Props = {
   data: {
-    categories?: {
-      edges: Array<{
-        node: {
-          children: {
-            edges: Array<{
-              node: {
-                id: string,
-                link: string,
-                name: string
-              }
-            }>
-          },
-          id: string,
-          link: string,
-          name: string
-        }
-      }>
-    },
+    categories?: Categories,
     posts?: {
       edges: Array<{
         node: {
@@ -45,10 +59,26 @@ type Props = {
   }
 }
 
-const CategoryPage = ({data: {categories, posts}, query: {subcategories}}: Props) => {
-  const node = categories && categories.edges.length && categories.edges[0].node
+const getCategoryFromTree = (categories?: Categories, {subcategories}: {subcategories: string}) => {
+  // category not found
+  if (!categories || !categories.edges.length) return
 
-  // TODO: find correct category/subcategory by splitting subcategories
+  // e.g., /category/primary
+  let {node} = categories.edges[0]
+  if (!subcategories) return node
+
+  // e.g., /category/primary/secondary or /category/primary/secondary/tertiary
+  for (let subcategory of subcategories.split('/')) {
+    const child: any = node.children.edges.find(({node: {slug}}) => slug === subcategory)
+    if (!child) break
+    node = child.node
+  }
+
+  return node
+}
+
+const CategoryPage = ({data: {categories, posts}, query: {subcategories}}: Props) => {
+  const node = getCategoryFromTree(categories, {subcategories})
 
   return (
     <Page
@@ -66,7 +96,7 @@ const CategoryPage = ({data: {categories, posts}, query: {subcategories}}: Props
             </h1>
 
             <h2>{'Subcategories'}</h2>
-            {node.children.edges.map(({node: {id, link, name}}) => (
+            {node.children && node.children.edges.map(({node: {id, link, name}}) => (
               <div key={id}>
                 <a href={link}>
                   {name}
@@ -88,7 +118,14 @@ const CategoryPage = ({data: {categories, posts}, query: {subcategories}}: Props
 CategoryPage.displayName = 'CategoryPage'
 
 export default WithCustomized(WithApollo(graphql(gql(`
-  query ($slug: String) {
+  fragment categoryFields on Category {
+    id
+    link
+    name
+    slug
+  }
+
+  query ($slug: String, $exactSlug: String) {
     categories (
       first: 1,
       where: {
@@ -103,27 +140,21 @@ export default WithCustomized(WithApollo(graphql(gql(`
                 children {
                   edges {
                     node {
-                      id
-                      link
-                      name
+                      ...categoryFields
                     }
                   }
                 }
-                id
-                link
-                name
+                ...categoryFields
               }
             }
           }
-          id
-          link
-          name
+          ...categoryFields
         }
       }
     }
     posts (
       first: 10,
-      where: {categoryName: $slug}
+      where: {categoryName: $exactSlug}
     ) {
       edges {
         node {
@@ -136,5 +167,12 @@ export default WithCustomized(WithApollo(graphql(gql(`
     }
   }
 `), {
-  options: ({query: {slug}}: {query: {slug: string}}) => ({variables: {slug}})
+  options: ({query: {slug, subcategories}}: {query: {slug: string, subcategories: ?string}}) => {
+    return {
+      variables: {
+        exactSlug: subcategories ? subcategories.split('/').slice(-1)[0] : slug,
+        slug
+      }
+    }
+  }
 })(CategoryPage)))
