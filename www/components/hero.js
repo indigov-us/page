@@ -6,12 +6,10 @@ import React from 'react'
 import {gql, graphql} from 'react-apollo'
 import OpenMobileMenuIcon from 'react-icons/lib/io/navicon'
 
-import HeroNavButton from '../components/hero-nav-button'
+import HeroNavMenu from '../components/hero-nav-menu'
 import HeroQuickLink from '../components/hero-quick-link'
 import HeroSearch from '../components/hero-search'
-import WithModal from '../hoc/with-modal'
 import {themeId} from '../lib/theme'
-import ContactComponent from '../components/contact'
 
 const navHeight = 38 // px
 
@@ -40,7 +38,8 @@ export type Props = {
       fullName: ?string,
       heroHeadline?: string,
       heroImage: ?string,
-      heroImageTint: ?(0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90)
+      heroImageTint: ?(0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90),
+      primaryMenu: ?string
     }
   },
   showQuickLinks?: boolean
@@ -84,26 +83,8 @@ const Hero = ({data: {categories, quickLinks, theme}, showQuickLinks}: Props, {c
             </a>
           </div>
           <div className='fl w-30 w-70-ns tr h-100'>
-            <div className='dn dib-l h-100'>
-              <a href='/'>
-                <HeroNavButton>{'Home'}</HeroNavButton>
-              </a>
-
-              {categories && categories.edges.map(({node: {id, link, name}}) => (
-                <a
-                  href={link}
-                  key={id}
-                >
-                  <HeroNavButton>{name}</HeroNavButton>
-                </a>
-              ))}
-
-              <WithModal
-                button={<HeroNavButton opaque>{'Contact'}</HeroNavButton>}
-                className='dib'
-              >
-                <ContactComponent />
-              </WithModal>
+            <div className='dn dib-l h-100 nav-lh'>
+              <HeroNavMenu html={theme && theme.primaryMenu} />
             </div>
             <div className='dn-l h-100 relative'>
               <a
@@ -111,14 +92,14 @@ const Hero = ({data: {categories, quickLinks, theme}, showQuickLinks}: Props, {c
                 href='javascript:void(0)'
                 onClick={openMobileMenu}
               >
-                <OpenMobileMenuIcon size={34} />
+                <OpenMobileMenuIcon size={navHeight} />
               </a>
             </div>
           </div>
         </nav>
 
-        <div className='tc pv5'>
-          <div className='f2 f1-ns f-title'>
+        <div className='tc pv4 pv5-l'>
+          <div className='f3 f2-m f1-l f-title'>
             {customizedHeroHeadline || (theme && theme.heroHeadline) || 'Have a question? Let me help.'}
           </div>
           <div className='mv3'>
@@ -160,15 +141,6 @@ Hero.displayName = 'Hero'
 
 export default graphql(gql(`
   query {
-    categories {
-      edges {
-        node {
-          id
-          link
-          name
-        }
-      }
-    }
     quickLinks {
       edges {
         node {
@@ -184,6 +156,7 @@ export default graphql(gql(`
       heroHeadline
       heroImage
       heroImageTint
+      primaryMenu
     }
   }
 `))(Hero)

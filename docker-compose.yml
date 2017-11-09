@@ -28,8 +28,6 @@ services:
     command: yarn run dev
     environment:
       NODE_ENV: development
-      SESSION_NAME: pnights
-      SESSION_SECRET: 123
     volumes:
       - /usr/src/app/node_modules
       - ./www:/usr/src/app

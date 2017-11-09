@@ -58,6 +58,17 @@ add_action( 'graphql_theme_fields', function( $fields ) {
       return $mod ? $mod : NULL;
     },
   ];
+  $fields['primaryMenu'] = [
+    'type' => \WPGraphQL\Types::string(),
+    'description' => __( 'The primary menu as HTML.' ),
+    'resolve' => function( ) {
+      $mod = wp_nav_menu( [
+        'echo' => false,
+        'theme_location' => 'primary'
+      ] );
+      return $mod ? $mod : NULL;
+    },
+  ];
 
   return $fields;
 } );

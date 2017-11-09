@@ -6,7 +6,6 @@ require('isomorphic-fetch')
 
 const bodyParser = require('body-parser')
 const express = require('express')
-const session = require('express-session')
 const helmet = require('helmet')
 const next = require('next')
 
@@ -30,10 +29,8 @@ app.prepare().then(() => {
     })
   }
 
-  server.use(session({
-    name: process.env.SESSION_NAME,
-    secret: process.env.SESSION_SECRET
-  }))
+  // route things like /favicon.ico to /static/favicon.ico
+  server.use(express.static('static'))
 
   // for parsing the body on wordpress's customizer calls
   server.use(bodyParser.urlencoded({extended: true}))

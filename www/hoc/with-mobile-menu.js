@@ -3,12 +3,20 @@
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import React, {Component} from 'react'
+import {gql, graphql} from 'react-apollo'
 import CloseIcon from 'react-icons/lib/io/ios-close'
 
+import MobileNavMenu from '../components/mobile-nav-menu'
+import {themeId} from '../lib/theme'
 import {closedMenu, openedMenu} from '../states/with-mobile-menu'
 
 type Props = {
-  children: any
+  children: any,
+  data: {
+    theme?: {
+      primaryMenu: string
+    }
+  }
 }
 
 type State = {
@@ -63,7 +71,7 @@ class MobileMenu extends Component<Props, State> {
   mobileMenuNode: ?Object
 
   render () {
-    const {children} = this.props
+    const {children, data: {theme}} = this.props
     const {isOpen} = this.state
 
     return (
@@ -97,7 +105,7 @@ class MobileMenu extends Component<Props, State> {
               <div className='fl w-80' />
             </div>
 
-            <div>{'this is the menu'}</div>
+            <MobileNavMenu html={theme && theme.primaryMenu} />
           </div>
         </div>
 
@@ -120,4 +128,10 @@ class MobileMenu extends Component<Props, State> {
   }
 }
 
-export default MobileMenu
+export default graphql(gql(`
+  query {
+    theme (id: "${themeId}") {
+      primaryMenu
+    }
+  }
+`))(MobileMenu)

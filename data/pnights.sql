@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.1.28-MariaDB-1~jessie)
 # Database: pnights
-# Generation Time: 2017-11-08 21:33:14 +0000
+# Generation Time: 2017-11-09 14:28:10 +0000
 # ************************************************************
 
 
@@ -230,7 +230,7 @@ VALUES
 	(107,'theme_mods_twentyseventeen','a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1508274492;s:4:\"data\";a:4:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-2\";i:4;s:12:\"categories-2\";i:5;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}}}}','yes'),
 	(109,'cron','a:3:{i:1510240959;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1510260838;a:1:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}','yes'),
 	(128,'current_theme','','yes'),
-	(129,'theme_mods_pnights','a:4:{i:0;b:0;s:18:\"custom_css_post_id\";i:-1;s:9:\"full_name\";s:12:\"Ethan Czahor\";s:10:\"hero_image\";s:68:\"http://czahor.house.dev/wp-content/uploads/sites/2/2017/10/ethan.jpg\";}','yes'),
+	(129,'theme_mods_pnights','a:5:{i:0;b:0;s:18:\"custom_css_post_id\";i:-1;s:9:\"full_name\";s:12:\"Ethan Czahor\";s:10:\"hero_image\";s:68:\"http://czahor.house.dev/wp-content/uploads/sites/2/2017/10/ethan.jpg\";s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}}','yes'),
 	(130,'theme_switched','','yes'),
 	(143,'fresh_site','0','yes'),
 	(144,'post_count','3','yes'),
@@ -256,7 +256,8 @@ VALUES
 	(186,'_transient_feed_mod_d117b5738fbd35bd8c0391cda1f2b5d9','1510176618','no'),
 	(187,'_transient_timeout_dash_v2_88ae138922fe95674369b1cb3d215a2b','1510219818','no'),
 	(188,'_transient_dash_v2_88ae138922fe95674369b1cb3d215a2b','<div class=\"rss-widget\"><ul><li><a class=\'rsswidget\' href=\'https://wordpress.org/news/2017/11/wordpress-4-9-release-candidate-2/\'>WordPress 4.9 Release Candidate 2</a></li></ul></div><div class=\"rss-widget\"><ul><li><a class=\'rsswidget\' href=\'https://wptavern.com/jetpack-5-5-removes-syntax-highlighting-and-gallery-widget-for-compatibility-with-upcoming-wordpress-4-9-release\'>WPTavern: Jetpack 5.5 Removes Syntax Highlighting and Gallery Widget for Compatibility with Upcoming WordPress 4.9 Release</a></li><li><a class=\'rsswidget\' href=\'https://heropress.com/essays/from-the-outskirts-to-an-insider/#utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=from-the-outskirts-to-an-insider\'>HeroPress: From the Outskirts to an Insider</a></li><li><a class=\'rsswidget\' href=\'https://wptavern.com/how-to-whitelist-comments-in-wordpress\'>WPTavern: How to Whitelist Comments in WordPress</a></li></ul></div>','no'),
-	(193,'category_children','a:1:{i:2;a:3:{i:0;i:3;i:1;i:4;i:2;i:5;}}','yes');
+	(193,'category_children','a:1:{i:2;a:3:{i:0;i:3;i:1;i:4;i:2;i:5;}}','yes'),
+	(194,'nav_menu_options','a:2:{i:0;b:0;s:8:\"auto_add\";a:0:{}}','yes');
 
 /*!40000 ALTER TABLE `wp_2_options` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -308,7 +309,47 @@ VALUES
 	(24,13,'_edit_lock','1510176617:1'),
 	(25,13,'_edit_last','1'),
 	(28,15,'_edit_lock','1510176634:1'),
-	(29,15,'_edit_last','1');
+	(29,15,'_edit_last','1'),
+	(39,18,'_menu_item_type','post_type'),
+	(40,18,'_menu_item_menu_item_parent','0'),
+	(41,18,'_menu_item_object_id','2'),
+	(42,18,'_menu_item_object','page'),
+	(43,18,'_menu_item_target',''),
+	(44,18,'_menu_item_classes','a:1:{i:0;s:0:\"\";}'),
+	(45,18,'_menu_item_xfn',''),
+	(46,18,'_menu_item_url',''),
+	(48,19,'_menu_item_type','taxonomy'),
+	(49,19,'_menu_item_menu_item_parent','0'),
+	(50,19,'_menu_item_object_id','2'),
+	(51,19,'_menu_item_object','category'),
+	(52,19,'_menu_item_target',''),
+	(53,19,'_menu_item_classes','a:1:{i:0;s:0:\"\";}'),
+	(54,19,'_menu_item_xfn',''),
+	(55,19,'_menu_item_url',''),
+	(57,20,'_menu_item_type','taxonomy'),
+	(58,20,'_menu_item_menu_item_parent','19'),
+	(59,20,'_menu_item_object_id','4'),
+	(60,20,'_menu_item_object','category'),
+	(61,20,'_menu_item_target',''),
+	(62,20,'_menu_item_classes','a:1:{i:0;s:0:\"\";}'),
+	(63,20,'_menu_item_xfn',''),
+	(64,20,'_menu_item_url',''),
+	(66,21,'_menu_item_type','taxonomy'),
+	(67,21,'_menu_item_menu_item_parent','19'),
+	(68,21,'_menu_item_object_id','5'),
+	(69,21,'_menu_item_object','category'),
+	(70,21,'_menu_item_target',''),
+	(71,21,'_menu_item_classes','a:1:{i:0;s:0:\"\";}'),
+	(72,21,'_menu_item_xfn',''),
+	(73,21,'_menu_item_url',''),
+	(75,22,'_menu_item_type','taxonomy'),
+	(76,22,'_menu_item_menu_item_parent','19'),
+	(77,22,'_menu_item_object_id','3'),
+	(78,22,'_menu_item_object','category'),
+	(79,22,'_menu_item_target',''),
+	(80,22,'_menu_item_classes','a:1:{i:0;s:0:\"\";}'),
+	(81,22,'_menu_item_xfn',''),
+	(82,22,'_menu_item_url','');
 
 /*!40000 ALTER TABLE `wp_2_postmeta` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -368,7 +409,12 @@ VALUES
 	(13,1,'2017-11-08 21:32:41','2017-11-08 21:32:41','The content.','Senior Services','','publish','open','open','','senior-services','','','2017-11-08 21:32:41','2017-11-08 21:32:41','',0,'http://czahor.house.dev/?p=13',0,'post','',0),
 	(14,1,'2017-11-08 21:32:41','2017-11-08 21:32:41','The content.','Senior Services','','inherit','closed','closed','','13-revision-v1','','','2017-11-08 21:32:41','2017-11-08 21:32:41','',13,'http://czahor.house.dev/uncategorized/14-13-revision-v1',0,'revision','',0),
 	(15,1,'2017-11-08 21:32:55','2017-11-08 21:32:55','The content.','Veteran Services','','publish','open','open','','veteran-services','','','2017-11-08 21:32:55','2017-11-08 21:32:55','',0,'http://czahor.house.dev/?p=15',0,'post','',0),
-	(16,1,'2017-11-08 21:32:55','2017-11-08 21:32:55','The content.','Veteran Services','','inherit','closed','closed','','15-revision-v1','','','2017-11-08 21:32:55','2017-11-08 21:32:55','',15,'http://czahor.house.dev/uncategorized/16-15-revision-v1',0,'revision','',0);
+	(16,1,'2017-11-08 21:32:55','2017-11-08 21:32:55','The content.','Veteran Services','','inherit','closed','closed','','15-revision-v1','','','2017-11-08 21:32:55','2017-11-08 21:32:55','',15,'http://czahor.house.dev/uncategorized/16-15-revision-v1',0,'revision','',0),
+	(18,1,'2017-11-09 14:26:24','2017-11-09 14:26:24',' ','','','publish','closed','closed','','18','','','2017-11-09 14:27:45','2017-11-09 14:27:45','',0,'http://czahor.house.dev/?p=18',5,'nav_menu_item','',0),
+	(19,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','19','','','2017-11-09 14:27:45','2017-11-09 14:27:45','',0,'http://czahor.house.dev/?p=19',1,'nav_menu_item','',0),
+	(20,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','20','','','2017-11-09 14:27:45','2017-11-09 14:27:45','',2,'http://czahor.house.dev/?p=20',2,'nav_menu_item','',0),
+	(21,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','21','','','2017-11-09 14:27:45','2017-11-09 14:27:45','',2,'http://czahor.house.dev/?p=21',3,'nav_menu_item','',0),
+	(22,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','22','','','2017-11-09 14:27:45','2017-11-09 14:27:45','',2,'http://czahor.house.dev/?p=22',4,'nav_menu_item','',0);
 
 /*!40000 ALTER TABLE `wp_2_posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -394,7 +440,12 @@ INSERT INTO `wp_2_term_relationships` (`object_id`, `term_taxonomy_id`, `term_or
 VALUES
 	(1,1,0),
 	(13,4,0),
-	(15,3,0);
+	(15,3,0),
+	(18,6,0),
+	(19,6,0),
+	(20,6,0),
+	(21,6,0),
+	(22,6,0);
 
 /*!40000 ALTER TABLE `wp_2_term_relationships` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -426,7 +477,8 @@ VALUES
 	(2,2,'category','',0,0),
 	(3,3,'category','',2,1),
 	(4,4,'category','',2,1),
-	(5,5,'category','',2,0);
+	(5,5,'category','',2,0),
+	(6,6,'nav_menu','',0,5);
 
 /*!40000 ALTER TABLE `wp_2_term_taxonomy` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -473,7 +525,8 @@ VALUES
 	(2,'Services','services',0),
 	(3,'Veterans','veterans',0),
 	(4,'Seniors','seniors',0),
-	(5,'Students','students',0);
+	(5,'Students','students',0),
+	(6,'Primary','primary',0);
 
 /*!40000 ALTER TABLE `wp_2_terms` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1618,7 +1671,7 @@ VALUES
 	(12,1,'wp_user_level','10'),
 	(13,1,'dismissed_wp_pointers','custom-post-type-permalinks-settings'),
 	(14,1,'show_welcome_panel','0'),
-	(15,1,'session_tokens','a:1:{s:64:\"908c21ebb88c0a3c0e2408b649ca2ad3081bb92c6ec5886eba77120e9e9dfb0d\";a:4:{s:10:\"expiration\";i:1510349417;s:2:\"ip\";s:10:\"172.18.0.6\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36\";s:5:\"login\";i:1510176617;}}'),
+	(15,1,'session_tokens','a:2:{s:64:\"908c21ebb88c0a3c0e2408b649ca2ad3081bb92c6ec5886eba77120e9e9dfb0d\";a:4:{s:10:\"expiration\";i:1510349417;s:2:\"ip\";s:10:\"172.18.0.6\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36\";s:5:\"login\";i:1510176617;}s:64:\"af39dcd75554541239ab5f229c0e2e055bbfedd766e16d6d756e5d113688638b\";a:4:{s:10:\"expiration\";i:1510410375;s:2:\"ip\";s:10:\"172.18.0.6\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36\";s:5:\"login\";i:1510237575;}}'),
 	(16,1,'wp_dashboard_quick_press_last_post_id','3'),
 	(17,1,'community-events-location','a:1:{s:2:\"ip\";s:10:\"172.18.0.0\";}'),
 	(18,1,'source_domain','house.dev'),
@@ -1634,7 +1687,9 @@ VALUES
 	(28,1,'wp_3_user-settings','libraryContent=browse'),
 	(29,1,'wp_3_user-settings-time','1508346203'),
 	(30,1,'wp_user-settings','libraryContent=browse'),
-	(31,1,'wp_user-settings-time','1508363471');
+	(31,1,'wp_user-settings-time','1508363471'),
+	(32,1,'managenav-menuscolumnshidden','a:5:{i:0;s:11:\"link-target\";i:1;s:11:\"css-classes\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";i:4;s:15:\"title-attribute\";}'),
+	(33,1,'metaboxhidden_nav-menus','a:1:{i:0;s:12:\"add-post_tag\";}');
 
 /*!40000 ALTER TABLE `wp_usermeta` ENABLE KEYS */;
 UNLOCK TABLES;

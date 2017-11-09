@@ -4,7 +4,7 @@ import React from 'react'
 
 import ArticleFeedback from '../components/article-feedback'
 
-const sidebarWidth = 200 // px
+const sidebarWidth = '200px'
 
 type Props = {
   children: any
@@ -40,8 +40,8 @@ const WithSidebar = ({children}: Props) => (
 
     <style jsx>{`
       @media (min-width: 30em) {
-        aside { width: ${sidebarWidth}px }
-        .main { margin-left: ${sidebarWidth}px; min-height: 300px; }
+        aside { width: ${sidebarWidth} }
+        .main { margin-left: ${sidebarWidth}; min-height: 300px; }
       }
     `}</style>
   </div>
