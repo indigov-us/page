@@ -7,7 +7,7 @@ import WithModal from '../hoc/with-modal'
 
 const cookieName = 'hide-newsletter-modal'
 
-const NewsletterModal = () => (
+const NewsletterGate = () => (
   <WithModal
     afterClose={() => {
       Cookies.set(cookieName, '1', {expires: 1})
@@ -22,4 +22,4 @@ const NewsletterModal = () => (
   </WithModal>
 )
 
-export default NewsletterModal
+export default NewsletterGate

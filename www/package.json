@@ -54,6 +54,7 @@
     ]
   },
   "standard": {
+    "globals": ["SyntheticEvent"],
     "ignore": [
       "flow-typed"
     ],
