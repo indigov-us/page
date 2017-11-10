@@ -5,11 +5,12 @@ import {gql, graphql} from 'react-apollo'
 
 import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
-import Grid from '../components/grid'
 import Page from '../components/page'
 import fragments from '../lib/fragments'
 import {themeId} from '../lib/theme'
 import TwitterTimeline from '../components/twitter-timeline'
+
+import type {Post} from '../lib/types'
 
 type Props = {
   data: {
@@ -25,11 +26,8 @@ type Props = {
     },
     posts?: {
       edges: Array<{
-        node: {
-          excerpt: string,
-          id: string,
-          link: string,
-          title: string
+        node: Post & {
+          excerpt: string
         }
       }>
     },
@@ -46,16 +44,6 @@ const HomePage = ({data: {pages, posts, theme}}: Props) => {
       title='Home'
     >
       <div className='container'>
-        <Grid
-          items={posts && posts.edges}
-          title='Articles'
-        />
-
-        <Grid
-          items={pages && pages.edges}
-          title='Pages'
-        />
-
         {theme && theme.twitterUsername && <TwitterTimeline username={theme.twitterUsername} />}
       </div>
     </Page>

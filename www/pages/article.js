@@ -9,22 +9,14 @@ import WithSidebar from '../hoc/with-sidebar'
 import Page from '../components/page'
 import fragments from '../lib/fragments'
 
+import type {Post} from '../lib/types'
+
 type Props = {
   data: {
     posts?: {
       edges: Array<{
-        node: {
-          author: {
-            name: string
-          },
-          content: string,
-          featuredImage?: {
-            altText: string,
-            sourceUrl: string
-          },
-          id: string,
-          link: string,
-          title: string
+        node: Post & {
+          content: string
         }
       }>
     }
