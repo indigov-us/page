@@ -5,6 +5,7 @@ import {gql, graphql} from 'react-apollo'
 
 import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
+import GridB from '../components/grid-b'
 import Page from '../components/page'
 import fragments from '../lib/fragments'
 import {themeId} from '../lib/theme'
@@ -44,6 +45,8 @@ const HomePage = ({data: {pages, posts, theme}}: Props) => {
       title='Home'
     >
       <div className='container'>
+        <div className='f4 mv3'>{'Recent updates'}</div>
+        <GridB posts={posts} />
         {theme && theme.twitterUsername && <TwitterTimeline username={theme.twitterUsername} />}
       </div>
     </Page>

@@ -6,6 +6,7 @@ export default {
       author {
         name
       }
+      date
       excerpt
       featuredImage {
         altText
@@ -13,6 +14,13 @@ export default {
       }
       id
       link
+      terms {
+        ...on Category {
+          id
+          name
+          link
+        }
+      }
       title
     }`
 }

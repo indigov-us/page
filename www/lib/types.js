@@ -4,11 +4,17 @@ export type Post = {
   author: {
     name: string
   },
-  featuredImage?: {
+  date: string,
+  featuredImage: ?{
     altText: string,
     sourceUrl: string
   },
   id: string,
   link: string,
+  terms: Array<{
+    id: string,
+    link: string,
+    name: string
+  }>,
   title: string
 }

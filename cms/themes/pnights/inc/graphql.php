@@ -86,3 +86,13 @@ add_action( 'graphql_response_status_code', function( $code ) {
   if ( $code == 403 ) return 200;
   return $code;
 } );
+
+// allow post excerpts to use content
+add_action( 'graphql_init', function () {
+  add_filter( 'get_the_excerpt', function ( $excerpt, $post ) {
+    if ( defined( 'GRAPHQL_REQUEST' ) && GRAPHQL_REQUEST ) {
+      return !empty( $excerpt ) ? $excerpt : wp_trim_words( $post->post_content, 120 );
+    }
+    return $excerpt;
+  }, 10, 2 );
+} );

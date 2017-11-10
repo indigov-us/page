@@ -115,6 +115,8 @@ class Page extends Component<Props> {
           .f-title { font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif }
           .hover-b--white:focus, .hover-b--white:hover { border-color: #fff }
           .no-p-m > p { margin: 0 }
+          .of-c { object-fit: cover }
+          .op-ct { object-position: center top }
           .v-center { top: 50%; transform: translateY(-50%) }
           .touch { -webkit-overflow-scrolling: touch }
 
