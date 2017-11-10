@@ -7,6 +7,7 @@ import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import Grid from '../components/grid'
 import Page from '../components/page'
+import fragments from '../lib/fragments'
 import {themeId} from '../lib/theme'
 import TwitterTimeline from '../components/twitter-timeline'
 
@@ -75,13 +76,10 @@ export default WithCustomized(WithApollo(graphql(gql(`
         }
       }
     }
-    posts {
+    posts (first: 5) {
       edges {
         node {
-          excerpt
-          id
-          link
-          title
+          ...post
         }
       }
     }
@@ -89,4 +87,5 @@ export default WithCustomized(WithApollo(graphql(gql(`
       twitterUsername
     }
   }
+  ${fragments.post}
 `))(HomePage)))

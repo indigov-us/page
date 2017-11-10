@@ -7,6 +7,7 @@ import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import WithSidebar from '../hoc/with-sidebar'
 import Page from '../components/page'
+import fragments from '../lib/fragments'
 
 type Props = {
   data: {
@@ -81,21 +82,13 @@ export default WithCustomized(WithApollo(graphql(gql(`
     ) {
       edges {
         node {
-          author {
-            name
-          }
           content
-          featuredImage {
-            altText
-            sourceUrl
-          }
-          id
-          link
-          title
+          ...post
         }
       }
     }
   }
+  ${fragments.post}
 `), {
   options: ({query: {idSlug}}: {query: {idSlug: string}}) => {
     const idMatch = idSlug.match(/^(\d+)/)
