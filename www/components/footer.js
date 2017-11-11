@@ -1,10 +1,13 @@
 // @flow
 
 import gql from 'graphql-tag'
+import PropTypes from 'prop-types'
 import React from 'react'
 import {graphql} from 'react-apollo'
 
 import Office from '../components/office'
+
+import type {OpenNewsletterSubscriptionModal} from '../hoc/with-newsletter-subscription-modal'
 
 type Props = {
   data: {
@@ -25,7 +28,11 @@ type Props = {
   }
 }
 
-const Footer = ({data: {offices}}: Props) => (
+type Context = {
+  openNewsletterSubscriptionModal: OpenNewsletterSubscriptionModal
+}
+
+const Footer = ({data: {offices}}: Props, {openNewsletterSubscriptionModal}: Context) => (
   <footer className='bg-dark-gray white'>
     <div className='container'>
       {offices && offices.edges.length > 0 && (
@@ -48,10 +55,23 @@ const Footer = ({data: {offices}}: Props) => (
     <hr className='mv4' />
 
     <div className='container pb4'>
+      <div className='mb3'>
+        <a
+          className='white'
+          href='javascript:void(0)'
+          onClick={openNewsletterSubscriptionModal}
+        >
+          {'Newsletter'}
+        </a>
+      </div>
       {'footer'}
     </div>
   </footer>
 )
+
+Footer.contextTypes = {
+  openNewsletterSubscriptionModal: PropTypes.func
+}
 
 Footer.displayName = 'Footer'
 

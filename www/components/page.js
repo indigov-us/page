@@ -11,7 +11,7 @@ import Footer from '../components/footer'
 import Hero from '../components/hero'
 import type {Props as HeroProps} from '../components/hero'
 import NewsletterSignUp from '../components/newsletter-sign-up'
-import NewsletterGate from '../components/newsletter-gate'
+import WithNewsletterSubscriptionModal from '../hoc/with-newsletter-subscription-modal'
 import WithMobileMenu from '../hoc/with-mobile-menu'
 import {defaultPrimaryHex, themeId} from '../lib/theme'
 
@@ -92,19 +92,19 @@ class Page extends Component<Props> {
           <title>{title || 'Home'}</title>
         </Head>
 
-        <WithMobileMenu>
-          <Hero {...hero} />
+        <WithNewsletterSubscriptionModal isGateEnabled={theme && theme.emailModalGate}>
+          <WithMobileMenu>
+            <Hero {...hero} />
 
-          <NewsletterSignUp />
+            <NewsletterSignUp />
 
-          <main>
-            {children}
-          </main>
+            <main>
+              {children}
+            </main>
 
-          <Footer />
-        </WithMobileMenu>
-
-        {theme && theme.emailModalGate && <NewsletterGate />}
+            <Footer />
+          </WithMobileMenu>
+        </WithNewsletterSubscriptionModal>
 
         {/* additional tags and classes */}
         <style
