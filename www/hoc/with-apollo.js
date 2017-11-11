@@ -29,7 +29,7 @@ export default (ComposedComponent: any) => {
     const composedInitialProps = ComposedComponent.getInitialProps
       ? await ComposedComponent.getInitialProps(ctx)
       : {}
-    const apolloProps = {}
+    let apolloProps = {}
 
     if (isNode) {
       const apolloClient = createApolloClient(null, {host})
@@ -49,9 +49,7 @@ export default (ComposedComponent: any) => {
 
       Head.rewind()
 
-      apolloProps.apollo = {
-        data: apolloClient.getInitialState().data
-      }
+      apolloProps = apolloClient.cache.extract()
     }
 
     return {

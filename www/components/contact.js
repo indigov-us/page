@@ -1,7 +1,8 @@
 // @flow
 
+import gql from 'graphql-tag'
 import React, {Component} from 'react'
-import {gql, graphql} from 'react-apollo'
+import {graphql} from 'react-apollo'
 import CalendarIcon from 'react-icons/lib/io/calendar'
 import ChatIcon from 'react-icons/lib/io/chatbox-working'
 import EmailIcon from 'react-icons/lib/io/ios-email-outline'

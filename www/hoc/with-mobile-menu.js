@@ -1,9 +1,10 @@
 // @flow
 
 import classNames from 'classnames'
+import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import React, {Component} from 'react'
-import {gql, graphql} from 'react-apollo'
+import {graphql} from 'react-apollo'
 import CloseIcon from 'react-icons/lib/io/ios-close'
 
 import MobileNavMenu from '../components/mobile-nav-menu'

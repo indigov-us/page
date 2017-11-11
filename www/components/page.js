@@ -1,10 +1,11 @@
 // @flow
 
+import gql from 'graphql-tag'
 import Head from 'next/head'
 import Router from 'next/router'
 import PropTypes from 'prop-types'
 import React, {Component} from 'react'
-import {gql, graphql} from 'react-apollo'
+import {graphql} from 'react-apollo'
 
 import Footer from '../components/footer'
 import Hero from '../components/hero'

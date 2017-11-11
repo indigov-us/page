@@ -17,7 +17,7 @@ type Props = {
 }
 
 const GridB = ({posts}: Props) => {
-  if (!posts) return
+  if (!posts) return null
 
   return (
     <div>

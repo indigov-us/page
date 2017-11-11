@@ -1,27 +1,28 @@
 // @flow
 
+import {InMemoryCache} from 'apollo-cache-inmemory'
+import {ApolloClient} from 'apollo-client'
+import {ApolloLink} from 'apollo-link'
+import {createHttpLink} from 'apollo-link-http'
 import isNode from 'detect-node'
-import {ApolloClient, createNetworkInterface} from 'react-apollo'
 
 let client
 
-const createClient = (initialState?: ?Object, {host}: {host: string}) => {
-  const networkInterface = createNetworkInterface({
-    ssrMode: isNode,
-    uri: isNode ? 'http://cms/graphql' : `${window.location.protocol}//${window.location.hostname}/graphql`
-  })
+const getURI = () => isNode ? 'http://cms/graphql' : `${window.location.protocol}//${window.location.hostname}/graphql`
 
-  networkInterface.use([{
-    applyMiddleware (req, next) {
-      if (isNode) req.options.headers = {host}
-      next()
-    }
-  }])
+const createClient = (initialState?: ?Object, {host}: {host: string}) => {
+  const httpLink = createHttpLink({uri: getURI()})
+  const middlewareLink = new ApolloLink((operation, forward) => {
+    operation.setContext({headers: {host}})
+    return forward(operation)
+  })
+  const link = middlewareLink.concat(httpLink)
 
   return new ApolloClient({
-    initialState,
-    ssrMode: isNode,
-    networkInterface
+    // connectToDevTools: !isNode,
+    link,
+    cache: new InMemoryCache().restore(initialState || {}),
+    ssrMode: isNode
   })
 }
 

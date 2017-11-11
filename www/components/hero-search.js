@@ -1,8 +1,9 @@
 // @flow
 
+import gql from 'graphql-tag'
 import Autocomplete from 'react-autocomplete'
 import React, {Component} from 'react'
-import {gql, graphql} from 'react-apollo'
+import {graphql} from 'react-apollo'
 
 import {updateS} from '../states/hero-search'
 

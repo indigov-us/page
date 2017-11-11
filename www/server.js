@@ -1,8 +1,7 @@
 // @flow
 
 // global fetch is required for react-apollo
-require('es6-promise').polyfill()
-require('isomorphic-fetch')
+require('isomorphic-unfetch')
 
 const bodyParser = require('body-parser')
 const express = require('express')
