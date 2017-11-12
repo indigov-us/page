@@ -18,16 +18,6 @@ add_action( 'customize_register', function( $wp_customize ) {
     ]
   ) );
 
-  // hero headline
-  $wp_customize->add_setting( 'hero_headline' );
-  $wp_customize->add_control( new WP_Customize_Control(
-    $wp_customize,
-    'hero_headline', [
-      'label' => 'Headline',
-      'section' => 'hero'
-    ]
-  ) );
-
   // hero image tint %
   $wp_customize->add_setting( 'hero_image_tint' );
   $wp_customize->add_control( new WP_Customize_Control(

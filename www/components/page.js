@@ -24,7 +24,7 @@ type Props = {
       primaryHex: ?string
     }
   },
-  hero?: HeroProps,
+  heroProps?: HeroProps,
   title?: string
 }
 
@@ -49,7 +49,7 @@ class Page extends Component<Props> {
   }
 
   render () {
-    const {children, data: {theme}, hero, title} = this.props
+    const {children, data: {theme}, heroProps, title} = this.props
     const {customized} = this.context
     const primaryHex = (customized && customized.primary_hex) || (theme && theme.primaryHex) || defaultPrimaryHex
     const gaViewId = theme && theme.gaViewId
@@ -94,7 +94,7 @@ class Page extends Component<Props> {
 
         <WithNewsletterSubscriptionModal isGateEnabled={theme && theme.emailModalGate}>
           <WithMobileMenu>
-            <Hero {...hero} />
+            <Hero {...heroProps} />
 
             <NewsletterSignUp />
 

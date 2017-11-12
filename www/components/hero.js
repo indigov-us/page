@@ -37,28 +37,28 @@ export type Props = {
     },
     theme?: {
       fullName: ?string,
-      heroHeadline?: string,
       heroImage: ?string,
       heroImageTint: ?(0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90),
       primaryMenu: ?string
     }
   },
-  showQuickLinks?: boolean
+  description?: string,
+  showQuickLinks?: boolean,
+  showSearch?: boolean,
+  title?: string
 }
 
 type Context = {
   customized?: {
     full_name?: string,
-    hero_headline?: string,
     hero_image?: string,
     hero_image_tint?: number
   },
   openMobileMenu: any => any,
 }
 
-const Hero = ({data: {categories, quickLinks, theme}, showQuickLinks}: Props, {customized, openMobileMenu}: Context) => {
+const Hero = ({data: {categories, quickLinks, theme}, description, showQuickLinks, showSearch, title}: Props, {customized, openMobileMenu}: Context) => {
   const customizedFullName = customized && customized.full_name
-  const customizedHeroHeadline = customized && customized.hero_headline
   const customizedHeroImage = customized && customized.hero_image
   const customizedHeroImageTint = customized && customized.hero_image_tint
 
@@ -101,12 +101,12 @@ const Hero = ({data: {categories, quickLinks, theme}, showQuickLinks}: Props, {c
 
         <div className='tc pv4 pv5-l'>
           <div className='f3 f2-m f1-l f-title'>
-            {customizedHeroHeadline || (theme && theme.heroHeadline) || 'Have a question? Let me help.'}
+            {title || 'Have a question? Let me help.'}
           </div>
           <div className='mv3'>
-            {'Type your question below to get an immediate response from my team office.'}
+            {description || 'Type your question below to get an immediate response from my team office.'}
           </div>
-          <HeroSearch />
+          {showSearch !== false && <HeroSearch />}
         </div>
 
         {showQuickLinks && quickLinksEdges && quickLinksEdges.length ? (
@@ -154,7 +154,6 @@ export default graphql(gql(`
     }
     theme (id: "${themeId}") {
       fullName
-      heroHeadline
       heroImage
       heroImageTint
       primaryMenu

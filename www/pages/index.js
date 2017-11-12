@@ -42,7 +42,7 @@ type Props = {
 const HomePage = ({data: {pages, posts, theme}}: Props) => {
   return (
     <Page
-      hero={{showQuickLinks: true}}
+      heroProps={{showQuickLinks: true}}
       title='Home'
     >
       <div className='container'>

@@ -8,7 +8,14 @@ import Contact from '../components/contact'
 import Page from '../components/page'
 
 export const ContactPage = () => (
-  <Page title='Contact'>
+  <Page
+    heroProps={{
+      description: "My staff and I love hearing from those we’ve dedicated our careers to representing.",
+      showSearch: false,
+      title: 'Contact My Office'
+    }}
+    title='Contact'
+  >
     <div className='container'>
       <Contact />
     </div>
