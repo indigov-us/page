@@ -33,6 +33,12 @@ const PagePage = ({data: {pages}}: Props) => {
 
   return (
     <Page
+      heroProps={{
+        description: false,
+        title: node && node.title,
+        showSearch: false
+      }}
+      showNewsletterSubscriptionForm={false}
       title={node && node.title}
     >
       <WithSidebar>

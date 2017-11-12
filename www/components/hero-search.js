@@ -76,6 +76,15 @@ class HeroSearch extends Component<Props, State> {
           placeholder: 'Can you please expedite my passport...'
         }}
         items={this.buildItems()}
+        menuStyle={{
+          background: 'rgba(255, 255, 255, 0.98)',
+          border: '1px solid #ccc',
+          fontSize: '0.875rem',
+          position: 'fixed',
+          overflow: 'auto',
+          maxHeight: '50%',
+          zIndex: '1'
+        }}
         onChange={e => this.setState(updateS(e.target.value))}
         renderItem={({node: {link, id, title}}, isHighlighted) =>
           <div key={id}>

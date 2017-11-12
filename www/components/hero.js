@@ -103,9 +103,11 @@ const Hero = ({data: {categories, quickLinks, theme}, description, showQuickLink
           <div className='f3 f2-m f1-l f-title'>
             {title || 'Have a question? Let me help.'}
           </div>
-          <div className='mv3'>
-            {description || 'Type your question below to get an immediate response from my team office.'}
-          </div>
+          {description !== false && (
+            <div className='mv3'>
+              {description || 'Type your question below to get an immediate response from my team office.'}
+            </div>
+          )}
           {showSearch !== false && <HeroSearch />}
         </div>
 
@@ -114,10 +116,12 @@ const Hero = ({data: {categories, quickLinks, theme}, description, showQuickLink
             <div className='tc b mb3'>{'Quick Links'}</div>
             <div className='cf'>
               {quickLinksEdges.map(({node}) => (
-                <HeroQuickLink
+                <div
+                  className='fl w-50 w-third-m w-25-l'
                   key={node.id}
-                  {...node}
-                />
+                >
+                  <HeroQuickLink {...node} />
+                </div>
               ))}
             </div>
           </div>

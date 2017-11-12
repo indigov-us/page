@@ -25,6 +25,7 @@ type Props = {
     }
   },
   heroProps?: HeroProps,
+  showNewsletterSubscriptionForm?: boolean,
   title?: string
 }
 
@@ -49,7 +50,7 @@ class Page extends Component<Props> {
   }
 
   render () {
-    const {children, data: {theme}, heroProps, title} = this.props
+    const {children, data: {theme}, heroProps, showNewsletterSubscriptionForm, title} = this.props
     const {customized} = this.context
     const primaryHex = (customized && customized.primary_hex) || (theme && theme.primaryHex) || defaultPrimaryHex
     const gaViewId = theme && theme.gaViewId
@@ -96,7 +97,7 @@ class Page extends Component<Props> {
           <WithMobileMenu>
             <Hero {...heroProps} />
 
-            <NewsletterSignUp />
+            {showNewsletterSubscriptionForm !== false && <NewsletterSignUp />}
 
             <main>
               {children}

@@ -43,7 +43,7 @@ const Icon = (icon: string) => {
 
 const HeroQuickLink = ({title, link, icon}: Props) => (
   <a
-    className='fl w-100 w-50-m w-25-l white tc b no-underline ba bg-black-40 b--white-10 relative hover-bg-primary bg-animate'
+    className='db white tc b no-underline ba bg-black-40 b--white-10 relative hover-bg-primary bg-animate'
     href={link}
   >
     <div className='v-center absolute left-0 right-0'>
