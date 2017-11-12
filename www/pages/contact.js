@@ -10,7 +10,7 @@ import Page from '../components/page'
 export const ContactPage = () => (
   <Page
     heroProps={{
-      description: 'My staff and I love hearing from those we\’ve dedicated our careers to representing.',
+      description: "My staff and I love hearing from those we've dedicated our careers to representing.",
       showSearch: false,
       title: 'Contact My Office'
     }}

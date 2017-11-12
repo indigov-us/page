@@ -85,33 +85,35 @@ const CategoryPage = ({data: {categories, posts}, query: {subcategories}}: Props
     <Page
       title={node && node.name}
     >
-      <WithSidebar>
-        {node && (
-          <div>
-            <h1 className='mb2 f-title'>
-              <a
-                className='black no-underline'
-                dangerouslySetInnerHTML={{__html: node.name}}
-                href={node.link}
-              />
-            </h1>
+      <div className='container'>
+        <WithSidebar>
+          {node && (
+            <div>
+              <h1 className='mb2 f-title'>
+                <a
+                  className='black no-underline'
+                  dangerouslySetInnerHTML={{__html: node.name}}
+                  href={node.link}
+                />
+              </h1>
 
-            <h2>{'Subcategories'}</h2>
-            {node.children && node.children.edges.map(({node: {id, link, name}}) => (
-              <div key={id}>
-                <a href={link}>
-                  {name}
-                </a>
-              </div>
-            ))}
-          </div>
-        )}
+              <h2>{'Subcategories'}</h2>
+              {node.children && node.children.edges.map(({node: {id, link, name}}) => (
+                <div key={id}>
+                  <a href={link}>
+                    {name}
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
 
-        <Grid
-          items={posts && posts.edges}
-          title='Articles'
-        />
-      </WithSidebar>
+          <Grid
+            items={posts && posts.edges}
+            title='Articles'
+          />
+        </WithSidebar>
+      </div>
     </Page>
   )
 }

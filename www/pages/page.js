@@ -41,31 +41,33 @@ const PagePage = ({data: {pages}}: Props) => {
       showNewsletterSubscriptionForm={false}
       title={node && node.title}
     >
-      <WithSidebar>
-        {node && (
-          <article>
-            <h1 className='mb2 f-title'>
-              <a
-                className='black no-underline'
-                dangerouslySetInnerHTML={{__html: node.title}}
-                href={node.link}
-              />
-            </h1>
+      <div className='container'>
+        <WithSidebar>
+          {node && (
+            <article>
+              <h1 className='mb2 f-title'>
+                <a
+                  className='black no-underline'
+                  dangerouslySetInnerHTML={{__html: node.title}}
+                  href={node.link}
+                />
+              </h1>
 
-            {node.featuredImage && (
-              <img
-                className='db'
-                src={node.featuredImage && node.featuredImage.sourceUrl}
-              />
-            )}
+              {node.featuredImage && (
+                <img
+                  className='db'
+                  src={node.featuredImage && node.featuredImage.sourceUrl}
+                />
+              )}
 
-            <div
-              className='lh-copy'
-              dangerouslySetInnerHTML={{__html: node.content}}
-            />
-          </article>
-        )}
-      </WithSidebar>
+              <div
+                className='lh-copy'
+                dangerouslySetInnerHTML={{__html: node.content}}
+              />
+            </article>
+          )}
+        </WithSidebar>
+      </div>
     </Page>
   )
 }

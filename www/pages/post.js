@@ -4,6 +4,7 @@ import gql from 'graphql-tag'
 import React from 'react'
 import {graphql} from 'react-apollo'
 
+import ArticleFeedback from '../components/article-feedback'
 import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
 import WithSidebar from '../hoc/with-sidebar'
@@ -31,36 +32,44 @@ const PostPage = ({data: {posts}}: Props) => {
     <Page
       title={node && node.title}
     >
-      <WithSidebar>
-        {node && (
-          <article>
-            <h1 className='mb2 f-title'>
-              <a
-                className='black no-underline'
-                dangerouslySetInnerHTML={{__html: node.title}}
-                href={node.link}
+      <div className='container'>
+        <WithSidebar>
+          {node && (
+            <article>
+              <h1 className='mb2 f-title'>
+                <a
+                  className='black no-underline'
+                  dangerouslySetInnerHTML={{__html: node.title}}
+                  href={node.link}
+                />
+              </h1>
+
+              <div className='mv2 gray'>
+                {`By `}
+                <span>{node.author.name}</span>
+              </div>
+
+              {node.featuredImage && (
+                <img
+                  className='db'
+                  src={node.featuredImage && node.featuredImage.sourceUrl}
+                />
+              )}
+
+              <div
+                className='lh-copy'
+                dangerouslySetInnerHTML={{__html: node.content}}
               />
-            </h1>
 
-            <div className='mv2 gray'>
-              {`By `}
-              <span>{node.author.name}</span>
-            </div>
+              <hr className='mv4' />
 
-            {node.featuredImage && (
-              <img
-                className='db'
-                src={node.featuredImage && node.featuredImage.sourceUrl}
-              />
-            )}
-
-            <div
-              className='lh-copy'
-              dangerouslySetInnerHTML={{__html: node.content}}
-            />
-          </article>
-        )}
-      </WithSidebar>
+              <div className='bg-light-gray pv3 tc'>
+                <ArticleFeedback />
+              </div>
+            </article>
+          )}
+        </WithSidebar>
+      </div>
     </Page>
   )
 }
