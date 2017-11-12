@@ -19,6 +19,10 @@ type Props = {
 const GridItemPost = ({excerptClassName, leftColClassName, post: {date, excerpt, id, featuredImage, link, terms, title}, rightColClassName, titleTagName}: Props) => {
   const TitleTag: any = titleTagName
 
+  // non-ISO strings wiill make dateFormat throw an error, so we need to transform, e.g.,
+  // "2017-11-12 12:00:00" into "2017-11-12T12:00:00". safari is more sensitive, so be sure to error-test that
+  const formattedDate = dateFormat(date.replace(' ', 'T'), 'mmmm d, yyyy')
+
   return (
     <div className='cf h-inherit-ns overflow-hidden'>
       <div
@@ -59,7 +63,7 @@ const GridItemPost = ({excerptClassName, leftColClassName, post: {date, excerpt,
             </a>
           </TitleTag>
           <div className='gray'>
-            <span>{dateFormat(date, 'mmmm d, yyyy')}</span>
+            <span>{formattedDate}</span>
             {terms.slice(0, 1).map(({id, link, name}) => (
               <span key={id}>
                 <span>{' - '}</span>
