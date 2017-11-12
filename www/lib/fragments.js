@@ -1,6 +1,18 @@
 // @flow
 
 export default {
+  page:
+    `fragment page on Page {
+      date
+      excerpt
+      featuredImage {
+        altText
+        sourceUrl
+      }
+      id
+      link
+      title
+    }`,
   post:
     `fragment post on Post {
       author {

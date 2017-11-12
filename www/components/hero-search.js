@@ -5,6 +5,9 @@ import Autocomplete from 'react-autocomplete'
 import React, {Component} from 'react'
 import {graphql} from 'react-apollo'
 
+import type {Page, Post} from '../lib/types'
+import {formattedExcerpt} from '../lib/formatter'
+import fragments from '../lib/fragments'
 import {updateS} from '../states/hero-search'
 
 type Props = {
@@ -12,20 +15,12 @@ type Props = {
     fetchMore: any => any,
     pages?: {
       edges: Array<{
-        node: {
-          id: string,
-          link: string,
-          title: string
-        }
+        node: Page
       }>
     },
     posts?: {
       edges: Array<{
-        node: {
-          id: string,
-          link: string,
-          title: string
-        }
+        node: Post
       }>
     }
   }
@@ -80,24 +75,35 @@ class HeroSearch extends Component<Props, State> {
           background: 'rgba(255, 255, 255, 0.98)',
           border: '1px solid #ccc',
           fontSize: '0.875rem',
-          position: 'fixed',
+          left: 0,
+          position: 'absolute',
           overflow: 'auto',
-          maxHeight: '50%',
+          top: 'auto',
+          width: '100%',
           zIndex: '1'
         }}
         onChange={e => this.setState(updateS(e.target.value))}
-        renderItem={({node: {link, id, title}}, isHighlighted) =>
-          <div key={id}>
-            <a
-              className='black db pv2 dim bb no-underline b--moon-gray'
-              href={link}
-            >
-              {title}
-            </a>
-          </div>
+        renderItem={({node: {excerpt, featuredImage, link, id, title}}: {node: Page}, isHighlighted) =>
+          <a
+            className='black db pa2 dim bb no-underline b--moon-gray tl truncate'
+            key={id}
+            href={link}
+          >
+            <img
+              className='v-mid pr1'
+              height={20}
+              src={featuredImage && featuredImage.sourceUrl}
+              width={20}
+            />
+            <span className='b pr1'>{title}</span>
+            <span
+              className='gray'
+              dangerouslySetInnerHTML={{__html: formattedExcerpt(excerpt)}}
+            />
+          </a>
         }
         value={q}
-        wrapperProps={{className: 'black w-70-m w-50-l center'}}
+        wrapperProps={{className: 'black w-70-m w-50-l center relative'}}
         wrapperStyle={{}}
       />
     )
@@ -109,22 +115,20 @@ export default graphql(gql(`
     pages (where: {search: $q}) {
       edges {
         node {
-          id
-          link
-          title
+          ...page
         }
       }
     }
     posts (where: {search: $q}) {
       edges {
         node {
-          id
-          link
-          title
+          ...post
         }
       }
     }
   }
+  ${fragments.page}
+  ${fragments.post}
 `), {
   options (props) {
     return {

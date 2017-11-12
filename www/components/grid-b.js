@@ -9,9 +9,7 @@ import type {Post} from '../lib/types'
 type Props = {
   posts?: {
     edges: Array<{
-      node: Post & {
-        excerpt: string
-      }
+      node: Post
     }>
   }
 }

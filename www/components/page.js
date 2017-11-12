@@ -87,7 +87,7 @@ class Page extends Component<Props> {
           />
           <link
             rel='stylesheet'
-            href='https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans'
+            href='https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:400,600'
           />
 
           <title>{title || 'Home'}</title>

@@ -4,14 +4,13 @@ import classNames from 'classnames'
 import dateFormat from 'dateformat'
 import React from 'react'
 
+import {formattedExcerpt} from '../lib/formatter'
 import type {Post} from '../lib/types'
 
 type Props = {
   excerptClassName?: string,
   leftColClassName?: string,
-  post: Post & {
-    excerpt: string
-  },
+  post: Post,
   rightColClassName?: string,
   titleTagName?: string
 }
@@ -62,7 +61,7 @@ const GridItemPost = ({excerptClassName, leftColClassName, post: {date, excerpt,
               {title}
             </a>
           </TitleTag>
-          <div className='gray'>
+          <div className='gray mb2 f6'>
             <span>{formattedDate}</span>
             {terms.slice(0, 1).map(({id, link, name}) => (
               <span key={id}>
@@ -77,8 +76,8 @@ const GridItemPost = ({excerptClassName, leftColClassName, post: {date, excerpt,
             ))}
           </div>
           <div
-            className={classNames('lh-title', excerptClassName)}
-            dangerouslySetInnerHTML={{__html: excerpt}}
+            className={classNames('lh-title mb2', excerptClassName)}
+            dangerouslySetInnerHTML={{__html: formattedExcerpt(excerpt)}}
           />
         </div>
       </div>
