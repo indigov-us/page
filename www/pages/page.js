@@ -6,7 +6,8 @@ import {graphql} from 'react-apollo'
 
 import WithCustomized from '../hoc/with-customized'
 import WithApollo from '../hoc/with-apollo'
-import WithSidebar from '../hoc/with-sidebar'
+import WithRightRail from '../hoc/with-right-rail'
+import WithShareSidebar from '../hoc/with-share-sidebar'
 import Page from '../components/page'
 
 type Props = {
@@ -42,31 +43,33 @@ const PagePage = ({data: {pages}}: Props) => {
       title={node && node.title}
     >
       <div className='container'>
-        <WithSidebar>
-          {node && (
-            <article>
-              <h1 className='mb2 f-title'>
-                <a
-                  className='black no-underline'
-                  dangerouslySetInnerHTML={{__html: node.title}}
-                  href={node.link}
-                />
-              </h1>
+        <WithShareSidebar>
+          <WithRightRail>
+            {node && (
+              <article>
+                <h1 className='mb2 f-title'>
+                  <a
+                    className='black no-underline'
+                    dangerouslySetInnerHTML={{__html: node.title}}
+                    href={node.link}
+                  />
+                </h1>
 
-              {node.featuredImage && (
-                <img
-                  className='db'
-                  src={node.featuredImage && node.featuredImage.sourceUrl}
-                />
-              )}
+                {node.featuredImage && (
+                  <img
+                    className='db'
+                    src={node.featuredImage && node.featuredImage.sourceUrl}
+                  />
+                )}
 
-              <div
-                className='lh-copy'
-                dangerouslySetInnerHTML={{__html: node.content}}
-              />
-            </article>
-          )}
-        </WithSidebar>
+                <div
+                  className='lh-copy'
+                  dangerouslySetInnerHTML={{__html: node.content}}
+                />
+              </article>
+            )}
+          </WithRightRail>
+        </WithShareSidebar>
       </div>
     </Page>
   )
