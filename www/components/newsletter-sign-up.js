@@ -41,7 +41,7 @@ const NewsletterSignUp = (props: Props, {openNewsletterSubscriptionModal}: Conte
                   className='br-pill pv2 ph3 f5 w-70 w-80-ns fl input-reset db center'
                   name='email'
                   placeholder='Your email address here...'
-                  type='text'
+                  type='email'
                 />
                 <input
                   className='input-reset f5 pv2 w-30 w-20-ns fl db'

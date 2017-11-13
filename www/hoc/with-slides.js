@@ -2,13 +2,14 @@
 
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import React, {Component} from 'react'
+import React, {Children, Component} from 'react'
 
 import {goToSlide, nextSlide, prevSlide} from '../states/with-slides'
 
 export type Props = {
-  showNav?: boolean,
-  slides: Array<any>
+  children: any,
+  currentSlide?: number,
+  showNav?: boolean
 }
 
 export type State = {
@@ -22,9 +23,9 @@ class WithSlides extends Component<Props, State> {
     prevSlide: PropTypes.func
   }
 
-  constructor () {
-    super()
-    this.state = {slideIndex: 0}
+  constructor (props: Props) {
+    super(props)
+    this.state = {slideIndex: props.currentSlide || 0}
   }
 
   handleGoToSlide = (desiredSlide: number) => {
@@ -46,12 +47,12 @@ class WithSlides extends Component<Props, State> {
   })
 
   render = () => {
-    const {showNav, slides} = this.props
+    const {children, showNav} = this.props
     const {slideIndex} = this.state
 
     return (
       <div className='relative overflow-hidden'>
-        {slides.map((Slide, i) => (
+        {Children.map(children, (slide, i) => (
           <div
             className={classNames(
               'slide',
@@ -59,7 +60,7 @@ class WithSlides extends Component<Props, State> {
             )}
             key={i}
           >
-            <Slide goToSlide={this.handleGoToSlide} />
+            {slide}
           </div>
         ))}
 

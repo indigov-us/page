@@ -4,13 +4,21 @@ import Cookies from 'js-cookie'
 import PropTypes from 'prop-types'
 import React, {Component} from 'react'
 
+import NewsletterChooseIssues from '../components/newsletter-choose-issues'
+import NewsletterGate from '../components/newsletter-gate'
+import NewsletterPrimaryInfo from '../components/newsletter-primary-info'
+import NewsletterThankYou from '../components/newsletter-thank-you'
 import WithModal from '../hoc/with-modal'
-import {providedFormValues, openedModal, closedModal} from '../states/with-newsletter-subscription-modal'
+import WithSlides from '../hoc/with-slides'
+import {atSlide, providedFormValues, openedModal, closedModal} from '../states/with-newsletter-subscription-modal'
 
 const cookieName = 'did-close-newsletter-subscription-modal'
 
 export type FormValues = {
-  email?: ?string
+  address1?: string,
+  address2?: string,
+  email?: string,
+  name?: string
 }
 
 type Props = {
@@ -19,17 +27,20 @@ type Props = {
 }
 
 export type State = {
+  currentSlideIndex?: number,
   form: {
     values: FormValues
   },
   isOpen?: boolean
 }
 
-export type OpenNewsletterSubscriptionModal = (FormValues) => any
+export type OpenNewsletterSubscriptionModal = (?FormValues) => any
 
 class WithNewsletterSubscriptionModal extends Component<Props, State> {
   static childContextTypes = {
-    openNewsletterSubscriptionModal: PropTypes.func
+    closeModal: PropTypes.func,
+    openNewsletterSubscriptionModal: PropTypes.func,
+    updateProvidedFormValues: PropTypes.func
   }
 
   constructor () {
@@ -44,7 +55,12 @@ class WithNewsletterSubscriptionModal extends Component<Props, State> {
 
   handleOpen = (formValues?: FormValues) => {
     if (formValues) this.setState(providedFormValues(formValues))
+    this.setState(atSlide(1))
     this.setState(openedModal)
+  }
+
+  updateProvidedFormValues = (formValues: FormValues) => {
+    this.setState(providedFormValues(formValues))
   }
 
   componentDidMount () {
@@ -56,12 +72,14 @@ class WithNewsletterSubscriptionModal extends Component<Props, State> {
   }
 
   getChildContext = () => ({
-    openNewsletterSubscriptionModal: this.handleOpen
+    closeModal: this.handleClose,
+    openNewsletterSubscriptionModal: this.handleOpen,
+    updateProvidedFormValues: this.updateProvidedFormValues
   })
 
   render () {
     const {children} = this.props
-    const {form: {values: {email}}, isOpen} = this.state
+    const {currentSlideIndex, form: {values}, isOpen} = this.state
 
     return (
       <div>
@@ -71,7 +89,12 @@ class WithNewsletterSubscriptionModal extends Component<Props, State> {
           handleClose={this.handleClose}
           isOpen={isOpen}
         >
-          {`hey sign up for my newsletter ${email || ''}`}
+          <WithSlides currentSlide={currentSlideIndex}>
+            <NewsletterGate />
+            <NewsletterPrimaryInfo {...values} />
+            <NewsletterChooseIssues />
+            <NewsletterThankYou />
+          </WithSlides>
         </WithModal>
       </div>
     )
