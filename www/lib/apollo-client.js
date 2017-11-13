@@ -3,7 +3,7 @@
 import {InMemoryCache} from 'apollo-cache-inmemory'
 import {ApolloClient} from 'apollo-client'
 import {ApolloLink} from 'apollo-link'
-import {createHttpLink} from 'apollo-link-http'
+import {HttpLink} from 'apollo-link-http'
 import isNode from 'detect-node'
 
 let client
@@ -11,7 +11,7 @@ let client
 const getURI = () => isNode ? 'http://cms/graphql' : `${window.location.protocol}//${window.location.hostname}/graphql`
 
 const createClient = (initialState?: ?Object, {host}: {host: string}) => {
-  const httpLink = createHttpLink({uri: getURI()})
+  const httpLink = new HttpLink({uri: getURI()})
   const middlewareLink = new ApolloLink((operation, forward) => {
     operation.setContext({headers: {host}})
     return forward(operation)
