@@ -11,6 +11,7 @@
     "wpackagist-plugin/fakerpress": "~0.4.7",
     "wpackagist-plugin/sem-external-links": "6.8.1",
     "wpackagist-plugin/wp-php-console": "~1.5",
-    "jjgrainger/posttypes": "^1.1"
+    "jjgrainger/posttypes": "^1.1",
+    "wp-graphql/wp-graphql": "^0.0.22"
   }
 }
