@@ -39,14 +39,20 @@ export default async function (event: Event, context: Object, callback: (any, ?a
   const s3Key = event.Records[0].s3.object.key
   const [CRMName, zendeskSubdomain] = s3Key.split('/')
 
-  // fetch the zendesk credentials from the wordpress database
+  // set up an error handler/logger
+  const createError = (message: string) => {
+    console.error(`[ERROR] file: ${bucket}/${s3Key}, "${message}"`)
+    return callback(new Error(message))
+  }
+
+  // get the zendesk credentials from the file
   const {accessToken, email} = credentials[zendeskSubdomain]
-  if (!accessToken) return callback('missing access token')
-  if (!email) return callback('missing email')
+  if (!accessToken) return createError('missing access token')
+  if (!email) return createError('missing email')
 
   // get the appropriate transformer
   const transformer = transformers[CRMName]
-  if (!transformer) return callback('invalid CRM folder')
+  if (!transformer) return createError('invalid CRM folder')
   const {columns, fn} = transformer
 
   // download the file
@@ -64,6 +70,6 @@ export default async function (event: Event, context: Object, callback: (any, ?a
     const res = await post(url, {tickets}, {headers})
     return callback(null, res.data)
   } catch (e) {
-    return callback(e)
+    return createError(e.message)
   }
 }
