@@ -4,7 +4,7 @@ use PostTypes\PostType;
 
 add_action( 'after_setup_theme', function () {
 	// register the custom post type
-	new PostType( 'quick_link', [
+	$link = new PostType( 'quick_link', [
 		'graphql_single_name' => 'quickLink',
 		'graphql_plural_name' => 'quickLinks',
 		'public' => false,
@@ -12,6 +12,7 @@ add_action( 'after_setup_theme', function () {
 		'show_ui' => true,
 		'supports' => ['title']
 	] );
+	$link->icon('dashicons-admin-links');
 
 	// define the editor page fields
 	if ( function_exists( 'register_field_group' ) ) {

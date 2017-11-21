@@ -11,7 +11,7 @@ use PostTypes\PostType;
 
 add_action( 'after_setup_theme', function () {
 	// register the custom post type
-	new PostType( 'office', [
+	$office = new PostType( 'office', [
 		'graphql_single_name' => 'office',
 		'graphql_plural_name' => 'offices',
 		'public' => false,
@@ -19,6 +19,7 @@ add_action( 'after_setup_theme', function () {
 		'show_ui' => true,
 		'supports' => ['title']
 	] );
+	$office->icon('dashicons-building');
 
 	// define the editor page fields
 	if ( function_exists( 'register_field_group' ) ) {

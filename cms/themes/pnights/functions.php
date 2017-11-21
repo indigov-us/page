@@ -1,7 +1,10 @@
 <?php
 
+require_once( 'inc/contact-issues.php' );
 require_once( 'inc/customizer.php' );
 require_once( 'inc/graphql.php' );
+require_once( 'inc/newsletter-topics.php' );
+require_once( 'inc/offices.php' );
 require_once( 'inc/quick-links.php' );
 require_once( 'inc/settings.php' );
 

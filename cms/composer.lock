@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78356f7bbb652d002606748d1661ca73",
+    "content-hash": "58a0dd260ed2f0b57eb66c5fb1a64e80",
     "packages": [
         {
             "name": "composer/installers",
@@ -327,16 +327,16 @@
         },
         {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
-            "version": "1.2",
+            "version": "1.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/amazon-s3-and-cloudfront/",
-                "reference": "tags/1.2"
+                "reference": "tags/1.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.1.2.zip",
-                "reference": "tags/1.2",
+                "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.1.2.1.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -347,16 +347,16 @@
         },
         {
             "name": "wpackagist-plugin/amazon-web-services",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/amazon-web-services/",
-                "reference": "tags/1.0.3"
+                "reference": "tags/1.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/amazon-web-services.1.0.3.zip",
-                "reference": "tags/1.0.3",
+                "url": "https://downloads.wordpress.org/plugin/amazon-web-services.1.0.4.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -386,26 +386,6 @@
             "homepage": "https://wordpress.org/plugins/elasticpress/"
         },
         {
-            "name": "wpackagist-plugin/fakerpress",
-            "version": "0.4.9",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/fakerpress/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/fakerpress.zip?timestamp=1502140594",
-                "reference": "trunk",
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/fakerpress/"
-        },
-        {
             "name": "wpackagist-plugin/sem-external-links",
             "version": "6.8.1",
             "source": {
@@ -424,26 +404,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/sem-external-links/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-php-console",
-            "version": "1.5.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-php-console/",
-                "reference": "tags/1.5.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-php-console.1.5.0.zip",
-                "reference": "tags/1.5.0",
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-php-console/"
         }
     ],
     "packages-dev": [],

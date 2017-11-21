@@ -1,4 +1,4 @@
-FROM wordpress:php7.1-apache
+FROM wordpress:4.9-php7.1-apache
 
 RUN apt-get update && \
   apt-get install git zip unzip wget vim -y
@@ -16,7 +16,6 @@ RUN rm -rf /usr/src/wordpress/wp-content/plugins/* && \
   rm -rf /usr/src/wordpress/wp-content/themes/*
 
 COPY wp-config.php                  /usr/src/wordpress
-COPY plugins                        /usr/src/wordpress/wp-content/plugins
 COPY themes                         /usr/src/wordpress/wp-content/themes
 COPY uploads                        /usr/src/wordpress/wp-content/uploads
 COPY php.ini                        /usr/local/etc/php/conf.d/

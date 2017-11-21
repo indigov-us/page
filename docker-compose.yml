@@ -69,7 +69,6 @@ services:
       SECURE_AUTH_SALT: 123
       WP_DEBUG: 'false'
     volumes:
-      - ./cms/plugins/offices:/var/www/html/wp-content/plugins/offices
       - ./cms/themes/pnights:/var/www/html/wp-content/themes/pnights
       - ./cms/uploads:/var/www/html/wp-content/uploads
 
