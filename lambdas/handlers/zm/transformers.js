@@ -1,12 +1,16 @@
 // @flow
 
-import type {ZendeskObject} from './'
+import type {
+  ZendeskEndpointKey,
+  ZendeskUser
+} from './'
 
 type Transformers = {
   [string]: {
     [string]: {
       columns: Array<string>,
-      fn: Object => ZendeskObject
+      fn: Object => ZendeskUser,
+      zendeskEndpointKey: ZendeskEndpointKey
     }
   }
 }
@@ -14,23 +18,29 @@ type Transformers = {
 const transformers: Transformers = {
   'house-cms-data-interchange': {
     constituents: {
-
-    },
-    correspondances: {
-
-    },
-    casework: {
-      columns: ['id', 'title', 'description'],
-      fn: ({id, title, description}) => ({
-        comments: [{value: `${title} ${description}`}],
-        external_id: id
-      })
-    },
-    households: {
-
-    },
-    schedules: {
-
+      columns: [
+        'recordType',
+        'constituentId',
+        'individualType',
+        'prefix',
+        'firstName',
+        'middleName',
+        'lastName',
+        'suffix',
+        'appellation',
+        'salutation',
+        'birthday',
+        'noMailFlag',
+        'deceasedFlag'
+      ],
+      fn: ({constituentId, firstName, middleName, lastName}) => ({
+        external_id: constituentId,
+        name: [firstName, middleName, lastName].join(' '),
+        user_fields: {
+          first_name: firstName
+        }
+      }),
+      zendeskEndpointKey: 'users'
     }
   }
 }

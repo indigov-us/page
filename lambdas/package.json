@@ -5,7 +5,7 @@
   "main": "handler.js",
   "scripts": {
     "flow": "flow",
-    "test-zm": "NODE_ENV=development serverless invoke local --function zm -p test/zm-s3-event.json",
+    "test:zm:constituents": "NODE_ENV=development serverless invoke local --function zm -p test/zm/s3-event-constituents.json",
     "deploy": "serverless deploy --aws-profile indigovern --force"
   },
   "author": "Ethan Jon",

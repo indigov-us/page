@@ -20,11 +20,29 @@ type Event = {
   }>
 }
 
-export type ZendeskObject = {
-  comments: Array<{
-    value: string
-  }>,
-  external_id: string | number
+export type ZendeskUser = {
+  id?: number,
+  external_id: string | number,
+  name: string,
+  user_fields: {
+    first_name: string
+  }
+}
+
+export type ZendeskEndpointKey = 'users'
+
+type ZendeskEndpoints = {
+  [ZendeskEndpointKey]: {
+    path: string,
+    rootKey: string
+  }
+}
+
+const zendeskEndpoints: ZendeskEndpoints = {
+  users: {
+    path: '/api/v2/users/create_or_update_many.json',
+    rootKey: 'users'
+  }
 }
 
 // for local development, use the saved AWS credentials
@@ -37,7 +55,7 @@ export default async function (event: Event, context: Object, callback: (any, ?a
   // parse the event to get the zendesk subdomain, name of CRM, and path to data file
   const bucket = event.Records[0].s3.bucket.name
   const s3Key = event.Records[0].s3.object.key
-  const [CRMName, zendeskSubdomain] = s3Key.split('/')
+  const [CRMName, zendeskSubdomain, dataCategory] = s3Key.split('/')
 
   // set up an error handler/logger
   const createError = (message: string) => {
@@ -51,23 +69,24 @@ export default async function (event: Event, context: Object, callback: (any, ?a
   if (!email) return createError('missing email')
 
   // get the appropriate transformer
-  const transformer = transformers[CRMName]
+  const transformer = transformers[CRMName][dataCategory]
   if (!transformer) return createError('invalid CRM folder')
-  const {columns, fn} = transformer
+  const {columns, fn, zendeskEndpointKey} = transformer
 
   // download the file
   const s3 = new S3()
   const data = await s3.getObject({Bucket: bucket, Key: s3Key}).promise()
 
-  // convert the file to an array of objects and transform into zendesk tickets
-  const tickets: Array<ZendeskObject> = parse(data.Body.toString(), {columns}).map(fn)
+  // convert the file to an array of objects and transform into zendesk objects
+  const {path, rootKey} = zendeskEndpoints[zendeskEndpointKey]
+  const objects: Array<ZendeskUser> = parse(data.Body.toString(), {columns}).map(fn)
 
   // send the bulk import request to zendesk
-  const url = `https://${zendeskSubdomain}/api/v2/imports/tickets/create_many.json`
+  const url = `https://${zendeskSubdomain}.zendesk.com${path}`
   const encodedCredentials = Buffer.from(`${email}/token:${accessToken}`).toString('base64')
   const headers = {Authorization: `Basic ${encodedCredentials}`, 'Content-Type': 'application/json'}
   try {
-    const res = await post(url, {tickets}, {headers})
+    const res = await post(url, {[rootKey]: objects}, {headers})
     return callback(null, res.data)
   } catch (e) {
     return createError(e.message)

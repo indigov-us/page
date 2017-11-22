@@ -8,7 +8,7 @@ type Credentials = {
 }
 
 const credentials: Credentials = {
-  'indigovernhelp.zendesk.com': {
+  indigovernhelp: {
     accessToken: 'svP2max2qC3Dj1CLRmOAfozl0TA3sjAfaab3ZsZY',
     email: 'ethan@indigovern.com'
   }
