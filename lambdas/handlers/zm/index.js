@@ -63,8 +63,11 @@ export default async function (event: Event, context: Object, callback: (any, ?a
     return callback(new Error(message))
   }
 
-  // get the zendesk credentials from the file
-  const {accessToken, email} = credentials[zendeskSubdomain]
+  // get the zendesk credentials from the env or a file
+  const {accessToken, email} = process.env.NODE_ENV === 'development' ? require('./credentials').default : {
+    accessToken: process.env[`${zendeskSubdomain}_accessToken`],
+    email: process.env[`${zendeskSubdomain}_email`]
+  }
   if (!accessToken) return createError('missing access token')
   if (!email) return createError('missing email')
 
