@@ -32,6 +32,7 @@ axios.defaults.headers.common['Content-Type'] = 'application/json'
 
 // set up fetch function
 const fetch = async (axiosOpts, opts) => {
+  axiosOpts.method = axiosOpts.method || 'POST'
   axiosOpts.url = `https://${subdomain}.zendesk.com${axiosOpts.url}`
 
   try {
@@ -45,6 +46,21 @@ const fetch = async (axiosOpts, opts) => {
 }
 
 // create the user fields
-for (let {data, message} of require('./user-fields')) {
-  fetch({method: 'POST', url: '/api/v2/user_fields.json', data}, {message})
+for (let user_field of require('./user-fields')) {
+  fetch({
+    url: '/api/v2/user_fields.json',
+    data: {user_field}
+  }, {
+    message: `Creating user ${user_field.key} field`
+  })
+}
+
+// create the organization fields
+for (let organization_field of require('./organization-fields')) {
+  fetch({
+    url: '/api/v2/organization_fields.json',
+    data: {organization_field}
+  }, {
+    message: `Creating organization ${organization_field.key} field`
+  })
 }
