@@ -20,6 +20,11 @@ type Event = {
   }>
 }
 
+export type ZendeskOrganization = {
+  id?: number,
+  external_id: string | number
+}
+
 export type ZendeskUser = {
   id?: number,
   external_id: string | number,
@@ -29,16 +34,24 @@ export type ZendeskUser = {
   }
 }
 
-export type ZendeskEndpointKey = 'users'
+export type ZendeskEndpointKey = 'users' | 'organizations' | 'tags'
 
 type ZendeskEndpoints = {
   [ZendeskEndpointKey]: {
-    path: string,
+    path: string | (Object, ?Object) => string,
     rootKey: string
   }
 }
 
 const zendeskEndpoints: ZendeskEndpoints = {
+  organizations: {
+    path: '/api/v2/organizations/create_many.json',
+    rootKey: 'organizations'
+  },
+  tags: {
+    path: ({constituentId}, opts) => `/api/v2/${(opts && opts.object) || ''}/${constituentId}/tags.json`,
+    rootKey: 'tags'
+  },
   users: {
     path: '/api/v2/users/create_or_update_many.json',
     rootKey: 'users'
@@ -47,7 +60,7 @@ const zendeskEndpoints: ZendeskEndpoints = {
 
 // for local development, use the saved AWS credentials
 if (process.env.NODE_ENV === 'development') {
-  const indigovProfile = new SharedIniFileCredentials({profile: 'indigovern'})
+  const indigovProfile = new SharedIniFileCredentials({profile: 'indigov'})
   AWSConfig.credentials = indigovProfile
 }
 
@@ -64,7 +77,7 @@ export default async function (event: Event, context: Object, callback: (any, ?a
   }
 
   // get the zendesk credentials from the env or a file
-  const {accessToken, email} = process.env.NODE_ENV === 'development' ? require('./credentials').default : {
+  const {accessToken, email} = process.env.NODE_ENV === 'development' ? require('./credentials') : {
     accessToken: process.env[`${zendeskSubdomain}_accessToken`],
     email: process.env[`${zendeskSubdomain}_email`]
   }
@@ -74,24 +87,38 @@ export default async function (event: Event, context: Object, callback: (any, ?a
   // get the appropriate transformer
   const transformer = transformers[CRMName][dataCategory]
   if (!transformer) return createError('invalid CRM folder')
-  const {columns, fn, zendeskEndpointKey} = transformer
+  const {columns, fn, pathFnOpts, zendeskEndpointKey} = transformer
 
   // download the file
   const s3 = new S3()
   const data = await s3.getObject({Bucket: bucket, Key: s3Key}).promise()
 
   // convert the file to an array of objects and transform into zendesk objects
-  const {path, rootKey} = zendeskEndpoints[zendeskEndpointKey]
-  const objects: Array<ZendeskUser> = parse(data.Body.toString(), {columns}).map(fn)
+  const rows = parse(data.Body.toString(), {columns})
+  const objects: Array<ZendeskUser> = rows.map(fn)
 
-  // send the bulk import request to zendesk
-  const url = `https://${zendeskSubdomain}.zendesk.com${path}`
-  const encodedCredentials = Buffer.from(`${email}/token:${accessToken}`).toString('base64')
-  const headers = {Authorization: `Basic ${encodedCredentials}`, 'Content-Type': 'application/json'}
-  try {
-    const res = await post(url, {[rootKey]: objects}, {headers})
-    return callback(null, res.data)
-  } catch (e) {
-    return createError(e.message)
+  // prepare the path and root key for the body data
+  // if path is a string, we are making just 1 api call
+  // if path is a function, we are making 1 call per row
+  const paths = []
+  const {path, rootKey} = zendeskEndpoints[zendeskEndpointKey]
+  if (typeof path === 'function') {
+    paths.push(rows.map(r => path(r, pathFnOpts)))
+  } else {
+    paths.push(path)
   }
+
+  // loop through all the paths and make the zendesk api calls
+  paths.forEach(async path => {
+    const url = `https://${zendeskSubdomain}.zendesk.com${path}`
+    const encodedCredentials = Buffer.from(`${email}/token:${accessToken}`).toString('base64')
+    const headers = {Authorization: `Basic ${encodedCredentials}`, 'Content-Type': 'application/json'}
+    try {
+      console.log(`[URL] ${url}`)
+      const res = await post(url, {[rootKey]: objects}, {headers})
+      return callback(null, res.data)
+    } catch (e) {
+      return createError(e.message)
+    }
+  })
 }
