@@ -44,8 +44,8 @@ add_action( 'admin_init', function () {
 add_action( 'admin_menu', function () {
   add_submenu_page(
     'options-general.php',
-    'pnights Settings',
-    'pnights',
+    'facade Settings',
+    'facade',
     'manage_options',
     'ig',
     function () {

@@ -7,7 +7,7 @@
     "check": "yarn run flow && yarn run standard",
     "prestart": "flow-remove-types src/ -d dist/",
     "start": "node dist/index.js",
-    "start-local": "DB_NAME=pnights DB_HOST=localhost DB_PASSWORD=password DB_USER=user yarn start"
+    "start-local": "DB_NAME=facade DB_HOST=localhost DB_PASSWORD=password DB_USER=user yarn start"
   },
   "author": "",
   "license": "ISC",
