@@ -71,7 +71,7 @@ LOCK TABLES `wp_2_comments` WRITE;
 
 INSERT INTO `wp_2_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`)
 VALUES
-	(1,1,'A WordPress Commenter','wapuu@wordpress.example','http://house.dev/','','2017-10-17 20:52:38','2017-10-17 20:52:38','Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href=\"https://gravatar.com\">Gravatar</a>.',0,'1','','',0,0);
+	(1,1,'A WordPress Commenter','wapuu@wordpress.example','http://house.localhost/','','2017-10-17 20:52:38','2017-10-17 20:52:38','Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href=\"https://gravatar.com\">Gravatar</a>.',0,'1','','',0,0);
 
 /*!40000 ALTER TABLE `wp_2_comments` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -121,9 +121,9 @@ LOCK TABLES `wp_2_options` WRITE;
 
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`)
 VALUES
-	(1,'siteurl','http://czahor.house.dev','yes'),
-	(2,'home','http://czahor.house.dev','yes'),
-	(3,'blogname','czahor.house.dev','yes'),
+	(1,'siteurl','http://czahor.house.localhost','yes'),
+	(2,'home','http://czahor.house.localhost','yes'),
+	(3,'blogname','czahor.house.localhost','yes'),
 	(4,'blogdescription','Just another Sites site','yes'),
 	(5,'users_can_register','0','yes'),
 	(6,'admin_email','ethan@indigovern.com','yes'),
@@ -230,7 +230,7 @@ VALUES
 	(107,'theme_mods_twentyseventeen','a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1508274492;s:4:\"data\";a:4:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-2\";i:4;s:12:\"categories-2\";i:5;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}}}}','yes'),
 	(109,'cron','a:3:{i:1510520038;a:1:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1510586559;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}','yes'),
 	(128,'current_theme','','yes'),
-	(129,'theme_mods_pnights','a:5:{i:0;b:0;s:18:\"custom_css_post_id\";i:-1;s:9:\"full_name\";s:12:\"Ethan Czahor\";s:10:\"hero_image\";s:68:\"http://czahor.house.dev/wp-content/uploads/sites/2/2017/10/ethan.jpg\";s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}}','yes'),
+	(129,'theme_mods_pnights','a:5:{i:0;b:0;s:18:\"custom_css_post_id\";i:-1;s:9:\"full_name\";s:12:\"Ethan Czahor\";s:10:\"hero_image\";s:68:\"http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg\";s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}}','yes'),
 	(130,'theme_switched','','yes'),
 	(143,'fresh_site','0','yes'),
 	(144,'post_count','3','yes'),
@@ -404,26 +404,26 @@ LOCK TABLES `wp_2_posts` WRITE;
 
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`)
 VALUES
-	(1,1,'2017-10-17 20:52:38','2017-10-17 20:52:38','Welcome to <a href=\"http://house.dev/\">Sites</a>. This is your first post. Edit or delete it, then start blogging!','Hello world!','','publish','open','open','','hello-world','','','2017-10-17 20:52:38','2017-10-17 20:52:38','',0,'http://czahor.house.dev/?p=1',0,'post','',1),
-	(2,1,'2017-10-17 20:52:38','2017-10-17 20:52:38','This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://czahor.house.dev/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!','Sample Page','','publish','closed','open','','sample-page','','','2017-10-17 20:52:38','2017-10-17 20:52:38','',0,'http://czahor.house.dev/?page_id=2',0,'page','',0),
-	(4,1,'2017-10-18 17:02:55','2017-10-18 17:02:55','{\n    \"pnights::full_name\": {\n        \"value\": \"Ethan Czahor\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','86bc4f61-f7f5-430f-9b3c-1a802668a231','','','2017-10-18 17:02:55','2017-10-18 17:02:55','',0,'http://czahor.house.dev/articles/4-86bc4f61-f7f5-430f-9b3c-1a802668a231/',0,'customize_changeset','',0),
-	(5,1,'2017-10-18 17:03:08','2017-10-18 17:03:08','','ethan','','inherit','open','closed','','ethan','','','2017-10-18 17:03:08','2017-10-18 17:03:08','',0,'http://czahor.house.dev/wp-content/uploads/sites/2/2017/10/ethan.jpg',0,'attachment','image/jpeg',0),
-	(6,1,'2017-10-18 17:03:13','2017-10-18 17:03:13','{\n    \"pnights::hero_image\": {\n        \"value\": \"http://czahor.house.dev/wp-content/uploads/sites/2/2017/10/ethan.jpg\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478','','','2017-10-18 17:03:13','2017-10-18 17:03:13','',0,'http://czahor.house.dev/articles/6-02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478/',0,'customize_changeset','',0),
-	(7,1,'2017-10-20 15:22:54','2017-10-20 15:22:54','Why yes. Yes he is.','Is Ethan as cool as he looks?','','publish','closed','closed','','is-ethan-as-cool-as-he-looks','','','2017-10-20 15:22:54','2017-10-20 15:22:54','',0,'http://czahor.house.dev/?post_type=question&#038;p=7',0,'question','',0),
-	(8,1,'2017-10-20 15:22:54','2017-10-20 15:22:54','Why yes. Yes he is.','Is Ethan as cool as he looks?','','inherit','closed','closed','','7-revision-v1','','','2017-10-20 15:22:54','2017-10-20 15:22:54','',7,'http://czahor.house.dev/articles/8-7-revision-v1/',0,'revision','',0),
-	(10,1,'2017-11-01 16:24:38','2017-11-01 16:24:38','','Hello World','','publish','closed','closed','','hello-world','','','2017-11-01 16:24:38','2017-11-01 16:24:38','',0,'http://czahor.house.dev/?post_type=quick_link&#038;p=10',0,'quick_link','',0),
-	(11,1,'2017-11-01 16:25:00','2017-11-01 16:25:00','','Sample Page','','publish','closed','closed','','sample-page','','','2017-11-01 16:25:00','2017-11-01 16:25:00','',0,'http://czahor.house.dev/?post_type=quick_link&#038;p=11',0,'quick_link','',0),
-	(12,1,'2017-11-08 21:30:17','0000-00-00 00:00:00','','Auto Draft','','auto-draft','open','open','','','','','2017-11-08 21:30:17','0000-00-00 00:00:00','',0,'http://czahor.house.dev/?p=12',0,'post','',0),
-	(13,1,'2017-11-08 21:32:41','2017-11-08 21:32:41','The content.','Senior Services','','publish','open','open','','senior-services','','','2017-11-08 21:32:41','2017-11-08 21:32:41','',0,'http://czahor.house.dev/?p=13',0,'post','',0),
-	(14,1,'2017-11-08 21:32:41','2017-11-08 21:32:41','The content.','Senior Services','','inherit','closed','closed','','13-revision-v1','','','2017-11-08 21:32:41','2017-11-08 21:32:41','',13,'http://czahor.house.dev/uncategorized/14-13-revision-v1',0,'revision','',0),
-	(15,1,'2017-11-08 21:32:55','2017-11-08 21:32:55','The content.','Veteran Services','','publish','open','open','','veteran-services','','','2017-11-08 21:32:55','2017-11-08 21:32:55','',0,'http://czahor.house.dev/?p=15',0,'post','',0),
-	(16,1,'2017-11-08 21:32:55','2017-11-08 21:32:55','The content.','Veteran Services','','inherit','closed','closed','','15-revision-v1','','','2017-11-08 21:32:55','2017-11-08 21:32:55','',15,'http://czahor.house.dev/uncategorized/16-15-revision-v1',0,'revision','',0),
-	(19,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','19','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',0,'http://czahor.house.dev/?p=19',2,'nav_menu_item','',0),
-	(20,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','20','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',2,'http://czahor.house.dev/?p=20',3,'nav_menu_item','',0),
-	(21,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','21','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',2,'http://czahor.house.dev/?p=21',4,'nav_menu_item','',0),
-	(22,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','22','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',2,'http://czahor.house.dev/?p=22',5,'nav_menu_item','',0),
-	(23,1,'2017-11-12 20:44:32','2017-11-12 20:44:32','','Contact','','publish','closed','closed','','contact','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',0,'http://czahor.house.dev/?p=23',6,'nav_menu_item','',0),
-	(24,1,'2017-11-12 20:44:32','2017-11-12 20:44:32','','Home','','publish','closed','closed','','home','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',0,'http://czahor.house.dev/?p=24',1,'nav_menu_item','',0);
+	(1,1,'2017-10-17 20:52:38','2017-10-17 20:52:38','Welcome to <a href=\"http://house.localhost/\">Sites</a>. This is your first post. Edit or delete it, then start blogging!','Hello world!','','publish','open','open','','hello-world','','','2017-10-17 20:52:38','2017-10-17 20:52:38','',0,'http://czahor.house.localhost/?p=1',0,'post','',1),
+	(2,1,'2017-10-17 20:52:38','2017-10-17 20:52:38','This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://czahor.house.localhost/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!','Sample Page','','publish','closed','open','','sample-page','','','2017-10-17 20:52:38','2017-10-17 20:52:38','',0,'http://czahor.house.localhost/?page_id=2',0,'page','',0),
+	(4,1,'2017-10-18 17:02:55','2017-10-18 17:02:55','{\n    \"pnights::full_name\": {\n        \"value\": \"Ethan Czahor\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','86bc4f61-f7f5-430f-9b3c-1a802668a231','','','2017-10-18 17:02:55','2017-10-18 17:02:55','',0,'http://czahor.house.localhost/articles/4-86bc4f61-f7f5-430f-9b3c-1a802668a231/',0,'customize_changeset','',0),
+	(5,1,'2017-10-18 17:03:08','2017-10-18 17:03:08','','ethan','','inherit','open','closed','','ethan','','','2017-10-18 17:03:08','2017-10-18 17:03:08','',0,'http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg',0,'attachment','image/jpeg',0),
+	(6,1,'2017-10-18 17:03:13','2017-10-18 17:03:13','{\n    \"pnights::hero_image\": {\n        \"value\": \"http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478','','','2017-10-18 17:03:13','2017-10-18 17:03:13','',0,'http://czahor.house.localhost/articles/6-02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478/',0,'customize_changeset','',0),
+	(7,1,'2017-10-20 15:22:54','2017-10-20 15:22:54','Why yes. Yes he is.','Is Ethan as cool as he looks?','','publish','closed','closed','','is-ethan-as-cool-as-he-looks','','','2017-10-20 15:22:54','2017-10-20 15:22:54','',0,'http://czahor.house.localhost/?post_type=question&#038;p=7',0,'question','',0),
+	(8,1,'2017-10-20 15:22:54','2017-10-20 15:22:54','Why yes. Yes he is.','Is Ethan as cool as he looks?','','inherit','closed','closed','','7-revision-v1','','','2017-10-20 15:22:54','2017-10-20 15:22:54','',7,'http://czahor.house.localhost/articles/8-7-revision-v1/',0,'revision','',0),
+	(10,1,'2017-11-01 16:24:38','2017-11-01 16:24:38','','Hello World','','publish','closed','closed','','hello-world','','','2017-11-01 16:24:38','2017-11-01 16:24:38','',0,'http://czahor.house.localhost/?post_type=quick_link&#038;p=10',0,'quick_link','',0),
+	(11,1,'2017-11-01 16:25:00','2017-11-01 16:25:00','','Sample Page','','publish','closed','closed','','sample-page','','','2017-11-01 16:25:00','2017-11-01 16:25:00','',0,'http://czahor.house.localhost/?post_type=quick_link&#038;p=11',0,'quick_link','',0),
+	(12,1,'2017-11-08 21:30:17','0000-00-00 00:00:00','','Auto Draft','','auto-draft','open','open','','','','','2017-11-08 21:30:17','0000-00-00 00:00:00','',0,'http://czahor.house.localhost/?p=12',0,'post','',0),
+	(13,1,'2017-11-08 21:32:41','2017-11-08 21:32:41','The content.','Senior Services','','publish','open','open','','senior-services','','','2017-11-08 21:32:41','2017-11-08 21:32:41','',0,'http://czahor.house.localhost/?p=13',0,'post','',0),
+	(14,1,'2017-11-08 21:32:41','2017-11-08 21:32:41','The content.','Senior Services','','inherit','closed','closed','','13-revision-v1','','','2017-11-08 21:32:41','2017-11-08 21:32:41','',13,'http://czahor.house.localhost/uncategorized/14-13-revision-v1',0,'revision','',0),
+	(15,1,'2017-11-08 21:32:55','2017-11-08 21:32:55','The content.','Veteran Services','','publish','open','open','','veteran-services','','','2017-11-08 21:32:55','2017-11-08 21:32:55','',0,'http://czahor.house.localhost/?p=15',0,'post','',0),
+	(16,1,'2017-11-08 21:32:55','2017-11-08 21:32:55','The content.','Veteran Services','','inherit','closed','closed','','15-revision-v1','','','2017-11-08 21:32:55','2017-11-08 21:32:55','',15,'http://czahor.house.localhost/uncategorized/16-15-revision-v1',0,'revision','',0),
+	(19,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','19','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',0,'http://czahor.house.localhost/?p=19',2,'nav_menu_item','',0),
+	(20,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','20','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',2,'http://czahor.house.localhost/?p=20',3,'nav_menu_item','',0),
+	(21,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','21','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',2,'http://czahor.house.localhost/?p=21',4,'nav_menu_item','',0),
+	(22,1,'2017-11-09 14:27:05','2017-11-09 14:27:05',' ','','','publish','closed','closed','','22','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',2,'http://czahor.house.localhost/?p=22',5,'nav_menu_item','',0),
+	(23,1,'2017-11-12 20:44:32','2017-11-12 20:44:32','','Contact','','publish','closed','closed','','contact','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',0,'http://czahor.house.localhost/?p=23',6,'nav_menu_item','',0),
+	(24,1,'2017-11-12 20:44:32','2017-11-12 20:44:32','','Home','','publish','closed','closed','','home','','','2017-11-12 20:44:46','2017-11-12 20:44:46','',0,'http://czahor.house.localhost/?p=24',1,'nav_menu_item','',0);
 
 /*!40000 ALTER TABLE `wp_2_posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -593,7 +593,7 @@ LOCK TABLES `wp_3_comments` WRITE;
 
 INSERT INTO `wp_3_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`)
 VALUES
-	(1,1,'A WordPress Commenter','wapuu@wordpress.example','http://house.dev/','','2017-10-17 20:52:59','2017-10-17 20:52:59','Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href=\"https://gravatar.com\">Gravatar</a>.',0,'1','','',0,0);
+	(1,1,'A WordPress Commenter','wapuu@wordpress.example','http://house.localhost/','','2017-10-17 20:52:59','2017-10-17 20:52:59','Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href=\"https://gravatar.com\">Gravatar</a>.',0,'1','','',0,0);
 
 /*!40000 ALTER TABLE `wp_3_comments` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -643,9 +643,9 @@ LOCK TABLES `wp_3_options` WRITE;
 
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`)
 VALUES
-	(1,'siteurl','http://kouts.house.dev','yes'),
-	(2,'home','http://kouts.house.dev','yes'),
-	(3,'blogname','kouts.house.dev','yes'),
+	(1,'siteurl','http://kouts.house.localhost','yes'),
+	(2,'home','http://kouts.house.localhost','yes'),
+	(3,'blogname','kouts.house.localhost','yes'),
 	(4,'blogdescription','Just another Sites site','yes'),
 	(5,'users_can_register','0','yes'),
 	(6,'admin_email','ethan@indigovern.com','yes'),
@@ -756,7 +756,7 @@ VALUES
 	(125,'_transient_plugin_slugs','a:8:{i:0;s:30:\"advanced-custom-fields/acf.php\";i:1;s:43:\"amazon-web-services/amazon-web-services.php\";i:2;s:41:\"sem-external-links/sem-external-links.php\";i:3;s:25:\"fakerpress/fakerpress.php\";i:4;s:19:\"offices/offices.php\";i:5;s:25:\"wp-graphql/wp-graphql.php\";i:6;s:41:\"amazon-s3-and-cloudfront/wordpress-s3.php\";i:7;s:33:\"wp-php-console/wp-php-console.php\";}','no'),
 	(126,'recently_activated','a:0:{}','yes'),
 	(127,'current_theme','','yes'),
-	(128,'theme_mods_pnights','a:4:{i:0;b:0;s:18:\"custom_css_post_id\";i:-1;s:9:\"full_name\";s:15:\"Alexander Kouts\";s:10:\"hero_image\";s:68:\"http://kouts.house.dev/wp-content/uploads/sites/3/2017/10/kouts.jpeg\";}','yes'),
+	(128,'theme_mods_pnights','a:4:{i:0;b:0;s:18:\"custom_css_post_id\";i:-1;s:9:\"full_name\";s:15:\"Alexander Kouts\";s:10:\"hero_image\";s:68:\"http://kouts.house.localhost/wp-content/uploads/sites/3/2017/10/kouts.jpeg\";}','yes'),
 	(129,'theme_switched','','yes'),
 	(142,'fresh_site','0','yes'),
 	(143,'post_count','1','yes'),
@@ -881,31 +881,31 @@ LOCK TABLES `wp_3_posts` WRITE;
 
 INSERT INTO `wp_3_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`)
 VALUES
-	(1,1,'2017-10-17 20:52:59','2017-10-17 20:52:59','Welcome to <a href=\"http://house.dev/\">Sites</a>. This is your first post. Edit or delete it, then start blogging!','Hello world!','','publish','open','open','','hello-world','','','2017-10-17 20:52:59','2017-10-17 20:52:59','',0,'http://kouts.house.dev/?p=1',0,'post','',1),
-	(2,1,'2017-10-17 20:52:59','2017-10-17 20:52:59','This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://kouts.house.dev/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!','Sample Page','','publish','closed','open','','sample-page','','','2017-10-17 20:52:59','2017-10-17 20:52:59','',0,'http://kouts.house.dev/?page_id=2',0,'page','',0),
-	(3,1,'2017-10-17 21:07:39','0000-00-00 00:00:00','','Auto Draft','','auto-draft','open','open','','','','','2017-10-17 21:07:39','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?p=3',0,'post','',0),
-	(4,1,'2017-10-18 17:03:38','2017-10-18 17:03:38','{\n    \"pnights::full_name\": {\n        \"value\": \"Alexander Kouts\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','7b066085-a3ad-4f85-bbdb-28c158022fd3','','','2017-10-18 17:03:38','2017-10-18 17:03:38','',0,'http://kouts.house.dev/articles/4-7b066085-a3ad-4f85-bbdb-28c158022fd3/',0,'customize_changeset','',0),
-	(5,1,'2017-10-18 17:03:45','2017-10-18 17:03:45','','kouts','','inherit','open','closed','','kouts','','','2017-10-18 17:03:45','2017-10-18 17:03:45','',0,'http://kouts.house.dev/wp-content/uploads/sites/3/2017/10/kouts.jpeg',0,'attachment','image/jpeg',0),
-	(6,1,'2017-10-18 17:03:48','2017-10-18 17:03:48','{\n    \"pnights::hero_image\": {\n        \"value\": \"http://kouts.house.dev/wp-content/uploads/sites/3/2017/10/kouts.jpeg\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','36ee2fa1-0c4c-496b-a19c-7a336387f269','','','2017-10-18 17:03:48','2017-10-18 17:03:48','',0,'http://kouts.house.dev/articles/6-36ee2fa1-0c4c-496b-a19c-7a336387f269/',0,'customize_changeset','',0),
-	(7,1,'2017-10-18 21:52:33','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:52:33','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=7',0,'office','',0),
-	(8,1,'2017-10-18 21:55:44','2017-10-18 21:55:44','','Offices','','trash','closed','closed','','acf_offices__trashed','','','2017-10-18 22:01:26','2017-10-18 22:01:26','',0,'http://kouts.house.dev/?post_type=acf&#038;p=8',0,'acf','',0),
-	(9,1,'2017-10-18 21:55:48','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:55:48','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=9',0,'office','',0),
-	(10,1,'2017-10-18 21:56:12','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:56:12','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=10',0,'office','',0),
-	(11,1,'2017-10-18 21:57:31','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:57:31','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=11',0,'office','',0),
-	(12,1,'2017-10-18 21:58:57','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:58:57','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=12',0,'office','',0),
-	(13,1,'2017-10-18 22:01:14','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:14','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=13',0,'office','',0),
-	(14,1,'2017-10-18 22:01:30','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:30','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=14',0,'office','',0),
-	(15,1,'2017-10-18 22:01:32','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:32','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=15',0,'office','',0),
-	(16,1,'2017-10-18 22:01:35','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:35','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=16',0,'office','',0),
-	(17,1,'2017-10-18 22:01:36','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:36','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=17',0,'office','',0),
-	(18,1,'2017-10-18 22:05:19','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:05:19','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=18',0,'office','',0),
-	(19,1,'2017-10-18 22:06:19','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:06:19','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=19',0,'office','',0),
-	(20,1,'2017-10-18 22:06:37','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:06:37','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=20',0,'office','',0),
-	(21,1,'2017-10-18 22:06:46','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:06:46','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=21',0,'office','',0),
-	(22,1,'2017-10-18 22:07:24','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:07:24','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=22',0,'office','',0),
-	(23,1,'2017-10-18 22:08:21','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:08:21','0000-00-00 00:00:00','',0,'http://kouts.house.dev/?post_type=office&p=23',0,'office','',0),
-	(24,1,'2017-10-20 15:24:28','2017-10-20 15:24:28','That is completely accurate.','Alex is not very cool, right?','','publish','closed','closed','','alex-is-not-very-cool-right','','','2017-10-20 15:24:28','2017-10-20 15:24:28','',0,'http://kouts.house.dev/?post_type=question&#038;p=24',0,'question','',0),
-	(25,1,'2017-10-20 15:24:28','2017-10-20 15:24:28','That is completely accurate.','Alex is not very cool, right?','','inherit','closed','closed','','24-revision-v1','','','2017-10-20 15:24:28','2017-10-20 15:24:28','',24,'http://kouts.house.dev/articles/25-24-revision-v1/',0,'revision','',0);
+	(1,1,'2017-10-17 20:52:59','2017-10-17 20:52:59','Welcome to <a href=\"http://house.localhost/\">Sites</a>. This is your first post. Edit or delete it, then start blogging!','Hello world!','','publish','open','open','','hello-world','','','2017-10-17 20:52:59','2017-10-17 20:52:59','',0,'http://kouts.house.localhost/?p=1',0,'post','',1),
+	(2,1,'2017-10-17 20:52:59','2017-10-17 20:52:59','This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://kouts.house.localhost/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!','Sample Page','','publish','closed','open','','sample-page','','','2017-10-17 20:52:59','2017-10-17 20:52:59','',0,'http://kouts.house.localhost/?page_id=2',0,'page','',0),
+	(3,1,'2017-10-17 21:07:39','0000-00-00 00:00:00','','Auto Draft','','auto-draft','open','open','','','','','2017-10-17 21:07:39','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?p=3',0,'post','',0),
+	(4,1,'2017-10-18 17:03:38','2017-10-18 17:03:38','{\n    \"pnights::full_name\": {\n        \"value\": \"Alexander Kouts\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','7b066085-a3ad-4f85-bbdb-28c158022fd3','','','2017-10-18 17:03:38','2017-10-18 17:03:38','',0,'http://kouts.house.localhost/articles/4-7b066085-a3ad-4f85-bbdb-28c158022fd3/',0,'customize_changeset','',0),
+	(5,1,'2017-10-18 17:03:45','2017-10-18 17:03:45','','kouts','','inherit','open','closed','','kouts','','','2017-10-18 17:03:45','2017-10-18 17:03:45','',0,'http://kouts.house.localhost/wp-content/uploads/sites/3/2017/10/kouts.jpeg',0,'attachment','image/jpeg',0),
+	(6,1,'2017-10-18 17:03:48','2017-10-18 17:03:48','{\n    \"pnights::hero_image\": {\n        \"value\": \"http://kouts.house.localhost/wp-content/uploads/sites/3/2017/10/kouts.jpeg\",\n        \"type\": \"theme_mod\",\n        \"user_id\": 1\n    }\n}','','','trash','closed','closed','','36ee2fa1-0c4c-496b-a19c-7a336387f269','','','2017-10-18 17:03:48','2017-10-18 17:03:48','',0,'http://kouts.house.localhost/articles/6-36ee2fa1-0c4c-496b-a19c-7a336387f269/',0,'customize_changeset','',0),
+	(7,1,'2017-10-18 21:52:33','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:52:33','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=7',0,'office','',0),
+	(8,1,'2017-10-18 21:55:44','2017-10-18 21:55:44','','Offices','','trash','closed','closed','','acf_offices__trashed','','','2017-10-18 22:01:26','2017-10-18 22:01:26','',0,'http://kouts.house.localhost/?post_type=acf&#038;p=8',0,'acf','',0),
+	(9,1,'2017-10-18 21:55:48','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:55:48','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=9',0,'office','',0),
+	(10,1,'2017-10-18 21:56:12','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:56:12','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=10',0,'office','',0),
+	(11,1,'2017-10-18 21:57:31','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:57:31','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=11',0,'office','',0),
+	(12,1,'2017-10-18 21:58:57','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 21:58:57','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=12',0,'office','',0),
+	(13,1,'2017-10-18 22:01:14','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:14','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=13',0,'office','',0),
+	(14,1,'2017-10-18 22:01:30','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:30','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=14',0,'office','',0),
+	(15,1,'2017-10-18 22:01:32','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:32','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=15',0,'office','',0),
+	(16,1,'2017-10-18 22:01:35','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:35','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=16',0,'office','',0),
+	(17,1,'2017-10-18 22:01:36','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:01:36','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=17',0,'office','',0),
+	(18,1,'2017-10-18 22:05:19','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:05:19','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=18',0,'office','',0),
+	(19,1,'2017-10-18 22:06:19','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:06:19','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=19',0,'office','',0),
+	(20,1,'2017-10-18 22:06:37','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:06:37','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=20',0,'office','',0),
+	(21,1,'2017-10-18 22:06:46','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:06:46','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=21',0,'office','',0),
+	(22,1,'2017-10-18 22:07:24','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:07:24','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=22',0,'office','',0),
+	(23,1,'2017-10-18 22:08:21','0000-00-00 00:00:00','','Auto Draft','','auto-draft','closed','closed','','','','','2017-10-18 22:08:21','0000-00-00 00:00:00','',0,'http://kouts.house.localhost/?post_type=office&p=23',0,'office','',0),
+	(24,1,'2017-10-20 15:24:28','2017-10-20 15:24:28','That is completely accurate.','Alex is not very cool, right?','','publish','closed','closed','','alex-is-not-very-cool-right','','','2017-10-20 15:24:28','2017-10-20 15:24:28','',0,'http://kouts.house.localhost/?post_type=question&#038;p=24',0,'question','',0),
+	(25,1,'2017-10-20 15:24:28','2017-10-20 15:24:28','That is completely accurate.','Alex is not very cool, right?','','inherit','closed','closed','','24-revision-v1','','','2017-10-20 15:24:28','2017-10-20 15:24:28','',24,'http://kouts.house.localhost/articles/25-24-revision-v1/',0,'revision','',0);
 
 /*!40000 ALTER TABLE `wp_3_posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1049,9 +1049,9 @@ LOCK TABLES `wp_blogs` WRITE;
 
 INSERT INTO `wp_blogs` (`blog_id`, `site_id`, `domain`, `path`, `registered`, `last_updated`, `public`, `archived`, `mature`, `spam`, `deleted`, `lang_id`)
 VALUES
-	(1,1,'house.dev','/','2017-10-17 20:51:21','0000-00-00 00:00:00',1,0,0,0,0,0),
-	(2,1,'czahor.house.dev','/','2017-10-17 20:52:37','2017-11-08 21:32:55',1,0,0,0,0,0),
-	(3,1,'kouts.house.dev','/','2017-10-17 20:52:59','2017-10-20 15:24:28',1,0,0,0,0,0);
+	(1,1,'house.localhost','/','2017-10-17 20:51:21','0000-00-00 00:00:00',1,0,0,0,0,0),
+	(2,1,'czahor.house.localhost','/','2017-10-17 20:52:37','2017-11-08 21:32:55',1,0,0,0,0,0),
+	(3,1,'kouts.house.localhost','/','2017-10-17 20:52:59','2017-10-20 15:24:28',1,0,0,0,0,0);
 
 /*!40000 ALTER TABLE `wp_blogs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1158,8 +1158,8 @@ LOCK TABLES `wp_options` WRITE;
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`)
 VALUES
-	(1,'siteurl','http://house.dev','yes'),
-	(2,'home','http://house.dev','yes'),
+	(1,'siteurl','http://house.localhost','yes'),
+	(2,'home','http://house.localhost','yes'),
 	(3,'blogname','pnights','yes'),
 	(4,'blogdescription','Just another WordPress site','yes'),
 	(5,'users_can_register','0','yes'),
@@ -1386,9 +1386,9 @@ LOCK TABLES `wp_posts` WRITE;
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`)
 VALUES
-	(1,1,'2017-10-16 23:15:14','2017-10-16 23:15:14','Welcome to WordPress. This is your first post. Edit or delete it, then start writing!','Hello world!','','publish','open','open','','hello-world','','','2017-10-16 23:15:14','2017-10-16 23:15:14','',0,'http://house.dev/?p=1',0,'post','',1),
-	(2,1,'2017-10-16 23:15:14','2017-10-16 23:15:14','This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://house.dev/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!','Sample Page','','publish','closed','open','','sample-page','','','2017-10-16 23:15:14','2017-10-16 23:15:14','',0,'http://house.dev/?page_id=2',0,'page','',0),
-	(3,1,'2017-10-16 23:15:21','0000-00-00 00:00:00','','Auto Draft','','auto-draft','open','open','','','','','2017-10-16 23:15:21','0000-00-00 00:00:00','',0,'http://house.dev/?p=3',0,'post','',0);
+	(1,1,'2017-10-16 23:15:14','2017-10-16 23:15:14','Welcome to WordPress. This is your first post. Edit or delete it, then start writing!','Hello world!','','publish','open','open','','hello-world','','','2017-10-16 23:15:14','2017-10-16 23:15:14','',0,'http://house.localhost/?p=1',0,'post','',1),
+	(2,1,'2017-10-16 23:15:14','2017-10-16 23:15:14','This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://house.localhost/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!','Sample Page','','publish','closed','open','','sample-page','','','2017-10-16 23:15:14','2017-10-16 23:15:14','',0,'http://house.localhost/?page_id=2',0,'page','',0),
+	(3,1,'2017-10-16 23:15:21','0000-00-00 00:00:00','','Auto Draft','','auto-draft','open','open','','','','','2017-10-16 23:15:21','0000-00-00 00:00:00','',0,'http://house.localhost/?p=3',0,'post','',0);
 
 /*!40000 ALTER TABLE `wp_posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1465,7 +1465,7 @@ LOCK TABLES `wp_site` WRITE;
 
 INSERT INTO `wp_site` (`id`, `domain`, `path`)
 VALUES
-	(1,'house.dev','/');
+	(1,'house.localhost','/');
 
 /*!40000 ALTER TABLE `wp_site` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1504,7 +1504,7 @@ VALUES
 	(11,1,'wpmu_upgrade_site','38590'),
 	(12,1,'welcome_email','Howdy USERNAME,\r\n\r\nYour new SITE_NAME site has been successfully set up at:\r\nBLOG_URL\r\n\r\nYou can log in to the administrator account with the following information:\r\n\r\nUsername: USERNAME\r\nPassword: PASSWORD\r\nLog in here: BLOG_URLwp-login.php\r\n\r\nWe hope you enjoy your new site. Thanks!\r\n\r\n--The Team @ SITE_NAME'),
 	(13,1,'first_post','Welcome to %s. This is your first post. Edit or delete it, then start blogging!'),
-	(14,1,'siteurl','http://house.dev/'),
+	(14,1,'siteurl','http://house.localhost/'),
 	(15,1,'add_new_users','0'),
 	(16,1,'upload_space_check_disabled','1'),
 	(17,1,'subdomain_install','1'),
@@ -1686,7 +1686,7 @@ VALUES
 	(15,1,'session_tokens','a:1:{s:64:\"fb5304f86e20a95786f19d3bcd2db6d9cf68e2e32a8d3552a2fb6bb5d8171b8d\";a:4:{s:10:\"expiration\";i:1510692236;s:2:\"ip\";s:10:\"172.18.0.6\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36\";s:5:\"login\";i:1510519436;}}'),
 	(16,1,'wp_dashboard_quick_press_last_post_id','3'),
 	(17,1,'community-events-location','a:1:{s:2:\"ip\";s:10:\"172.18.0.0\";}'),
-	(18,1,'source_domain','house.dev'),
+	(18,1,'source_domain','house.localhost'),
 	(19,1,'primary_blog','1'),
 	(20,1,'wp_2_capabilities','a:1:{s:13:\"administrator\";b:1;}'),
 	(21,1,'wp_2_user_level','10'),

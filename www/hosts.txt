@@ -1,3 +1,3 @@
-127.0.0.1 house.dev
-127.0.0.1 czahor.house.dev
-127.0.0.1 kouts.house.dev
+127.0.0.1 house.localhost
+127.0.0.1 czahor.house.localhost
+127.0.0.1 kouts.house.localhost
