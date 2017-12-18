@@ -1,4 +1,4 @@
-FROM node:9
+FROM amd64/node:9
 
 RUN npm i -g yarn
 COPY package.json yarn.lock ./

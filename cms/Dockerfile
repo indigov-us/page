@@ -1,4 +1,4 @@
-FROM wordpress:4.9-php7.1-apache
+FROM amd64/wordpress:4.9-php7.1-apache
 
 RUN apt-get update && \
   apt-get install git zip unzip wget vim -y
