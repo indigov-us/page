@@ -10,7 +10,7 @@ services:
 
   mysql:
     environment:
-      MYSQL_DATABASE: facade
+      MYSQL_DATABASE: page
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: user
@@ -18,7 +18,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./data/facade.sql:/docker-entrypoint-initdb.d/facade.sql
+      - ./data/page.sql:/docker-entrypoint-initdb.d/page.sql
 
   www:
     build:
@@ -32,15 +32,6 @@ services:
       - /usr/src/app/node_modules
       - ./www:/usr/src/app
 
-  ccma:
-    build:
-      context: ./ccma
-    environment:
-      DB_NAME: facade
-      DB_USER: user
-      DB_PASSWORD: password
-      DB_HOST: mysql
-
   cms:
     build:
       context: ./cms
@@ -51,7 +42,7 @@ services:
       AUTH_SALT: 123
       DBI_AWS_ACCESS_KEY_ID: 123
       DBI_AWS_SECRET_ACCESS_KEY: 123
-      DB_NAME: facade
+      DB_NAME: page
       DB_USER: user
       DB_PASSWORD: password
       DB_HOST: mysql
@@ -69,14 +60,13 @@ services:
       SECURE_AUTH_SALT: 123
       WP_DEBUG: 'false'
     volumes:
-      - ./cms/themes/facade:/var/www/html/wp-content/themes/facade
+      - ./cms/themes/page:/var/www/html/wp-content/themes/page
       - ./cms/uploads:/var/www/html/wp-content/uploads
 
   lb:
     build:
       context: ./lb
     links:
-      - ccma
       - cms
       - www
     ports:

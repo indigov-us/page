@@ -44,8 +44,8 @@ add_action( 'admin_init', function () {
 add_action( 'admin_menu', function () {
   add_submenu_page(
     'options-general.php',
-    'facade Settings',
-    'facade',
+    'Indigov Settings',
+    'indigov',
     'manage_options',
     'ig',
     function () {

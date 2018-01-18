@@ -15,14 +15,8 @@
       "name": "cms"
     },
     {
-      "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/ccma:VERSION",
-      "memoryReservation": 64,
-      "name": "ccma"
-    },
-    {
       "image": "AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/lb:VERSION",
       "links": [
-        "ccma",
         "cms",
         "www"
       ],

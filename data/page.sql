@@ -11,7 +11,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for table facade.wp_2_commentmeta
+-- Dumping structure for table page.wp_2_commentmeta
 DROP TABLE IF EXISTS `wp_2_commentmeta`;
 CREATE TABLE IF NOT EXISTS `wp_2_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -23,11 +23,11 @@ CREATE TABLE IF NOT EXISTS `wp_2_commentmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_commentmeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_2_commentmeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_commentmeta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_2_commentmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_comments
+-- Dumping structure for table page.wp_2_comments
 DROP TABLE IF EXISTS `wp_2_comments`;
 CREATE TABLE IF NOT EXISTS `wp_2_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -53,13 +53,13 @@ CREATE TABLE IF NOT EXISTS `wp_2_comments` (
   KEY `comment_author_email` (`comment_author_email`(10))
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_comments: ~0 rows (approximately)
+-- Dumping data for table page.wp_2_comments: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_comments` DISABLE KEYS */;
 INSERT INTO `wp_2_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
 	(1, 1, 'A WordPress Commenter', 'wapuu@wordpress.example', 'http://house.localhost/', '', '2017-10-17 20:52:38', '2017-10-17 20:52:38', 'Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href="https://gravatar.com">Gravatar</a>.', 0, '1', '', '', 0, 0);
 /*!40000 ALTER TABLE `wp_2_comments` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_links
+-- Dumping structure for table page.wp_2_links
 DROP TABLE IF EXISTS `wp_2_links`;
 CREATE TABLE IF NOT EXISTS `wp_2_links` (
   `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -79,11 +79,11 @@ CREATE TABLE IF NOT EXISTS `wp_2_links` (
   KEY `link_visible` (`link_visible`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_links: ~0 rows (approximately)
+-- Dumping data for table page.wp_2_links: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_links` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_2_links` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_options
+-- Dumping structure for table page.wp_2_options
 DROP TABLE IF EXISTS `wp_2_options`;
 CREATE TABLE IF NOT EXISTS `wp_2_options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `wp_2_options` (
   UNIQUE KEY `option_name` (`option_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_options: ~21 rows (approximately)
+-- Dumping data for table page.wp_2_options: ~21 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_options` DISABLE KEYS */;
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(1, 'siteurl', 'http://czahor.house.localhost', 'yes');
@@ -175,9 +175,9 @@ INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoloa
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(39, 'recently_edited', '', 'no');
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(40, 'template', 'facade', 'yes');
+	(40, 'template', 'page', 'yes');
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(41, 'stylesheet', 'facade', 'yes');
+	(41, 'stylesheet', 'page', 'yes');
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(42, 'comment_whitelist', '1', 'yes');
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -315,7 +315,7 @@ INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoloa
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(128, 'current_theme', '', 'yes');
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(129, 'theme_mods_facade', 'a:5:{i:0;b:0;s:18:"custom_css_post_id";i:-1;s:9:"full_name";s:12:"Ethan Czahor";s:10:"hero_image";s:68:"http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg";s:18:"nav_menu_locations";a:1:{s:7:"primary";i:6;}}', 'yes');
+	(129, 'theme_mods_page', 'a:5:{i:0;b:0;s:18:"custom_css_post_id";i:-1;s:9:"full_name";s:12:"Ethan Czahor";s:10:"hero_image";s:68:"http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg";s:18:"nav_menu_locations";a:1:{s:7:"primary";i:6;}}', 'yes');
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(130, 'theme_switched', '', 'yes');
 INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -366,7 +366,7 @@ INSERT INTO `wp_2_options` (`option_id`, `option_name`, `option_value`, `autoloa
 	(205, '_transient_dash_v2_88ae138922fe95674369b1cb3d215a2b', '<div class="rss-widget"><ul><li><a class=\'rsswidget\' href=\'https://wordpress.org/news/2017/11/wordpress-4-9-release-candidate-2/\'>WordPress 4.9 Release Candidate 2</a></li></ul></div><div class="rss-widget"><ul><li><a class=\'rsswidget\' href=\'https://ma.tt/2017/11/product-and-process/\'>Matt: Product and Process</a></li><li><a class=\'rsswidget\' href=\'https://wptavern.com/wp-spamshield-plugin-removed-from-wordpress-org-author-plans-to-pull-all-plugins-from-the-directory\'>WPTavern: WP-SpamShield Plugin Removed from WordPress.org, Author Plans to Pull All Plugins from the Directory</a></li><li><a class=\'rsswidget\' href=\'https://wptavern.com/weglot-passes-e44k-in-monthly-revenue-plans-to-expand-into-more-cms-and-e-commerce-markets\'>WPTavern: Weglot Passes €44K in Monthly Revenue, Plans to Expand into More CMS and E-commerce Markets</a></li></ul></div>', 'no');
 /*!40000 ALTER TABLE `wp_2_options` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_postmeta
+-- Dumping structure for table page.wp_2_postmeta
 DROP TABLE IF EXISTS `wp_2_postmeta`;
 CREATE TABLE IF NOT EXISTS `wp_2_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -378,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `wp_2_postmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_postmeta: ~75 rows (approximately)
+-- Dumping data for table page.wp_2_postmeta: ~75 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_postmeta` DISABLE KEYS */;
 INSERT INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 	(1, 2, '_wp_page_template', 'default');
@@ -532,7 +532,7 @@ INSERT INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VAL
 	(99, 24, '_menu_item_url', '/');
 /*!40000 ALTER TABLE `wp_2_postmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_posts
+-- Dumping structure for table page.wp_2_posts
 DROP TABLE IF EXISTS `wp_2_posts`;
 CREATE TABLE IF NOT EXISTS `wp_2_posts` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -565,18 +565,18 @@ CREATE TABLE IF NOT EXISTS `wp_2_posts` (
   KEY `post_author` (`post_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_posts: ~20 rows (approximately)
+-- Dumping data for table page.wp_2_posts: ~20 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_posts` DISABLE KEYS */;
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 	(1, 1, '2017-10-17 20:52:38', '2017-10-17 20:52:38', 'Welcome to <a href="http://house.localhost/">Sites</a>. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2017-10-17 20:52:38', '2017-10-17 20:52:38', '', 0, 'http://czahor.house.localhost/?p=1', 0, 'post', '', 1);
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 	(2, 1, '2017-10-17 20:52:38', '2017-10-17 20:52:38', 'This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://czahor.house.localhost/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'Sample Page', '', 'publish', 'closed', 'open', '', 'sample-page', '', '', '2017-10-17 20:52:38', '2017-10-17 20:52:38', '', 0, 'http://czahor.house.localhost/?page_id=2', 0, 'page', '', 0);
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
-	(4, 1, '2017-10-18 17:02:55', '2017-10-18 17:02:55', '{\n    "facade::full_name": {\n        "value": "Ethan Czahor",\n        "type": "theme_mod",\n        "user_id": 1\n    }\n}', '', '', 'trash', 'closed', 'closed', '', '86bc4f61-f7f5-430f-9b3c-1a802668a231', '', '', '2017-10-18 17:02:55', '2017-10-18 17:02:55', '', 0, 'http://czahor.house.localhost/articles/4-86bc4f61-f7f5-430f-9b3c-1a802668a231/', 0, 'customize_changeset', '', 0);
+	(4, 1, '2017-10-18 17:02:55', '2017-10-18 17:02:55', '{\n    "page::full_name": {\n        "value": "Ethan Czahor",\n        "type": "theme_mod",\n        "user_id": 1\n    }\n}', '', '', 'trash', 'closed', 'closed', '', '86bc4f61-f7f5-430f-9b3c-1a802668a231', '', '', '2017-10-18 17:02:55', '2017-10-18 17:02:55', '', 0, 'http://czahor.house.localhost/articles/4-86bc4f61-f7f5-430f-9b3c-1a802668a231/', 0, 'customize_changeset', '', 0);
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 	(5, 1, '2017-10-18 17:03:08', '2017-10-18 17:03:08', '', 'ethan', '', 'inherit', 'open', 'closed', '', 'ethan', '', '', '2017-10-18 17:03:08', '2017-10-18 17:03:08', '', 0, 'http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg', 0, 'attachment', 'image/jpeg', 0);
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
-	(6, 1, '2017-10-18 17:03:13', '2017-10-18 17:03:13', '{\n    "facade::hero_image": {\n        "value": "http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg",\n        "type": "theme_mod",\n        "user_id": 1\n    }\n}', '', '', 'trash', 'closed', 'closed', '', '02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478', '', '', '2017-10-18 17:03:13', '2017-10-18 17:03:13', '', 0, 'http://czahor.house.localhost/articles/6-02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478/', 0, 'customize_changeset', '', 0);
+	(6, 1, '2017-10-18 17:03:13', '2017-10-18 17:03:13', '{\n    "page::hero_image": {\n        "value": "http://czahor.house.localhost/wp-content/uploads/sites/2/2017/10/ethan.jpg",\n        "type": "theme_mod",\n        "user_id": 1\n    }\n}', '', '', 'trash', 'closed', 'closed', '', '02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478', '', '', '2017-10-18 17:03:13', '2017-10-18 17:03:13', '', 0, 'http://czahor.house.localhost/articles/6-02f92a7c-86ad-4edd-b8a6-e2fcd7f1a478/', 0, 'customize_changeset', '', 0);
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 	(7, 1, '2017-10-20 15:22:54', '2017-10-20 15:22:54', 'Why yes. Yes he is.', 'Is Ethan as cool as he looks?', '', 'publish', 'closed', 'closed', '', 'is-ethan-as-cool-as-he-looks', '', '', '2017-10-20 15:22:54', '2017-10-20 15:22:54', '', 0, 'http://czahor.house.localhost/?post_type=question&#038;p=7', 0, 'question', '', 0);
 INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
@@ -609,7 +609,7 @@ INSERT INTO `wp_2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `po
 	(24, 1, '2017-11-12 20:44:32', '2017-11-12 20:44:32', '', 'Home', '', 'publish', 'closed', 'closed', '', 'home', '', '', '2017-11-12 20:44:46', '2017-11-12 20:44:46', '', 0, 'http://czahor.house.localhost/?p=24', 1, 'nav_menu_item', '', 0);
 /*!40000 ALTER TABLE `wp_2_posts` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_termmeta
+-- Dumping structure for table page.wp_2_termmeta
 DROP TABLE IF EXISTS `wp_2_termmeta`;
 CREATE TABLE IF NOT EXISTS `wp_2_termmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -621,11 +621,11 @@ CREATE TABLE IF NOT EXISTS `wp_2_termmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_termmeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_2_termmeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_termmeta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_2_termmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_terms
+-- Dumping structure for table page.wp_2_terms
 DROP TABLE IF EXISTS `wp_2_terms`;
 CREATE TABLE IF NOT EXISTS `wp_2_terms` (
   `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -637,7 +637,7 @@ CREATE TABLE IF NOT EXISTS `wp_2_terms` (
   KEY `name` (`name`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_terms: ~6 rows (approximately)
+-- Dumping data for table page.wp_2_terms: ~6 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_terms` DISABLE KEYS */;
 INSERT INTO `wp_2_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 	(1, 'Uncategorized', 'uncategorized', 0);
@@ -653,7 +653,7 @@ INSERT INTO `wp_2_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 	(6, 'Primary', 'primary', 0);
 /*!40000 ALTER TABLE `wp_2_terms` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_term_relationships
+-- Dumping structure for table page.wp_2_term_relationships
 DROP TABLE IF EXISTS `wp_2_term_relationships`;
 CREATE TABLE IF NOT EXISTS `wp_2_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -663,7 +663,7 @@ CREATE TABLE IF NOT EXISTS `wp_2_term_relationships` (
   KEY `term_taxonomy_id` (`term_taxonomy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_term_relationships: ~9 rows (approximately)
+-- Dumping data for table page.wp_2_term_relationships: ~9 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_term_relationships` DISABLE KEYS */;
 INSERT INTO `wp_2_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
 	(1, 1, 0);
@@ -685,7 +685,7 @@ INSERT INTO `wp_2_term_relationships` (`object_id`, `term_taxonomy_id`, `term_or
 	(24, 6, 0);
 /*!40000 ALTER TABLE `wp_2_term_relationships` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_2_term_taxonomy
+-- Dumping structure for table page.wp_2_term_taxonomy
 DROP TABLE IF EXISTS `wp_2_term_taxonomy`;
 CREATE TABLE IF NOT EXISTS `wp_2_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -699,7 +699,7 @@ CREATE TABLE IF NOT EXISTS `wp_2_term_taxonomy` (
   KEY `taxonomy` (`taxonomy`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_2_term_taxonomy: ~6 rows (approximately)
+-- Dumping data for table page.wp_2_term_taxonomy: ~6 rows (approximately)
 /*!40000 ALTER TABLE `wp_2_term_taxonomy` DISABLE KEYS */;
 INSERT INTO `wp_2_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
 	(1, 1, 'category', '', 0, 1);
@@ -715,7 +715,7 @@ INSERT INTO `wp_2_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `de
 	(6, 6, 'nav_menu', '', 0, 6);
 /*!40000 ALTER TABLE `wp_2_term_taxonomy` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_commentmeta
+-- Dumping structure for table page.wp_3_commentmeta
 DROP TABLE IF EXISTS `wp_3_commentmeta`;
 CREATE TABLE IF NOT EXISTS `wp_3_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -727,11 +727,11 @@ CREATE TABLE IF NOT EXISTS `wp_3_commentmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_commentmeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_3_commentmeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_commentmeta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_3_commentmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_comments
+-- Dumping structure for table page.wp_3_comments
 DROP TABLE IF EXISTS `wp_3_comments`;
 CREATE TABLE IF NOT EXISTS `wp_3_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -757,13 +757,13 @@ CREATE TABLE IF NOT EXISTS `wp_3_comments` (
   KEY `comment_author_email` (`comment_author_email`(10))
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_comments: ~0 rows (approximately)
+-- Dumping data for table page.wp_3_comments: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_comments` DISABLE KEYS */;
 INSERT INTO `wp_3_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
 	(1, 1, 'A WordPress Commenter', 'wapuu@wordpress.example', 'http://house.localhost/', '', '2017-10-17 20:52:59', '2017-10-17 20:52:59', 'Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href="https://gravatar.com">Gravatar</a>.', 0, '1', '', '', 0, 0);
 /*!40000 ALTER TABLE `wp_3_comments` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_links
+-- Dumping structure for table page.wp_3_links
 DROP TABLE IF EXISTS `wp_3_links`;
 CREATE TABLE IF NOT EXISTS `wp_3_links` (
   `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -783,11 +783,11 @@ CREATE TABLE IF NOT EXISTS `wp_3_links` (
   KEY `link_visible` (`link_visible`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_links: ~0 rows (approximately)
+-- Dumping data for table page.wp_3_links: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_links` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_3_links` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_options
+-- Dumping structure for table page.wp_3_options
 DROP TABLE IF EXISTS `wp_3_options`;
 CREATE TABLE IF NOT EXISTS `wp_3_options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -798,7 +798,7 @@ CREATE TABLE IF NOT EXISTS `wp_3_options` (
   UNIQUE KEY `option_name` (`option_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_options: ~132 rows (approximately)
+-- Dumping data for table page.wp_3_options: ~132 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_options` DISABLE KEYS */;
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(1, 'siteurl', 'http://kouts.house.localhost', 'yes');
@@ -879,9 +879,9 @@ INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoloa
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(39, 'recently_edited', '', 'no');
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(40, 'template', 'facade', 'yes');
+	(40, 'template', 'page', 'yes');
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(41, 'stylesheet', 'facade', 'yes');
+	(41, 'stylesheet', 'page', 'yes');
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(42, 'comment_whitelist', '1', 'yes');
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1023,7 +1023,7 @@ INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoloa
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(127, 'current_theme', '', 'yes');
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(128, 'theme_mods_facade', 'a:4:{i:0;b:0;s:18:"custom_css_post_id";i:-1;s:9:"full_name";s:15:"Alexander Kouts";s:10:"hero_image";s:68:"http://kouts.house.localhost/wp-content/uploads/sites/3/2017/10/kouts.jpeg";}', 'yes');
+	(128, 'theme_mods_page', 'a:4:{i:0;b:0;s:18:"custom_css_post_id";i:-1;s:9:"full_name";s:15:"Alexander Kouts";s:10:"hero_image";s:68:"http://kouts.house.localhost/wp-content/uploads/sites/3/2017/10/kouts.jpeg";}', 'yes');
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(129, 'theme_switched', '', 'yes');
 INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1070,7 +1070,7 @@ INSERT INTO `wp_3_options` (`option_id`, `option_name`, `option_value`, `autoloa
 	(176, '_transient_plugin_slugs', 'a:6:{i:0;s:30:"advanced-custom-fields/acf.php";i:1;s:43:"amazon-web-services/amazon-web-services.php";i:2;s:29:"elasticpress/elasticpress.php";i:3;s:41:"sem-external-links/sem-external-links.php";i:4;s:25:"wp-graphql/wp-graphql.php";i:5;s:41:"amazon-s3-and-cloudfront/wordpress-s3.php";}', 'no');
 /*!40000 ALTER TABLE `wp_3_options` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_postmeta
+-- Dumping structure for table page.wp_3_postmeta
 DROP TABLE IF EXISTS `wp_3_postmeta`;
 CREATE TABLE IF NOT EXISTS `wp_3_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1082,7 +1082,7 @@ CREATE TABLE IF NOT EXISTS `wp_3_postmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_postmeta: ~5 rows (approximately)
+-- Dumping data for table page.wp_3_postmeta: ~5 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_postmeta` DISABLE KEYS */;
 INSERT INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 	(1, 2, '_wp_page_template', 'default');
@@ -1096,7 +1096,7 @@ INSERT INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VAL
 	(32, 24, '_edit_last', '1');
 /*!40000 ALTER TABLE `wp_3_postmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_posts
+-- Dumping structure for table page.wp_3_posts
 DROP TABLE IF EXISTS `wp_3_posts`;
 CREATE TABLE IF NOT EXISTS `wp_3_posts` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1129,7 +1129,7 @@ CREATE TABLE IF NOT EXISTS `wp_3_posts` (
   KEY `post_author` (`post_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_posts: ~6 rows (approximately)
+-- Dumping data for table page.wp_3_posts: ~6 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_posts` DISABLE KEYS */;
 INSERT INTO `wp_3_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 	(1, 1, '2017-10-17 20:52:59', '2017-10-17 20:52:59', 'Welcome to <a href="http://house.localhost/">Sites</a>. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2017-10-17 20:52:59', '2017-10-17 20:52:59', '', 0, 'http://kouts.house.localhost/?p=1', 0, 'post', '', 1);
@@ -1145,7 +1145,7 @@ INSERT INTO `wp_3_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `po
 	(26, 1, '2017-12-17 20:21:51', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2017-12-17 20:21:51', '0000-00-00 00:00:00', '', 0, 'http://kouts.house.localhost/?p=26', 0, 'post', '', 0);
 /*!40000 ALTER TABLE `wp_3_posts` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_termmeta
+-- Dumping structure for table page.wp_3_termmeta
 DROP TABLE IF EXISTS `wp_3_termmeta`;
 CREATE TABLE IF NOT EXISTS `wp_3_termmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1157,11 +1157,11 @@ CREATE TABLE IF NOT EXISTS `wp_3_termmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_termmeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_3_termmeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_termmeta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_3_termmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_terms
+-- Dumping structure for table page.wp_3_terms
 DROP TABLE IF EXISTS `wp_3_terms`;
 CREATE TABLE IF NOT EXISTS `wp_3_terms` (
   `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1173,13 +1173,13 @@ CREATE TABLE IF NOT EXISTS `wp_3_terms` (
   KEY `name` (`name`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_terms: ~0 rows (approximately)
+-- Dumping data for table page.wp_3_terms: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_terms` DISABLE KEYS */;
 INSERT INTO `wp_3_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 	(1, 'Uncategorized', 'uncategorized', 0);
 /*!40000 ALTER TABLE `wp_3_terms` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_term_relationships
+-- Dumping structure for table page.wp_3_term_relationships
 DROP TABLE IF EXISTS `wp_3_term_relationships`;
 CREATE TABLE IF NOT EXISTS `wp_3_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -1189,13 +1189,13 @@ CREATE TABLE IF NOT EXISTS `wp_3_term_relationships` (
   KEY `term_taxonomy_id` (`term_taxonomy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_term_relationships: ~0 rows (approximately)
+-- Dumping data for table page.wp_3_term_relationships: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_term_relationships` DISABLE KEYS */;
 INSERT INTO `wp_3_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
 	(1, 1, 0);
 /*!40000 ALTER TABLE `wp_3_term_relationships` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_3_term_taxonomy
+-- Dumping structure for table page.wp_3_term_taxonomy
 DROP TABLE IF EXISTS `wp_3_term_taxonomy`;
 CREATE TABLE IF NOT EXISTS `wp_3_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1209,13 +1209,13 @@ CREATE TABLE IF NOT EXISTS `wp_3_term_taxonomy` (
   KEY `taxonomy` (`taxonomy`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_3_term_taxonomy: ~0 rows (approximately)
+-- Dumping data for table page.wp_3_term_taxonomy: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_3_term_taxonomy` DISABLE KEYS */;
 INSERT INTO `wp_3_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
 	(1, 1, 'category', '', 0, 1);
 /*!40000 ALTER TABLE `wp_3_term_taxonomy` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_blogs
+-- Dumping structure for table page.wp_blogs
 DROP TABLE IF EXISTS `wp_blogs`;
 CREATE TABLE IF NOT EXISTS `wp_blogs` (
   `blog_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1235,7 +1235,7 @@ CREATE TABLE IF NOT EXISTS `wp_blogs` (
   KEY `lang_id` (`lang_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_blogs: ~3 rows (approximately)
+-- Dumping data for table page.wp_blogs: ~3 rows (approximately)
 /*!40000 ALTER TABLE `wp_blogs` DISABLE KEYS */;
 INSERT INTO `wp_blogs` (`blog_id`, `site_id`, `domain`, `path`, `registered`, `last_updated`, `public`, `archived`, `mature`, `spam`, `deleted`, `lang_id`) VALUES
 	(1, 1, 'house.localhost', '/', '2017-10-17 20:51:21', '0000-00-00 00:00:00', 1, 0, 0, 0, 0, 0);
@@ -1245,7 +1245,7 @@ INSERT INTO `wp_blogs` (`blog_id`, `site_id`, `domain`, `path`, `registered`, `l
 	(3, 1, 'kouts.house.localhost', '/', '2017-10-17 20:52:59', '2017-10-20 15:24:28', 1, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `wp_blogs` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_blog_versions
+-- Dumping structure for table page.wp_blog_versions
 DROP TABLE IF EXISTS `wp_blog_versions`;
 CREATE TABLE IF NOT EXISTS `wp_blog_versions` (
   `blog_id` bigint(20) NOT NULL DEFAULT '0',
@@ -1255,11 +1255,11 @@ CREATE TABLE IF NOT EXISTS `wp_blog_versions` (
   KEY `db_version` (`db_version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_blog_versions: ~0 rows (approximately)
+-- Dumping data for table page.wp_blog_versions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_blog_versions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_blog_versions` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_commentmeta
+-- Dumping structure for table page.wp_commentmeta
 DROP TABLE IF EXISTS `wp_commentmeta`;
 CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1271,11 +1271,11 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_commentmeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_commentmeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_commentmeta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_commentmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_comments
+-- Dumping structure for table page.wp_comments
 DROP TABLE IF EXISTS `wp_comments`;
 CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1301,13 +1301,13 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
   KEY `comment_author_email` (`comment_author_email`(10))
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_comments: ~0 rows (approximately)
+-- Dumping data for table page.wp_comments: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_comments` DISABLE KEYS */;
 INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
 	(1, 1, 'A WordPress Commenter', 'wapuu@wordpress.example', 'https://wordpress.org/', '', '2017-10-16 23:15:14', '2017-10-16 23:15:14', 'Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href="https://gravatar.com">Gravatar</a>.', 0, '1', '', '', 0, 0);
 /*!40000 ALTER TABLE `wp_comments` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_links
+-- Dumping structure for table page.wp_links
 DROP TABLE IF EXISTS `wp_links`;
 CREATE TABLE IF NOT EXISTS `wp_links` (
   `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1327,11 +1327,11 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
   KEY `link_visible` (`link_visible`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_links: ~0 rows (approximately)
+-- Dumping data for table page.wp_links: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_links` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_links` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_options
+-- Dumping structure for table page.wp_options
 DROP TABLE IF EXISTS `wp_options`;
 CREATE TABLE IF NOT EXISTS `wp_options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1342,14 +1342,14 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
   UNIQUE KEY `option_name` (`option_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_options: ~150 rows (approximately)
+-- Dumping data for table page.wp_options: ~150 rows (approximately)
 /*!40000 ALTER TABLE `wp_options` DISABLE KEYS */;
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(1, 'siteurl', 'http://house.localhost', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(2, 'home', 'http://house.localhost', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(3, 'blogname', 'facade', 'yes');
+	(3, 'blogname', 'page', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(4, 'blogdescription', 'Just another WordPress site', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1423,9 +1423,9 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(39, 'recently_edited', '', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(40, 'template', 'facade', 'yes');
+	(40, 'template', 'page', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(41, 'stylesheet', 'facade', 'yes');
+	(41, 'stylesheet', 'page', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(42, 'comment_whitelist', '1', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1569,7 +1569,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(115, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.8.2.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.8.2.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.8.2-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.8.2-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.8.2";s:7:"version";s:5:"4.8.2";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.7";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1508273461;s:15:"version_checked";s:5:"4.8.2";s:12:"translations";a:0:{}}', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(120, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1508273465;s:7:"checked";a:4:{s:6:"facade";s:0:"";s:13:"twentyfifteen";s:3:"1.8";s:15:"twentyseventeen";s:3:"1.3";s:13:"twentysixteen";s:3:"1.3";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'no');
+	(120, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1508273465;s:7:"checked";a:4:{s:6:"page";s:0:"";s:13:"twentyfifteen";s:3:"1.8";s:15:"twentyseventeen";s:3:"1.3";s:13:"twentysixteen";s:3:"1.3";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(122, 'auth_key', 'V9.U|t52nY?7-v;sjG0<Hx,x.Ap ins(AvWs_0:RqY`e@)}%0S[k_l%}`%tmjMqg', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1591,7 +1591,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(142, 'current_theme', '', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(143, 'theme_mods_facade', 'a:1:{i:0;b:0;}', 'yes');
+	(143, 'theme_mods_page', 'a:1:{i:0;b:0;}', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(144, 'theme_switched', '', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1607,7 +1607,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(152, '_site_transient_timeout_theme_roots', '1508275262', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-	(153, '_site_transient_theme_roots', 'a:4:{s:6:"facade";s:7:"/themes";s:13:"twentyfifteen";s:7:"/themes";s:15:"twentyseventeen";s:7:"/themes";s:13:"twentysixteen";s:7:"/themes";}', 'no');
+	(153, '_site_transient_theme_roots', 'a:4:{s:6:"page";s:7:"/themes";s:13:"twentyfifteen";s:7:"/themes";s:15:"twentyseventeen";s:7:"/themes";s:13:"twentysixteen";s:7:"/themes";}', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
 	(154, '_site_transient_update_plugins', 'O:8:"stdClass":5:{s:12:"last_checked";i:1508273470;s:7:"checked";a:9:{s:30:"advanced-custom-fields/acf.php";s:6:"4.4.12";s:19:"akismet/akismet.php";s:5:"3.3.4";s:43:"amazon-web-services/amazon-web-services.php";s:5:"1.0.3";s:41:"sem-external-links/sem-external-links.php";s:5:"6.8.1";s:25:"fakerpress/fakerpress.php";s:5:"0.4.9";s:9:"hello.php";s:3:"1.6";s:25:"wp-graphql/wp-graphql.php";s:6:"0.0.20";s:41:"amazon-s3-and-cloudfront/wordpress-s3.php";s:3:"1.2";s:33:"wp-php-console/wp-php-console.php";s:5:"1.5.0";}s:8:"response";a:1:{s:19:"akismet/akismet.php";O:8:"stdClass":11:{s:2:"id";s:21:"w.org/plugins/akismet";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:3:"4.0";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:54:"https://downloads.wordpress.org/plugin/akismet.4.0.zip";s:5:"icons";a:3:{s:2:"1x";s:59:"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272";s:2:"2x";s:59:"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272";s:7:"default";s:59:"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272";}s:7:"banners";a:2:{s:2:"1x";s:61:"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904";s:7:"default";s:61:"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904";}s:11:"banners_rtl";a:0:{}s:6:"tested";s:5:"4.8.1";s:13:"compatibility";O:8:"stdClass":0:{}}}s:12:"translations";a:0:{}s:9:"no_update";a:7:{s:30:"advanced-custom-fields/acf.php";O:8:"stdClass":9:{s:2:"id";s:36:"w.org/plugins/advanced-custom-fields";s:4:"slug";s:22:"advanced-custom-fields";s:6:"plugin";s:30:"advanced-custom-fields/acf.php";s:11:"new_version";s:6:"4.4.12";s:3:"url";s:53:"https://wordpress.org/plugins/advanced-custom-fields/";s:7:"package";s:72:"https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.12.zip";s:5:"icons";a:3:{s:2:"1x";s:75:"https://ps.w.org/advanced-custom-fields/assets/icon-128x128.png?rev=1082746";s:2:"2x";s:75:"https://ps.w.org/advanced-custom-fields/assets/icon-256x256.png?rev=1082746";s:7:"default";s:75:"https://ps.w.org/advanced-custom-fields/assets/icon-256x256.png?rev=1082746";}s:7:"banners";a:3:{s:2:"2x";s:78:"https://ps.w.org/advanced-custom-fields/assets/banner-1544x500.jpg?rev=1729099";s:2:"1x";s:77:"https://ps.w.org/advanced-custom-fields/assets/banner-772x250.jpg?rev=1729102";s:7:"default";s:78:"https://ps.w.org/advanced-custom-fields/assets/banner-1544x500.jpg?rev=1729099";}s:11:"banners_rtl";a:0:{}}s:43:"amazon-web-services/amazon-web-services.php";O:8:"stdClass":9:{s:2:"id";s:33:"w.org/plugins/amazon-web-services";s:4:"slug";s:19:"amazon-web-services";s:6:"plugin";s:43:"amazon-web-services/amazon-web-services.php";s:11:"new_version";s:5:"1.0.3";s:3:"url";s:50:"https://wordpress.org/plugins/amazon-web-services/";s:7:"package";s:68:"https://downloads.wordpress.org/plugin/amazon-web-services.1.0.3.zip";s:5:"icons";a:3:{s:2:"1x";s:72:"https://ps.w.org/amazon-web-services/assets/icon-128x128.png?rev=1024513";s:2:"2x";s:72:"https://ps.w.org/amazon-web-services/assets/icon-256x256.png?rev=1024513";s:7:"default";s:72:"https://ps.w.org/amazon-web-services/assets/icon-256x256.png?rev=1024513";}s:7:"banners";a:3:{s:2:"2x";s:74:"https://ps.w.org/amazon-web-services/assets/banner-1544x500.jpg?rev=776112";s:2:"1x";s:73:"https://ps.w.org/amazon-web-services/assets/banner-772x250.jpg?rev=776112";s:7:"default";s:74:"https://ps.w.org/amazon-web-services/assets/banner-1544x500.jpg?rev=776112";}s:11:"banners_rtl";a:0:{}}s:41:"sem-external-links/sem-external-links.php";O:8:"stdClass":9:{s:2:"id";s:32:"w.org/plugins/sem-external-links";s:4:"slug";s:18:"sem-external-links";s:6:"plugin";s:41:"sem-external-links/sem-external-links.php";s:11:"new_version";s:5:"6.8.1";s:3:"url";s:49:"https://wordpress.org/plugins/sem-external-links/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/sem-external-links.zip";s:5:"icons";a:0:{}s:7:"banners";a:0:{}s:11:"banners_rtl";a:0:{}}s:25:"fakerpress/fakerpress.php";O:8:"stdClass":9:{s:2:"id";s:24:"w.org/plugins/fakerpress";s:4:"slug";s:10:"fakerpress";s:6:"plugin";s:25:"fakerpress/fakerpress.php";s:11:"new_version";s:5:"0.4.9";s:3:"url";s:41:"https://wordpress.org/plugins/fakerpress/";s:7:"package";s:53:"https://downloads.wordpress.org/plugin/fakerpress.zip";s:5:"icons";a:4:{s:2:"1x";s:63:"https://ps.w.org/fakerpress/assets/icon-128x128.png?rev=1129023";s:2:"2x";s:63:"https://ps.w.org/fakerpress/assets/icon-256x256.png?rev=1129023";s:3:"svg";s:55:"https://ps.w.org/fakerpress/assets/icon.svg?rev=1698202";s:7:"default";s:55:"https://ps.w.org/fakerpress/assets/icon.svg?rev=1698202";}s:7:"banners";a:3:{s:2:"2x";s:66:"https://ps.w.org/fakerpress/assets/banner-1544x500.png?rev=1152002";s:2:"1x";s:65:"https://ps.w.org/fakerpress/assets/banner-772x250.png?rev=1152002";s:7:"default";s:66:"https://ps.w.org/fakerpress/assets/banner-1544x500.png?rev=1152002";}s:11:"banners_rtl";a:0:{}}s:9:"hello.php";O:8:"stdClass":9:{s:2:"id";s:25:"w.org/plugins/hello-dolly";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";s:5:"icons";a:3:{s:2:"1x";s:63:"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=969907";s:2:"2x";s:63:"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=969907";s:7:"default";s:63:"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=969907";}s:7:"banners";a:2:{s:2:"1x";s:65:"https://ps.w.org/hello-dolly/assets/banner-772x250.png?rev=478342";s:7:"default";s:65:"https://ps.w.org/hello-dolly/assets/banner-772x250.png?rev=478342";}s:11:"banners_rtl";a:0:{}}s:41:"amazon-s3-and-cloudfront/wordpress-s3.php";O:8:"stdClass":9:{s:2:"id";s:38:"w.org/plugins/amazon-s3-and-cloudfront";s:4:"slug";s:24:"amazon-s3-and-cloudfront";s:6:"plugin";s:41:"amazon-s3-and-cloudfront/wordpress-s3.php";s:11:"new_version";s:3:"1.2";s:3:"url";s:55:"https://wordpress.org/plugins/amazon-s3-and-cloudfront/";s:7:"package";s:71:"https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.1.2.zip";s:5:"icons";a:3:{s:2:"1x";s:77:"https://ps.w.org/amazon-s3-and-cloudfront/assets/icon-128x128.jpg?rev=1194814";s:2:"2x";s:77:"https://ps.w.org/amazon-s3-and-cloudfront/assets/icon-256x256.jpg?rev=1194814";s:7:"default";s:77:"https://ps.w.org/amazon-s3-and-cloudfront/assets/icon-256x256.jpg?rev=1194814";}s:7:"banners";a:3:{s:2:"2x";s:80:"https://ps.w.org/amazon-s3-and-cloudfront/assets/banner-1544x500.jpg?rev=1194814";s:2:"1x";s:79:"https://ps.w.org/amazon-s3-and-cloudfront/assets/banner-772x250.jpg?rev=1194814";s:7:"default";s:80:"https://ps.w.org/amazon-s3-and-cloudfront/assets/banner-1544x500.jpg?rev=1194814";}s:11:"banners_rtl";a:0:{}}s:33:"wp-php-console/wp-php-console.php";O:8:"stdClass":9:{s:2:"id";s:28:"w.org/plugins/wp-php-console";s:4:"slug";s:14:"wp-php-console";s:6:"plugin";s:33:"wp-php-console/wp-php-console.php";s:11:"new_version";s:5:"1.5.0";s:3:"url";s:45:"https://wordpress.org/plugins/wp-php-console/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/wp-php-console.1.5.0.zip";s:5:"icons";a:3:{s:2:"1x";s:67:"https://ps.w.org/wp-php-console/assets/icon-128x128.png?rev=1070278";s:2:"2x";s:67:"https://ps.w.org/wp-php-console/assets/icon-256x256.png?rev=1070278";s:7:"default";s:67:"https://ps.w.org/wp-php-console/assets/icon-256x256.png?rev=1070278";}s:7:"banners";a:3:{s:2:"2x";s:70:"https://ps.w.org/wp-php-console/assets/banner-1544x500.png?rev=1070278";s:2:"1x";s:69:"https://ps.w.org/wp-php-console/assets/banner-772x250.png?rev=1070278";s:7:"default";s:70:"https://ps.w.org/wp-php-console/assets/banner-1544x500.png?rev=1070278";}s:11:"banners_rtl";a:0:{}}}}', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1652,7 +1652,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 	(211, 'widget_media_gallery', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes');
 /*!40000 ALTER TABLE `wp_options` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_postmeta
+-- Dumping structure for table page.wp_postmeta
 DROP TABLE IF EXISTS `wp_postmeta`;
 CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1664,7 +1664,7 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_postmeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_postmeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_postmeta` DISABLE KEYS */;
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 	(1, 2, '_wp_page_template', 'default');
@@ -1672,7 +1672,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 	(2, 1, '_edit_lock', '1508195742:1');
 /*!40000 ALTER TABLE `wp_postmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_posts
+-- Dumping structure for table page.wp_posts
 DROP TABLE IF EXISTS `wp_posts`;
 CREATE TABLE IF NOT EXISTS `wp_posts` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1705,7 +1705,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   KEY `post_author` (`post_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_posts: ~0 rows (approximately)
+-- Dumping data for table page.wp_posts: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_posts` DISABLE KEYS */;
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 	(1, 1, '2017-10-16 23:15:14', '2017-10-16 23:15:14', 'Welcome to WordPress. This is your first post. Edit or delete it, then start writing!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2017-10-16 23:15:14', '2017-10-16 23:15:14', '', 0, 'http://house.localhost/?p=1', 0, 'post', '', 1);
@@ -1715,7 +1715,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 	(3, 1, '2017-10-16 23:15:21', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2017-10-16 23:15:21', '0000-00-00 00:00:00', '', 0, 'http://house.localhost/?p=3', 0, 'post', '', 0);
 /*!40000 ALTER TABLE `wp_posts` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_registration_log
+-- Dumping structure for table page.wp_registration_log
 DROP TABLE IF EXISTS `wp_registration_log`;
 CREATE TABLE IF NOT EXISTS `wp_registration_log` (
   `ID` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1727,7 +1727,7 @@ CREATE TABLE IF NOT EXISTS `wp_registration_log` (
   KEY `IP` (`IP`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_registration_log: ~0 rows (approximately)
+-- Dumping data for table page.wp_registration_log: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_registration_log` DISABLE KEYS */;
 INSERT INTO `wp_registration_log` (`ID`, `email`, `IP`, `blog_id`, `date_registered`) VALUES
 	(1, 'ethan@indigovern.com', '172.19.0.5', 2, '2017-10-17 20:52:38');
@@ -1735,7 +1735,7 @@ INSERT INTO `wp_registration_log` (`ID`, `email`, `IP`, `blog_id`, `date_registe
 	(2, 'ethan@indigovern.com', '172.19.0.5', 3, '2017-10-17 20:52:59');
 /*!40000 ALTER TABLE `wp_registration_log` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_signups
+-- Dumping structure for table page.wp_signups
 DROP TABLE IF EXISTS `wp_signups`;
 CREATE TABLE IF NOT EXISTS `wp_signups` (
   `signup_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1756,11 +1756,11 @@ CREATE TABLE IF NOT EXISTS `wp_signups` (
   KEY `domain_path` (`domain`(140),`path`(51))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_signups: ~0 rows (approximately)
+-- Dumping data for table page.wp_signups: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_signups` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_signups` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_site
+-- Dumping structure for table page.wp_site
 DROP TABLE IF EXISTS `wp_site`;
 CREATE TABLE IF NOT EXISTS `wp_site` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1770,13 +1770,13 @@ CREATE TABLE IF NOT EXISTS `wp_site` (
   KEY `domain` (`domain`(140),`path`(51))
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_site: ~0 rows (approximately)
+-- Dumping data for table page.wp_site: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_site` DISABLE KEYS */;
 INSERT INTO `wp_site` (`id`, `domain`, `path`) VALUES
 	(1, 'house.localhost', '/');
 /*!40000 ALTER TABLE `wp_site` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_sitemeta
+-- Dumping structure for table page.wp_sitemeta
 DROP TABLE IF EXISTS `wp_sitemeta`;
 CREATE TABLE IF NOT EXISTS `wp_sitemeta` (
   `meta_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1788,7 +1788,7 @@ CREATE TABLE IF NOT EXISTS `wp_sitemeta` (
   KEY `site_id` (`site_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_sitemeta: ~60 rows (approximately)
+-- Dumping data for table page.wp_sitemeta: ~60 rows (approximately)
 /*!40000 ALTER TABLE `wp_sitemeta` DISABLE KEYS */;
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
 	(1, 1, 'site_name', 'Sites');
@@ -1807,7 +1807,7 @@ INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUE
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
 	(8, 1, 'site_admins', 'a:1:{i:0;s:5:"admin";}');
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
-	(9, 1, 'allowedthemes', 'a:1:{s:6:"facade";b:1;}');
+	(9, 1, 'allowedthemes', 'a:1:{s:6:"page";b:1;}');
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
 	(10, 1, 'illegal_names', 'a:8:{i:0;s:3:"www";i:1;s:3:"web";i:2;s:4:"root";i:3;s:5:"admin";i:4;s:4:"main";i:5;s:6:"invite";i:6;s:13:"administrator";i:7;s:5:"files";}');
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
@@ -1905,14 +1905,14 @@ INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUE
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
 	(88, 1, '_site_transient_community-events-bf177db4cdd8a3d4c99b4463854de2bd', 'a:2:{s:8:"location";a:1:{s:2:"ip";s:10:"172.19.0.0";}s:6:"events";a:5:{i:0;a:7:{s:4:"type";s:6:"meetup";s:5:"title";s:72:"No Matter What You’re Doing, You Need to Pay Attention to Segmentation";s:3:"url";s:61:"https://www.meetup.com/Sacramento-WordPress/events/245921082/";s:6:"meetup";s:27:"Sacramento WordPress Meetup";s:10:"meetup_url";s:44:"https://www.meetup.com/Sacramento-WordPress/";s:4:"date";s:19:"2018-01-02 18:30:00";s:8:"location";a:4:{s:8:"location";s:19:"Sacramento, CA, USA";s:7:"country";s:2:"us";s:8:"latitude";d:38.565548;s:9:"longitude";d:-121.467964;}}i:1;a:7:{s:4:"type";s:6:"meetup";s:5:"title";s:77:"WordPress Q&A and Topic TBD (1 week later than normal, no meeting on Jan. 1!)";s:3:"url";s:50:"https://www.meetup.com/sanjosewp/events/245419844/";s:6:"meetup";s:29:"The San Jose WordPress Meetup";s:10:"meetup_url";s:33:"https://www.meetup.com/sanjosewp/";s:4:"date";s:19:"2018-01-08 17:30:00";s:8:"location";a:4:{s:8:"location";s:17:"San Jose, CA, USA";s:7:"country";s:2:"us";s:8:"latitude";d:37.244194;s:9:"longitude";d:-121.889313;}}i:2;a:7:{s:4:"type";s:6:"meetup";s:5:"title";s:77:"Set It and Forget It: Structured Content in WordPress with the Pods Framework";s:3:"url";s:65:"https://www.meetup.com/Eastbay-WordPress-Meetup/events/245139111/";s:6:"meetup";s:35:"The East Bay WordPress Meetup Group";s:10:"meetup_url";s:48:"https://www.meetup.com/Eastbay-WordPress-Meetup/";s:4:"date";s:19:"2018-01-21 13:00:00";s:8:"location";a:4:{s:8:"location";s:16:"Oakland, CA, USA";s:7:"country";s:2:"us";s:8:"latitude";d:37.808453;s:9:"longitude";d:-122.26593;}}i:3;a:7:{s:4:"type";s:6:"meetup";s:5:"title";s:3:"TBD";s:3:"url";s:72:"https://www.meetup.com/Wordpress-Bay-Area-CA-Foothills/events/245522653/";s:6:"meetup";s:34:"WordPress Bay Area Foothills Group";s:10:"meetup_url";s:55:"https://www.meetup.com/Wordpress-Bay-Area-CA-Foothills/";s:4:"date";s:19:"2018-01-31 13:30:00";s:8:"location";a:4:{s:8:"location";s:17:"Milpitas, CA, USA";s:7:"country";s:2:"us";s:8:"latitude";d:37.432813;s:9:"longitude";d:-121.907095;}}i:4;a:7:{s:4:"type";s:6:"meetup";s:5:"title";s:27:"WordPress Q&A and Topic TBD";s:3:"url";s:53:"https://www.meetup.com/sanjosewp/events/stqvkmyxdbhb/";s:6:"meetup";s:29:"The San Jose WordPress Meetup";s:10:"meetup_url";s:33:"https://www.meetup.com/sanjosewp/";s:4:"date";s:19:"2018-02-05 17:30:00";s:8:"location";a:4:{s:8:"location";s:17:"San Jose, CA, USA";s:7:"country";s:2:"us";s:8:"latitude";d:37.244194;s:9:"longitude";d:-121.889313;}}}}');
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
-	(91, 1, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1513542125;s:7:"checked";a:1:{s:6:"facade";s:0:"";}s:8:"response";a:1:{s:6:"facade";a:4:{s:5:"theme";s:6:"facade";s:11:"new_version";s:4:"1.02";s:3:"url";s:36:"https://wordpress.org/themes/facade/";s:7:"package";s:53:"https://downloads.wordpress.org/theme/facade.1.02.zip";}}s:12:"translations";a:0:{}}');
+	(91, 1, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1513542125;s:7:"checked";a:1:{s:6:"page";s:0:"";}s:8:"response";a:1:{s:6:"page";a:4:{s:5:"theme";s:6:"page";s:11:"new_version";s:4:"1.02";s:3:"url";s:36:"https://wordpress.org/themes/page/";s:7:"package";s:53:"https://downloads.wordpress.org/theme/page.1.02.zip";}}s:12:"translations";a:0:{}}');
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
 	(92, 1, '_site_transient_timeout_theme_roots', '1513543925');
 INSERT INTO `wp_sitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
-	(93, 1, '_site_transient_theme_roots', 'a:1:{s:6:"facade";s:7:"/themes";}');
+	(93, 1, '_site_transient_theme_roots', 'a:1:{s:6:"page";s:7:"/themes";}');
 /*!40000 ALTER TABLE `wp_sitemeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_termmeta
+-- Dumping structure for table page.wp_termmeta
 DROP TABLE IF EXISTS `wp_termmeta`;
 CREATE TABLE IF NOT EXISTS `wp_termmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1924,11 +1924,11 @@ CREATE TABLE IF NOT EXISTS `wp_termmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_termmeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_termmeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_termmeta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wp_termmeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_terms
+-- Dumping structure for table page.wp_terms
 DROP TABLE IF EXISTS `wp_terms`;
 CREATE TABLE IF NOT EXISTS `wp_terms` (
   `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1940,13 +1940,13 @@ CREATE TABLE IF NOT EXISTS `wp_terms` (
   KEY `name` (`name`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_terms: ~0 rows (approximately)
+-- Dumping data for table page.wp_terms: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_terms` DISABLE KEYS */;
 INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 	(1, 'Uncategorized', 'uncategorized', 0);
 /*!40000 ALTER TABLE `wp_terms` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_term_relationships
+-- Dumping structure for table page.wp_term_relationships
 DROP TABLE IF EXISTS `wp_term_relationships`;
 CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -1956,13 +1956,13 @@ CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
   KEY `term_taxonomy_id` (`term_taxonomy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_term_relationships: ~0 rows (approximately)
+-- Dumping data for table page.wp_term_relationships: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_term_relationships` DISABLE KEYS */;
 INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
 	(1, 1, 0);
 /*!40000 ALTER TABLE `wp_term_relationships` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_term_taxonomy
+-- Dumping structure for table page.wp_term_taxonomy
 DROP TABLE IF EXISTS `wp_term_taxonomy`;
 CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1976,13 +1976,13 @@ CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
   KEY `taxonomy` (`taxonomy`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_term_taxonomy: ~0 rows (approximately)
+-- Dumping data for table page.wp_term_taxonomy: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_term_taxonomy` DISABLE KEYS */;
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
 	(1, 1, 'category', '', 0, 1);
 /*!40000 ALTER TABLE `wp_term_taxonomy` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_usermeta
+-- Dumping structure for table page.wp_usermeta
 DROP TABLE IF EXISTS `wp_usermeta`;
 CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1994,7 +1994,7 @@ CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_usermeta: ~0 rows (approximately)
+-- Dumping data for table page.wp_usermeta: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_usermeta` DISABLE KEYS */;
 INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
 	(1, 1, 'nickname', 'admin');
@@ -2066,7 +2066,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 	(34, 1, 'nav_menu_recently_edited', '6');
 /*!40000 ALTER TABLE `wp_usermeta` ENABLE KEYS */;
 
--- Dumping structure for table facade.wp_users
+-- Dumping structure for table page.wp_users
 DROP TABLE IF EXISTS `wp_users`;
 CREATE TABLE IF NOT EXISTS `wp_users` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -2087,7 +2087,7 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   KEY `user_email` (`user_email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table facade.wp_users: ~0 rows (approximately)
+-- Dumping data for table page.wp_users: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wp_users` DISABLE KEYS */;
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`, `spam`, `deleted`) VALUES
 	(1, 'admin', '$P$BKbwQWQ6iJkJa7bFUh8j.1gQFcWu7h/', 'admin', 'ethan@indigovern.com', '', '2017-10-16 23:15:14', '', 0, 'admin', 0, 0);

@@ -8,19 +8,16 @@ phases:
 
   build:
     commands:
-      - docker build -t ccma:$VERSION ./ccma
       - docker build -t cms:$VERSION ./cms
       - docker build -t www:$VERSION ./www
       - docker build -t lb:$VERSION ./lb
 
-      - docker tag ccma:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/ccma:$VERSION
       - docker tag cms:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/cms:$VERSION
       - docker tag www:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/www:$VERSION
       - docker tag lb:$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/lb:$VERSION
 
   post_build:
     commands:
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/ccma:$VERSION
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/cms:$VERSION
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/www:$VERSION
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/lb:$VERSION
